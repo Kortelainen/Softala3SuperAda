@@ -18,7 +18,7 @@ const Softala3SuperAda = React.createClass({
     const tabKey = tabs.getIn(['routes', tabs.get('index')]).get('key');
     const currentTab = navigationState.get(tabKey);
 
-    // if we are in the beginning of our tab stack
+    // If we are in the beginning of our tab stack :3
     if (currentTab.get('index') === 0) {
 
       // if we are not in the first tab, switch tab to the leftmost one
