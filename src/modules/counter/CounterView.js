@@ -32,7 +32,13 @@ const CounterView = React.createClass({
       title: 'Color Screen'
     }));
   },
+  example(){
+  this.props.dispatch(NavigationState.pushRoute({
+        key: 'ExampleView',
+        title: 'Hello World Screen'
 
+       }));
+    },
   renderUserInfo() {
     if (!this.props.userName) {
       return null;
@@ -88,6 +94,11 @@ const CounterView = React.createClass({
           <Text style={styles.linkButton}>
             {'I\'m bored!'}
           </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.example} accessible={true}>
+            <Text style={styles.linkButton}>
+              {'Go to example view'}
+            </Text>
         </TouchableOpacity>
 
       </View>

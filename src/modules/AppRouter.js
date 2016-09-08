@@ -3,6 +3,7 @@
 import React from 'react';
 import CounterViewContainer from './counter/CounterViewContainer';
 import ColorViewContainer from './colors/ColorViewContainer';
+import ExampleViewContainer from './exampleView/ExampleViewContainer'
 
 /**
  * AppRouter is responsible for mapping a navigator scene to a view
@@ -22,6 +23,9 @@ export default function AppRouter(props) {
       />
     );
   }
+  if (key === 'ExampleView') {
+     return <ExampleViewContainer />;
+   }
 
   throw new Error('Unknown navigation key: ' + key);
 }
