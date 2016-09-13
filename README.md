@@ -1,4 +1,17 @@
-![Pepperoni - Empowered by Futurice](/docs/pepperoni.png?v=2)
+
+# Softala3SuperAda
+
+Softala 3. 
+Super Ada sovellusprojekti. 
+Tiimien käyttöliittymä
+
+===
+
+Rest Palvelin: "link here"
+Admin käyttöliitymmä: "link here"
+
+===
+
 Futurice React Native Starter Kit
 ===
 [![Build Status](https://travis-ci.org/futurice/pepperoni-app-kit.svg?branch=master)](https://travis-ci.org/futurice/pepperoni-app-kit)
@@ -115,4 +128,3 @@ We welcome new features, but for large changes let's discuss first to make sure 
 ## Credits
 
 This project was initially motivated by [Snowflake](https://github.com/bartonhammond/snowflake), a React Native boilerplate by Barton Hammond. It shares some features and design principles for Pepperoni, but it wasn't the right fit for our needs. At this time Snowflake is more mature, so if you like Pepperoni but didn't agree with something we are doing, you should check it out to see if it's a good fit for your app.
-# Softala3SuperAda
