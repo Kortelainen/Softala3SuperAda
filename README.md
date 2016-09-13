@@ -15,18 +15,8 @@ Admin käyttöliitymmä: "link here"
 
 ===
 
-Futurice React Native Starter Kit
+Extraa
 ===
-[![Build Status](https://travis-ci.org/futurice/pepperoni-app-kit.svg?branch=master)](https://travis-ci.org/futurice/pepperoni-app-kit)
-[![React Native](https://img.shields.io/badge/react%20native-0.29-brightgreen.svg)](https://github.com/facebook/react-native)
-[![Sponsored](https://img.shields.io/badge/chilicorn-sponsored-brightgreen.svg)](http://spiceprogram.org/oss-sponsorship/)
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
-
-We :green_heart: building apps with React Native, because it helps us create high quality products for both major mobile platforms quickly and cost-effectively.
-
-Getting started on a new app just takes too damn long, though. Most apps need the same basic building blocks and developer infrastructure, and we are bored of reinventing the wheel time and time again.
-
-This Starter Kit reflects the best practices of React Native development we have discovered while building real-world applications for our customers. It is opinionated about tooling, patterns and development practices. It might not be a one-size-fits-all solution for everyone, but feel free to customize it for your needs, or just take inspiration from it.
 
 React Native Starter Kit is a part of [Pepperoni](http://getpepperoni.com), a framework for kickstarting digital product development.
 
@@ -58,44 +48,9 @@ Not all of the below is yet fully implemented
 * [Istanbul](https://github.com/gotwarlost/istanbul) code coverage
 * Utilities for end-to-end integration testing Redux state, including side effects and asynchronous actions
 
-### Development & Deployment Infrastructure
-
-* [Auth0](https://auth0.com/) for ready-to-use login and signup screens, user authentication and identity management
-* [Bitrise.io](https://www.bitrise.io) configurations for Continuous Integration and beta app distribution
-* :warning: [Google Tag Manager](https://www.google.com/analytics/tag-manager/) analytics
-* :star: [Microsoft Code Push](http://microsoft.github.io/code-push) for Continuous Deployment and instant app updates
-
-
-### Roadmap
-
-* **TODO** Crash reporting
-* **TODO** Android and iOS UI Testing with Calaba.sh?
-* **TODO** Feature flags?
-
 ## Getting started
 
-To build your own app on top of the Starter Kit, fork or mirror this repository. Because you can't rename a fork, for serious use we recommend [mirroring using these instructions](https://help.github.com/articles/duplicating-a-repository/). To contribute to Starter Kit development or just playing around, forking is the way to go.
-
-First, give your application a name by running `./support/rename.sh YourAppName`.
-
 Once you have the code downloaded, follow the **[Setup guide](docs/SETUP.md)** to get started.
-
-## Development workflow
-
-After you have set up the project using above instructions, you can use your favorite IDE or text editor to write code, and run the application from the command line. Turn on React Native hot module reloading in the app developer menu to update your application as you code.
-
-To learn how to structure your application and use the Redux application architecture, read the **[Architecture guide](docs/ARCHITECTURE.md)** for more details.
-
-##### Start the application in iOS simulator
-```
-$ react-native run-ios
-```
-
-##### Start the application in Android simulator
-(If using the stock emulator, the emulator must be running)
-```
-$ react-native run-android
-```
 
 ##### Run unit tests
 ```
@@ -116,13 +71,7 @@ Read the **[Testing guide](docs/TESTING.md)** for more information about writing
 
 ## Deployment
 
-Read the **[Deployment guide](docs/DEPLOYMENT.md)** to learn how to deploy the application to test devices, app stores, and how to use Code Push to push updates to your users immediately.
-
-## Contributing
-
-If you find any problems, please [open an issue](https://github.com/futurice/pepperoni-app-kit/issues/new) or submit a fix as a pull request.
-
-We welcome new features, but for large changes let's discuss first to make sure the changes can be accepted and integrated smoothly.
+Read the **[Deployment guide](docs/DEPLOYMENT.md)** .
 
 ## License
 
