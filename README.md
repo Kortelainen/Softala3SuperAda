@@ -7,14 +7,12 @@ Super Ada sovellusprojekti.
 
 Tiimien käyttöliittymä.
 
-===
 ## Linkit liittyviin repoihin
 
 * Rest Palvelin: "link here"
 * Admin käyttöliitymmä: "link here"
 
 ===
-
 About React-native and pepperoni which project is build on
 ===
 
