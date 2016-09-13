@@ -2,12 +2,15 @@
 # Softala3SuperAda
 
 Softala 3. 
+
 Super Ada sovellusprojekti. 
+
 Tiimien käyttöliittymä
 
 ===
 
 Rest Palvelin: "link here"
+
 Admin käyttöliitymmä: "link here"
 
 ===
