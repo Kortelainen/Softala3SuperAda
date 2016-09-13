@@ -1,21 +1,21 @@
 
 # Softala3SuperAda
 
-Softala 3. 
+Softala 3.  
 
-Super Ada sovellusprojekti. 
+Super Ada sovellusprojekti.  
 
-Tiimien käyttöliittymä
+Tiimien käyttöliittymä.
+
+===
+## Linkit liittyviin repoihin
+
+* Rest Palvelin: "link here"
+* Admin käyttöliitymmä: "link here"
 
 ===
 
-Rest Palvelin: "link here"
-
-Admin käyttöliitymmä: "link here"
-
-===
-
-Extraa
+About React-native and pepperoni which project is build on
 ===
 
 React Native Starter Kit is a part of [Pepperoni](http://getpepperoni.com), a framework for kickstarting digital product development.
