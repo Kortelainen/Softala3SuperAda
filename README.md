@@ -9,7 +9,7 @@ Tiimien käyttöliittymä.
 
 ## Linkit liittyviin repoihin
 
-* Rest Palvelin: "[link](https://github.com/Kortelainen/Softala3SuperAdaBackend)"
+* [Rest Palvelin](https://github.com/Kortelainen/Softala3SuperAdaBackend)
 * Admin käyttöliitymmä: "link here"
 
 ===
