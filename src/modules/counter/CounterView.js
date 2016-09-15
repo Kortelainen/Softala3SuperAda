@@ -39,6 +39,19 @@ const CounterView = React.createClass({
 
        }));
     },
+    login(){
+    this.props.dispatch(NavigationState.pushRoute({
+          key: 'LoginView',
+          title: 'Näyttäähä :)'
+         }));
+      },
+      register(){
+      this.props.dispatch(NavigationState.pushRoute({
+            key: 'RegisterView',
+            title: 'RegisterView'
+           }));
+        },
+
   renderUserInfo() {
     if (!this.props.userName) {
       return null;
@@ -98,6 +111,17 @@ const CounterView = React.createClass({
         <TouchableOpacity onPress={this.example} accessible={true}>
             <Text style={styles.linkButton}>
               {'Go to example view'}
+            </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={this.login} accessible={true}>
+            <Text style={styles.linkButton}>
+              {'Login view'}
+            </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.register} accessible={true}>
+            <Text style={styles.linkButton}>
+              {'Register view'}
             </Text>
         </TouchableOpacity>
 

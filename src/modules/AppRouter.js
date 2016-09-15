@@ -4,7 +4,7 @@ import React from 'react';
 import CounterViewContainer from './counter/CounterViewContainer';
 import ColorViewContainer from './colors/ColorViewContainer';
 import ExampleViewContainer from './exampleView/ExampleViewContainer';
-import MakeViewContainer from './MakeView/MakeViewContainer';
+import LoginViewContainer from './loginView/LoginViewContainer';
 import RegisterViewContainer from './RegisterView/RegisterViewContainer';
 
 /**
@@ -29,8 +29,12 @@ export default function AppRouter(props) {
      return <ExampleViewContainer />;
    }
 
-   if (key === 'MakeView') {
-      return <MakeViewContainer />;
+   if (key === 'LoginView') {
+      return <LoginViewContainer />;
+    }
+
+   if (key === 'RegisterView') {
+      return <RegisterViewContainer />;
     }
 
   if (key === 'RegisterView') {
