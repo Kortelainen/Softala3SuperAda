@@ -45,6 +45,12 @@ const CounterView = React.createClass({
           title: 'Näyttäähä :)'
          }));
       },
+      feedback(){
+      this.props.dispatch(NavigationState.pushRoute({
+            key: 'FeedbackView',
+            title: 'Anna palautetta'
+           }));
+        },
       register(){
       this.props.dispatch(NavigationState.pushRoute({
             key: 'RegisterView',
@@ -137,6 +143,11 @@ const CounterView = React.createClass({
         <TouchableOpacity onPress={this.login} accessible={true}>
             <Text style={styles.linkButton}>
               {'Login view'}
+            </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.feedback} accessible={true}>
+            <Text style={styles.linkButton}>
+              {'FeedbackView'}
             </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={this.register} accessible={true}>

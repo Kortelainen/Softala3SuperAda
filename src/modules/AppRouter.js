@@ -5,6 +5,7 @@ import CounterViewContainer from './counter/CounterViewContainer';
 import ColorViewContainer from './colors/ColorViewContainer';
 import ExampleViewContainer from './exampleView/ExampleViewContainer';
 import LoginViewContainer from './loginView/LoginViewContainer';
+import FeedbackViewContainer from './feedbackView/FeedbackViewContainer';
 import RegisterViewContainer from './RegisterView/RegisterViewContainer';
 import MapViewContainer from './MapView/MapViewContainer';
 
@@ -33,10 +34,16 @@ export default function AppRouter(props) {
    if (key === 'LoginView') {
       return <LoginViewContainer />;
     }
-  if (key === 'RegisterView') {
-    return <RegisterViewContainer />;
-  }
 
+    if (key === 'FeedbackView') {
+       return <FeedbackViewContainer />;
+     }
+
+   if (key === 'RegisterView') {
+      return <RegisterViewContainer />;
+    }
+
+    
   if (key === 'MapView') {
     return <MapViewContainer />;
   }

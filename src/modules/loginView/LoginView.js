@@ -1,7 +1,4 @@
 import React, {PropTypes} from 'react';
-var Dimensions = require('Dimensions');
-var windowSize = Dimensions.get('window');
-
 
 import {
   Text,
@@ -16,6 +13,13 @@ import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const LoginView = React.createClass({
 
+
+  popRoute(){
+  this.props.dispatch(NavigationState.popRoute({
+        key: 'CounterView',
+       }));
+    },
+
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
@@ -24,13 +28,16 @@ const LoginView = React.createClass({
     return {
       username: '',
       password: '',
-      background: `rgba(250,155,145, 1)`
+      background: `rgba(250,155,145,1)`
     }
   },
 
   render: function() {
 
+
+
     return (
+
 
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
       <View style={styles.header}>
@@ -43,14 +50,14 @@ const LoginView = React.createClass({
                     style={[styles.input, styles.whiteFont]}
                     />
             </View>
-
-
           </View>
+
           <View style={styles.signin}>
           <TouchableOpacity onPress={this.popRoute}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
               </TouchableOpacity>
           </View>
+
       </View>
 
     );
@@ -68,9 +75,7 @@ const styles = StyleSheet.create({
   bg: {
           position: 'absolute',
           left: 0,
-          top: 0,
-          width: windowSize.width,
-          height: windowSize.height
+          top: 0
       },
       header: {
           justifyContent: 'flex-start',
