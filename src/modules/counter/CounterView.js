@@ -52,6 +52,13 @@ const CounterView = React.createClass({
            }));
         },
 
+      kartta(){
+      this.props.dispatch(NavigationState.pushRoute({
+          key: 'MapView',
+          title: 'Kartta'
+        }));
+      },
+
   renderUserInfo() {
     if (!this.props.userName) {
       return null;
@@ -67,6 +74,7 @@ const CounterView = React.createClass({
             height: 80
           }}
         />
+
         <Text style={styles.linkButton}>
           Welcome, {this.props.userName}!
         </Text>
@@ -114,6 +122,18 @@ const CounterView = React.createClass({
             </Text>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={this.kartta} accessible={true}>
+          <Text style={styles.linkButton}>
+            {'Kartta'}
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={this.register} accessible={true}>
+          <Text style={styles.linkButton}>
+            {'Register'}
+          </Text>
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={this.login} accessible={true}>
             <Text style={styles.linkButton}>
               {'Login view'}
@@ -154,7 +174,7 @@ const styles = StyleSheet.create({
   },
   counterButton: {
     ...circle,
-    backgroundColor: 'green',
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 20
@@ -174,8 +194,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#CCCCCC',
     marginBottom: 10,
-    padding: 5
-  }
+    padding: 5,
+  },
 });
 
 export default CounterView;

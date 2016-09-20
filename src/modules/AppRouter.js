@@ -6,6 +6,7 @@ import ColorViewContainer from './colors/ColorViewContainer';
 import ExampleViewContainer from './exampleView/ExampleViewContainer';
 import LoginViewContainer from './loginView/LoginViewContainer';
 import RegisterViewContainer from './RegisterView/RegisterViewContainer';
+import MapViewContainer from './MapView/MapViewContainer';
 
 /**
  * AppRouter is responsible for mapping a navigator scene to a view
@@ -32,13 +33,12 @@ export default function AppRouter(props) {
    if (key === 'LoginView') {
       return <LoginViewContainer />;
     }
-
-   if (key === 'RegisterView') {
-      return <RegisterViewContainer />;
-    }
-
   if (key === 'RegisterView') {
     return <RegisterViewContainer />;
+  }
+
+  if (key === 'MapView') {
+    return <MapViewContainer />;
   }
 
   throw new Error('Unknown navigation key: ' + key);
