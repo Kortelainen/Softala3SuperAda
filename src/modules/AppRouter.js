@@ -8,6 +8,7 @@ import LoginViewContainer from './loginView/LoginViewContainer';
 import FeedbackViewContainer from './feedbackView/FeedbackViewContainer';
 import RegisterViewContainer from './RegisterView/RegisterViewContainer';
 import MapViewContainer from './MapView/MapViewContainer';
+import WelcomeViewContainer from './WelcomeView/WelcomeViewContainer';
 
 /**
  * AppRouter is responsible for mapping a navigator scene to a view
@@ -43,7 +44,10 @@ export default function AppRouter(props) {
       return <RegisterViewContainer />;
     }
 
-    
+    if (key === 'Welcome') {
+      return <WelcomeViewContainer />;
+    }
+
   if (key === 'MapView') {
     return <MapViewContainer />;
   }
