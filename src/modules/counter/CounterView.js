@@ -17,27 +17,11 @@ const CounterView = React.createClass({
     loading: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
   },
-  increment() {
-    this.props.dispatch(CounterState.increment());
-  },
-  reset() {
-    this.props.dispatch(CounterState.reset());
-  },
-  random() {
-    this.props.dispatch(CounterState.random());
-  },
-  bored() {
-    this.props.dispatch(NavigationState.pushRoute({
-      key: 'Color',
-      title: 'Color Screen'
-    }));
-  },
-  example(){
+  welcome(){
   this.props.dispatch(NavigationState.pushRoute({
-        key: 'ExampleView',
-        title: 'Hello World Screen'
-
-       }));
+        key: 'Welcome',
+        title: 'Tervetuloa'
+      }));
     },
     login(){
     this.props.dispatch(NavigationState.pushRoute({
@@ -97,34 +81,11 @@ const CounterView = React.createClass({
 
         {this.renderUserInfo()}
 
-        <TouchableOpacity
-          onPress={this.increment}
-          style={[styles.counterButton, loadingStyle]}>
-          <Text style={styles.counter}>
-            {this.props.counter}
-          </Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.reset}>
-          <Text style={styles.linkButton}>
-            Reset
-          </Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.random}>
-          <Text style={styles.linkButton}>
-            Random
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.bored} accessible={true}>
-          <Text style={styles.linkButton}>
-            {'I\'m bored!'}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.example} accessible={true}>
+        <TouchableOpacity onPress={this.welcome} accessible={true}>
             <Text style={styles.linkButton}>
-              {'Go to example view'}
+              {'Tervetuloa'}
             </Text>
         </TouchableOpacity>
 
