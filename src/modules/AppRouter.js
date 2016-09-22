@@ -9,6 +9,7 @@ import FeedbackViewContainer from './feedbackView/FeedbackViewContainer';
 import RegisterViewContainer from './RegisterView/RegisterViewContainer';
 import MapViewContainer from './MapView/MapViewContainer';
 import WelcomeViewContainer from './WelcomeView/WelcomeViewContainer';
+import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
 
 /**
  * AppRouter is responsible for mapping a navigator scene to a view
@@ -50,6 +51,9 @@ export default function AppRouter(props) {
 
   if (key === 'MapView') {
     return <MapViewContainer />;
+  }
+  if (key === 'CheckPoints') {
+  return <CheckPointViewContainer />;
   }
 
   throw new Error('Unknown navigation key: ' + key);

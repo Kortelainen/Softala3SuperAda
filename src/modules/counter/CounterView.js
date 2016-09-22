@@ -49,6 +49,13 @@ const CounterView = React.createClass({
         }));
       },
 
+      yrityslista(){
+    this.props.dispatch(NavigationState.pushRoute({
+      key: 'CheckPoints',
+      title: 'Yrityslista'
+    }));
+  },
+
   renderUserInfo() {
     if (!this.props.userName) {
       return null;
@@ -116,6 +123,12 @@ const CounterView = React.createClass({
               {'Register view'}
             </Text>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={this.yrityslista} accessible={true}>
+           <Text style={styles.linkButton}>
+             {'Yrityslista'}
+           </Text>
+       </TouchableOpacity>
 
       </View>
     );
