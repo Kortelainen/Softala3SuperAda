@@ -85,7 +85,7 @@ const FeedbackView = React.createClass({
                         formHorizontal={true}
                         buttonColor={'#000000'}
                       />
-              <Text style={styles.boldText}>Voisitko kuvitella meneväsi IT-alalle toihin?</Text>
+              <Text style={styles.boldText}>Voisitko kuvitella meneväsi IT-alalle töihin?</Text>
               <RadioForm
                     style={styles.button}
                     radio_props={radio_props}
@@ -95,7 +95,7 @@ const FeedbackView = React.createClass({
                     buttonColor={'#000000'}
                         />
 
-              <Text style={styles.boldText}>Kehitysehdotuksia seuraavan Suoer-Ada -tapahtuman järjestäjille?</Text>
+              <Text style={styles.boldText}>Kehitysehdotuksia seuraavan Super-Ada -tapahtuman järjestäjille?</Text>
               <View style={styles.inputs}>
                 <View style={styles.inputContainer}>
               <TextInput

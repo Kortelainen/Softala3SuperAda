@@ -25,7 +25,9 @@ const NavigationView = React.createClass({
     navigationState: PropTypes.shape({
       tabs: NavigationPropTypes.navigationState.isRequired,
       HomeTab: NavigationPropTypes.navigationState.isRequired,
-      ProfileTab: NavigationPropTypes.navigationState.isRequired
+      ProfileTab: NavigationPropTypes.navigationState.isRequired,
+      FeedbackTab: NavigationPropTypes.navigationState.isRequired,
+      MapTab: NavigationPropTypes.navigationState.isRequired
     }),
     switchTab: PropTypes.func.isRequired,
     pushRoute: PropTypes.func.isRequired
