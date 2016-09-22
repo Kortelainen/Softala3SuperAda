@@ -1,0 +1,13 @@
+{
+  "companies": [
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}},
+    { "image":{"url":  "../../../images/superda.png"}, "name": "Futurice", "visited":{"type": "boolean"}}
+  ]
+}
