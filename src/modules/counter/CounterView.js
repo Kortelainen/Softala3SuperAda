@@ -56,6 +56,13 @@ const CounterView = React.createClass({
     }));
   },
 
+      team(){
+      this.props.dispatch(NavigationState.pushRoute({
+        key: 'TeamView',
+        title: 'Team'
+      }));
+      },
+
   renderUserInfo() {
     if (!this.props.userName) {
       return null;
@@ -123,6 +130,12 @@ const CounterView = React.createClass({
               {'Register view'}
             </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={this.team} accessible={true}>
+            <Text style={styles.linkButton}>
+              {'Team'}
+            </Text>
+        </TouchableOpacity>
+
 
         <TouchableOpacity onPress={this.yrityslista} accessible={true}>
            <Text style={styles.linkButton}>

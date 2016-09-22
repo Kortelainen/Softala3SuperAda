@@ -8,6 +8,7 @@ import LoginViewContainer from './loginView/LoginViewContainer';
 import FeedbackViewContainer from './feedbackView/FeedbackViewContainer';
 import RegisterViewContainer from './RegisterView/RegisterViewContainer';
 import MapViewContainer from './MapView/MapViewContainer';
+import TeamViewContainer from './team/TeamViewContainer';
 import WelcomeViewContainer from './WelcomeView/WelcomeViewContainer';
 import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
 
@@ -54,6 +55,10 @@ export default function AppRouter(props) {
   }
   if (key === 'CheckPoints') {
   return <CheckPointViewContainer />;
+  }
+
+  if (key === 'TeamView') {
+    return <TeamViewContainer />;
   }
 
   throw new Error('Unknown navigation key: ' + key);
