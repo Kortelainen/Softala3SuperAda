@@ -34,7 +34,9 @@ const initialState = fromJS({
     index: 0,
     routes: [
       {key: 'HomeTab', title: 'HOME'},
-      {key: 'ProfileTab', title: 'PROFILE'}
+      {key: 'ProfileTab', title: 'PROFILE'},
+      {key: 'FeedbackTab', title: 'FEEDBACK'},
+      {key: 'MapTab', title: 'MAP'}
     ]
   },
   // Scenes for the `HomeTab` tab.
@@ -46,6 +48,14 @@ const initialState = fromJS({
   ProfileTab: {
     index: 0,
     routes: [{key: 'Color', title: 'Color Screen'}]
+  },
+  FeedbackTab: {
+    index: 0,
+    routes: [{key: 'FeedbackView', title: 'Feedback screen'}]
+  },
+  MapTab: {
+    index: 0,
+    routes: [{key: 'MapView', title: 'Map screen'}]
   }
 });
 

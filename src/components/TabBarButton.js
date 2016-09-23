@@ -2,8 +2,11 @@ import React, {PropTypes} from 'react';
 import {
   Text,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
+
+import * as NavigationState from '../modules/navigation/NavigationState';
 
 export default React.createClass({
   displayName: 'TabBarButton',
@@ -14,11 +17,15 @@ export default React.createClass({
   },
   render() {
     return (
+
       <TouchableOpacity
         onPress={this.props.action}
-        style={[styles.button, this.props.isSelected && styles.selected]}
-        >
-        <Text>{this.props.text}</Text>
+        style={[styles.button, this.props.isSelected && styles.selected]}>
+
+        <Image source={require('../../images/pepperoni.png')}/>
+
+
+
       </TouchableOpacity>
     );
   }
@@ -31,6 +38,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   selected: {
-    backgroundColor: 'yellow'
+    backgroundColor: 'lightpink'
   }
 });
