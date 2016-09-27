@@ -14,11 +14,6 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
-var radio_props = [
-  {label: '  Kyllä', value: 0 },
-  {label: '  Ei', value: 1 }
-];
-
 const TeamPointsView = React.createClass({
 
   propTypes: {
@@ -31,12 +26,18 @@ const TeamPointsView = React.createClass({
     }
   },
 
-  popRoute(){
-  this.props.dispatch(NavigationState.popRoute({
-        key: 'CounterView',
+  feedback(){
+  this.props.dispatch(NavigationState.pushRoute({
+        key: 'FeedbackView',
+        title: 'Anna palautetta'
        }));
     },
-
+    goodbye(){
+    this.props.dispatch(NavigationState.pushRoute({
+      key: 'Goodbye',
+      title: 'Kiitos osallistumisesta!'
+    }));
+    },
 
   render: function() {
       var _scrollView: ScrollView;
@@ -59,29 +60,23 @@ const TeamPointsView = React.createClass({
               </View>
 
               <Text style={styles.boldText}>Haluatko antaa palautetta?</Text>
-              <RadioForm
-                        style={styles.button}
-                        radio_props={radio_props}
-                        initial={null}
-                        onPress={(value) => {this.setState({value:value})}}
-                        formHorizontal={true}
-                        buttonColor={'#000000'}
-                      />
-
-
-
 
               <Text style={styles.boldText}>Palaute auttaa meitä kehittämään tapahtumaa!</Text>
               <View style={styles.inputs}>
                 <View style={styles.inputContainer}>
-              
+
 
                 </View>
                 </View>
 
                 <View style={styles.signin}>
-                <TouchableOpacity onPress={this.popRoute}>
-                    <Text style={styles.whiteFont}>LÄHETÄ</Text>
+                <TouchableOpacity onPress={this.feedback}>
+                    <Text style={styles.whiteFont}>KYLLÄ</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.signin}>
+                <TouchableOpacity onPress={this.goodbye}>
+                    <Text style={styles.whiteFont}>EI</Text>
                     </TouchableOpacity>
                 </View>
 
