@@ -13,16 +13,16 @@ import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const LoginView = React.createClass({
 
-
-  popRoute(){
-  this.props.dispatch(NavigationState.popRoute({
-        key: 'CounterView',
-       }));
-    },
-
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
+
+  welcome(){
+  this.props.dispatch(NavigationState.pushRoute({
+        key: 'Welcome',
+        title: 'Tervetuloa'
+      }));
+    },
 
   getInitialState: function() {
     return {
@@ -53,7 +53,7 @@ const LoginView = React.createClass({
           </View>
 
           <View style={styles.signin}>
-          <TouchableOpacity onPress={this.popRoute}>
+          <TouchableOpacity onPress={this.welcome}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
               </TouchableOpacity>
           </View>
