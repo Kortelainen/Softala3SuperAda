@@ -11,7 +11,7 @@ Tiimien käyttöliittymä.
 
 * [Rest Palvelin](https://github.com/Kortelainen/Softala3SuperAdaBackend)
 * [Admin käyttöliittymä](https://github.com/Kortelainen/Softala3SuperAdaAdmin)
-* [Company käyttöliittymä](https://github.com/Kortelainen/Softala3SuperAdaAdmin)
+* [Company käyttöliittymä](https://github.com/Kortelainen/Softala3SuperCompany)
 
 ===
 About React-native and pepperoni which project is build on
