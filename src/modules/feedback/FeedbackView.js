@@ -31,12 +31,12 @@ const FeedbackView = React.createClass({
     }
   },
 
-  popRoute(){
-  this.props.dispatch(NavigationState.popRoute({
-        key: 'CounterView',
-       }));
-    },
-
+  goodbyefeedback(){
+    this.props.dispatch(NavigationState.pushRoute({
+      key: 'GoodbyeFB',
+      title: 'Kiitos palautteestasi'
+    }));
+  },
 
   render: function() {
       var _scrollView: ScrollView;
@@ -106,7 +106,7 @@ const FeedbackView = React.createClass({
                 </View>
 
                 <View style={styles.signin}>
-                <TouchableOpacity onPress={this.popRoute}>
+                <TouchableOpacity onPress={this.goodbyefeedback}>
                     <Text style={styles.whiteFont}>LÄHETÄ</Text>
                     </TouchableOpacity>
                 </View>
