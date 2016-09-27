@@ -8,8 +8,14 @@ TouchableOpacity
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
-import companies from './CompanyList.json';
+//import companies from './CompanyList.json';
+//console.log(companies);
 
+const companies = [
+  {name: "Company1", place: "room1001"},
+  {name: "Company2", place: "room1002"},
+  {name: "Company3", place: "room1003"}
+]
 const CheckPointView = React.createClass({
 
   propTypes: {
@@ -21,13 +27,27 @@ const CheckPointView = React.createClass({
       title: 'Kartta'
     }));
   },
+
   render(){
     const text = 'Tervetuloa yrityslista sivulle';
+
+  var companyComponents = [];
+
+    for (var i = 0; i < companies.length; i++) {
+      let company = companies[i];
+
+      companyComponents.push(
+        <Text key={i}>Company name: { company.name }
+        Room: { company.place }</Text>
+      );
+}
+
     return (
       <View style={[styles.container]}>
       <Text>
         {text}
       </Text>
+      { companyComponents }
       <TouchableOpacity onPress={this.kartta}>
       <Text style={styles.GoToMapButton}>
         {'NÄYTÄ RASTIT KARTALLA'}
@@ -36,8 +56,8 @@ const CheckPointView = React.createClass({
     </View>
     );
   }
-
-});
+}
+);
 
 const styles = StyleSheet.create({
   container: {

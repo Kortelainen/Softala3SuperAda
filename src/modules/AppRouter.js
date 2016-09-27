@@ -11,6 +11,8 @@ import MapViewContainer from './MapView/MapViewContainer';
 import TeamViewContainer from './team/TeamViewContainer';
 import WelcomeViewContainer from './WelcomeView/WelcomeViewContainer';
 import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
+import GoodbyeViewContainer from './Goodbye/GoodbyeViewContainer';
+import TeamPointsViewContainer from './TeamPointsView/TeamPointsViewContainer';
 
 /**
  * AppRouter is responsible for mapping a navigator scene to a view
@@ -59,6 +61,14 @@ export default function AppRouter(props) {
 
   if (key === 'TeamView') {
     return <TeamViewContainer />;
+  }
+
+  if (key === 'Goodbye') {
+    return <GoodbyeViewContainer />;
+  }
+
+  if (key === 'TeamPointsView') {
+    return <TeamPointsViewContainer />;
   }
 
   throw new Error('Unknown navigation key: ' + key);
