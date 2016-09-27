@@ -70,6 +70,13 @@ const CounterView = React.createClass({
       }));
       },
 
+      goodbyefeedback(){
+        this.props.dispatch(NavigationState.pushRoute({
+          key: 'GoodbyeFB',
+          title: 'Kiitos palautteestasi'
+        }));
+      },
+
       teampoints(){
       this.props.dispatch(NavigationState.pushRoute({
         key: 'TeamPointsView',
@@ -156,6 +163,12 @@ const CounterView = React.createClass({
         <TouchableOpacity onPress={this.goodbye} accessible={true}>
             <Text style={styles.linkButton}>
               {'Goodbye'}
+            </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={this.goodbyefeedback} accessible={true}>
+            <Text style={styles.linkButton}>
+              {'GoodbyeFB'}
             </Text>
         </TouchableOpacity>
 

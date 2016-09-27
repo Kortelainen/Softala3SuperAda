@@ -11,7 +11,7 @@ import {
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
-const Goodbye = React.createClass({
+const GoodbyeFeedbackView = React.createClass({
 
   propTypes: {
     dispatch: PropTypes.func.isRequired
@@ -38,8 +38,8 @@ const Goodbye = React.createClass({
           </View>
           <View style={styles.inputs}>
             <View style={styles.inputContainer}>
-               <Text style={styles.textstyle}>Kiitos osallistumisesta!</Text>
-
+               <Text style={styles.textstyle}>Kiitos palautteestasi!</Text>
+               <Text style={styles.textstyle}>Tervetuloa ensi vuonna uudestaan!</Text>
             </View>
           </View>
 
@@ -130,4 +130,4 @@ const styles = StyleSheet.create({
         marginBottom: 15
       }
 });
-export default Goodbye;
+export default GoodbyeFeedbackView;

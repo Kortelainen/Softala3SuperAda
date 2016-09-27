@@ -12,6 +12,7 @@ import TeamViewContainer from './team/TeamViewContainer';
 import WelcomeViewContainer from './welcome/WelcomeViewContainer';
 import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
 import GoodbyeViewContainer from './goodbye/GoodbyeViewContainer';
+import GoodbyeFeedbackViewContainer from './goodbyeFeedback/GoodbyeFeedbackViewContainer';
 import TeamPointsViewContainer from './teamPoints/TeamPointsViewContainer';
 
 /**
@@ -65,6 +66,10 @@ export default function AppRouter(props) {
 
   if (key === 'Goodbye') {
     return <GoodbyeViewContainer />;
+  }
+
+  if (key === 'GoodbyeFB') {
+    return <GoodbyeFeedbackViewContainer />;
   }
 
   if (key === 'TeamPointsView') {
