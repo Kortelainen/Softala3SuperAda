@@ -4,15 +4,15 @@ import React from 'react';
 import CounterViewContainer from './counter/CounterViewContainer';
 import ColorViewContainer from './colors/ColorViewContainer';
 import ExampleViewContainer from './exampleView/ExampleViewContainer';
-import LoginViewContainer from './loginView/LoginViewContainer';
-import FeedbackViewContainer from './feedbackView/FeedbackViewContainer';
-import RegisterViewContainer from './RegisterView/RegisterViewContainer';
+import LoginViewContainer from './login/LoginViewContainer';
+import FeedbackViewContainer from './feedback/FeedbackViewContainer';
+import RegisterViewContainer from './register/RegisterViewContainer';
 import MapViewContainer from './MapView/MapViewContainer';
 import TeamViewContainer from './team/TeamViewContainer';
-import WelcomeViewContainer from './WelcomeView/WelcomeViewContainer';
+import WelcomeViewContainer from './welcome/WelcomeViewContainer';
 import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
-import GoodbyeViewContainer from './Goodbye/GoodbyeViewContainer';
-import TeamPointsViewContainer from './TeamPointsView/TeamPointsViewContainer';
+import GoodbyeViewContainer from './goodbye/GoodbyeViewContainer';
+import TeamPointsViewContainer from './teamPoints/TeamPointsViewContainer';
 
 /**
  * AppRouter is responsible for mapping a navigator scene to a view
