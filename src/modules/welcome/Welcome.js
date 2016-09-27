@@ -13,15 +13,15 @@ import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const Welcome = React.createClass({
 
-
-  popRoute(){
-  this.props.dispatch(NavigationState.popRoute({
-        key: 'CounterView',
-       }));
-    },
-
   propTypes: {
     dispatch: PropTypes.func.isRequired
+  },
+
+  team(){
+  this.props.dispatch(NavigationState.pushRoute({
+    key: 'TeamView',
+    title: 'Team'
+  }));
   },
 
   getInitialState: function() {
@@ -51,8 +51,8 @@ const Welcome = React.createClass({
           </View>
 
           <View style={styles.signin}>
-          <TouchableOpacity onPress={this.popRoute}>
-              <Text style={styles.whiteFont}>Paina tästä jatkaaksesi rekisteröintiin</Text>
+          <TouchableOpacity onPress={this.team}>
+              <Text style={styles.whiteFont}>Tiimisivulle</Text>
               </TouchableOpacity>
           </View>
 
