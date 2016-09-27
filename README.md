@@ -10,7 +10,7 @@ Tiimien käyttöliittymä.
 ## Linkit liittyviin repoihin
 
 * [Rest Palvelin](https://github.com/Kortelainen/Softala3SuperAdaBackend)
-* Admin käyttöliitymmä: "link here"
+* [Admin käyttöliittymä](https://github.com/Kortelainen/Softala3SuperAdaAdmin)
 
 ===
 About React-native and pepperoni which project is build on
