@@ -7,11 +7,11 @@ import ExampleViewContainer from './exampleView/ExampleViewContainer';
 import LoginViewContainer from './login/LoginViewContainer';
 import FeedbackViewContainer from './feedback/FeedbackViewContainer';
 import RegisterViewContainer from './register/RegisterViewContainer';
-import MapViewContainer from './MapView/MapViewContainer';
+import MapViewContainer from './map/MapViewContainer';
 import TeamViewContainer from './team/TeamViewContainer';
 import WelcomeViewContainer from './welcome/WelcomeViewContainer';
 import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
-import GoodbyeViewContainer from './goodbye/GoodbyeViewContainer';
+import GoodbyeViewContainer from './Goodbye/GoodbyeViewContainer';
 import TeamPointsViewContainer from './teamPoints/TeamPointsViewContainer';
 
 /**
