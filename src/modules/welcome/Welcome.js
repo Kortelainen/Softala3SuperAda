@@ -41,11 +41,23 @@ const Welcome = React.createClass({
 
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
       <View style={styles.header}>
-              <Image style={styles.mark} source={require('../../../images/superada_transparent.png')}/>
+              <Image style={styles.mark} source={require('../../../images/tervetuloa.png')}/>
           </View>
           <View style={styles.inputs}>
             <View style={styles.inputContainer}>
-               <Text style={styles.textstyle}>Tervetuloa Super-Ada tapahtumaan!</Text>
+               <Text style={styles.textstyle}>Kahdeksan rastia odottavat sinua!
+                      Jokaisella rastilla suoritetaan tehtävä.
+                      Rasteja pitävät yritykset ja oppilaitokset
+                        kirjaavat rastisuoritukset puolestanne</Text>
+
+            </View>
+            <View style={styles.inputContainer}>
+               <Text style={styles.textstyle}>Kannattaa pelata läpi myös Super-Ada Quiz.
+               Tasapistetilanteessa hyvin suoritettu Quiz ratkaisee voiton.</Text>
+
+            </View>
+            <View style={styles.inputContainer}>
+               <Text style={styles.boldText}>ONNEA MATKAAN!</Text>
 
             </View>
           </View>
@@ -82,63 +94,46 @@ const styles = StyleSheet.create({
           backgroundColor: 'transparent'
       },
       mark: {
-          width: 150,
-          height: 150
+          width: 250,
+          height: 200
       },
       signin: {
           backgroundColor: '#ff5454',
           padding: 20,
           marginLeft: 30,
           marginRight: 30,
-          marginBottom: 130,
+          marginBottom: 20,
           alignItems: 'center'
       },
-      signup: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: .15
-      },
+
       inputs: {
         marginTop: 2,
         marginBottom: 2,
           flex: .25
       },
-      inputPassword: {
-          marginLeft: 15,
-          width: 20,
-          height: 21
-      },
-      inputUsername: {
-        marginLeft: 15,
-        width: 20,
-        height: 20
-      },
+
       inputContainer: {
-          padding: 35,
+          marginLeft: 15,
           borderWidth: 1,
           borderColor: 'transparent'
       },
-      input: {
-          position: 'absolute',
-          left: 30,
-          top: 60,
-          right: 30,
-          height: 45,
-          fontSize: 20
-      },
-      forgotContainer: {
-        alignItems: 'flex-end',
-        padding: 8
-      },
-      greyFont: {
-        color: '#D8D8D8'
-      },
+
       whiteFont: {
-        color: '#FFF'
+        color: '#FFF',
+        fontSize: 18,
+
       },
       textstyle: {
         color: '#FFF',
+        fontSize: 18,
         marginBottom: 15
+      },
+      boldText: {
+        color: '#FFF',
+        fontSize: 18,
+        marginBottom: 15,
+        fontWeight: 'bold',
+        textAlign: 'center'
       }
 });
 export default Welcome;

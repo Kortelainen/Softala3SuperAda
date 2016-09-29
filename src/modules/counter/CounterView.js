@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'rgba(250,155,145,1)'
   },
   userContainer: {
     justifyContent: 'center',
@@ -255,9 +255,15 @@ const styles = StyleSheet.create({
   },
   linkButton: {
     textAlign: 'center',
-    color: '#CCCCCC',
-    marginBottom: 10,
+    color: '#fafafa',
+    marginBottom: 5,
     padding: 5,
+    fontSize: 20,
+    backgroundColor: '#ff5454',
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 5,
+    width: 250,
   },
 });
 

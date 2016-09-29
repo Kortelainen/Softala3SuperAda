@@ -42,32 +42,22 @@ const TeamPointsView = React.createClass({
   render: function() {
       var _scrollView: ScrollView;
        return (
-         <View>
+         <View style= {styles.container}>
           <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}
             automaticallyAdjustContentInsets={false}
             onScroll={() => { console.log('onScroll!'); }}
             scrollEventThrottle={200}
             style={styles.scrollView}>
             <Text style={styles.baseText}>JOTAIN TEKSTIÄ</Text>
-
-            <View style={styles.inputs}>
-              <View style={styles.inputContainer}>
-            <TextInput
-                    style={[styles.input]}
-                    />
-
+            <View style={styles.header}>
+              <Image style={styles.mark} source={require('../../../images/pisteet.png')}/>
               </View>
-              </View>
+
 
               <Text style={styles.boldText}>Haluatko antaa palautetta?</Text>
 
               <Text style={styles.boldText}>Palaute auttaa meitä kehittämään tapahtumaa!</Text>
-              <View style={styles.inputs}>
-                <View style={styles.inputContainer}>
 
-
-                </View>
-                </View>
 
                 <View style={styles.signin}>
                 <TouchableOpacity onPress={this.feedback}>
@@ -101,21 +91,18 @@ const styles = StyleSheet.create({
       backgroundColor: 'transparent'
   },
   scrollView: {
-    backgroundColor: 'rgba(245,245,245,1)',
-    height: 510,
+    backgroundColor: 'rgba(250,155,145,1)',
+
     flex: 1
   },
-  button: {
-    left: 10,
-    top: 10,
-    padding: 5
-  },
+
   baseText: {
     marginLeft: 10,
     marginTop: 10,
     marginRight: 10,
     fontSize: 16,
-    marginBottom: 20
+    marginBottom: 20,
+    color: 'black'
 
   },
   boldText: {
@@ -123,29 +110,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 10,
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'black'
 
   },
-  input: {
-      position: 'absolute',
-      left: 10,
-      right: 10,
-      fontSize: 16,
-      height: 50,
-      paddingBottom: 0
 
-  },
-  inputs: {
-    marginTop: 2,
-    marginBottom: 2,
-      flex: .25
-  },
-  inputContainer: {
-      padding: 0,
-      borderWidth: 1,
-      borderColor: 'transparent',
-      height: 45
-  },
+
   signin: {
       backgroundColor: '#ff5454',
       padding: 20,
@@ -153,7 +123,20 @@ const styles = StyleSheet.create({
       marginLeft: 30,
       marginRight: 30,
       marginBottom: 30,
-      alignItems: 'center'
+      alignItems: 'center',
+      width: 100,
+      
+
+  },
+  whiteFont: {
+    color: '#FFF',
+    fontSize: 18
+  },
+  header: {
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      flex: 0,
+
   }
 
 });

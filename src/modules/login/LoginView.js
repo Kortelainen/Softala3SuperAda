@@ -156,11 +156,13 @@ const styles = StyleSheet.create({
         color: '#D8D8D8'
       },
       whiteFont: {
-        color: '#FFF'
+        color: '#FFF',
+        fontSize: 18
       },
       textstyle: {
         color: '#FFF',
-        marginBottom: 15
+        marginBottom: 15,
+        fontSize: 20
       },
       debug: {
         color: '#FFF',

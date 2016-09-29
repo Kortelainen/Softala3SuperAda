@@ -32,7 +32,9 @@ const TeamView = React.createClass({
 
           <View style={styles.TeamContainer}>
               <Text style={styles.whiteFont}>Joukkueen nimi:</Text>
-              <TextInput style={styles.TeamInput}/>
+              <TextInput
+                      style={[styles.TeamInput, styles.whiteFont]}
+                      />
 
               <TouchableOpacity
                 style={[styles.cameraButton]}>
@@ -44,10 +46,12 @@ const TeamView = React.createClass({
 
 
               <Text style={styles.whiteFont}>Slogan:</Text>
-              <TextInput style={styles.TeamInput}/>
+              <TextInput
+                      style={[styles.TeamInput, styles.whiteFont]}
+                      />
 
               <TouchableOpacity style={styles.saveButton}>
-                  <Text>TALLENNA</Text>
+                  <Text style={styles.whiteFont}>TALLENNA</Text>
               </TouchableOpacity>
           </View>
 
@@ -90,7 +94,7 @@ const styles = StyleSheet.create({
 
   cameraButton: {
       ...circle,
-      backgroundColor: '#fafafa',
+      backgroundColor: '#FFF',
       alignItems: 'center',
       justifyContent: 'center',
       margin: 20
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
   },
 
   saveButton: {
-      backgroundColor: '#e64e24',
+      backgroundColor: '#ff5454',
       padding: 20,
       marginLeft: 30,
       marginRight: 30,
@@ -110,9 +114,12 @@ const styles = StyleSheet.create({
       marginBottom: 130,
       alignItems: 'center',
       width:350,
+
   },
   whiteFont: {
-    color: '#fafafa'
+    color: '#FFF',
+    fontSize: 18,
+
   },
 
 });

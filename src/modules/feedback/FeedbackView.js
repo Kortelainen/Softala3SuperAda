@@ -41,7 +41,7 @@ const FeedbackView = React.createClass({
   render: function() {
       var _scrollView: ScrollView;
        return (
-         <View>
+         <View style = {styles.container}>
           <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}
             automaticallyAdjustContentInsets={false}
             onScroll={() => { console.log('onScroll!'); }}
@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
       backgroundColor: 'transparent'
   },
   scrollView: {
-    backgroundColor: 'rgba(245,245,245,1)',
-    height: 510,
+    backgroundColor: 'rgba(250,155,145,1)',
+
     flex: 1
   },
   button: {
@@ -146,7 +146,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 10,
     fontSize: 16,
-    marginBottom: 20
+    marginBottom: 20,
+    color: 'black'
 
   },
   boldText: {
@@ -154,7 +155,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 10,
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'black'
 
   },
   input: {
@@ -185,6 +187,10 @@ const styles = StyleSheet.create({
       marginRight: 30,
       marginBottom: 30,
       alignItems: 'center'
+  },
+  whiteFont: {
+    color: '#FFF',
+    fontSize: 18
   }
 
 });
