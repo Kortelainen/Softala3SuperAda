@@ -17,16 +17,27 @@ import {setAuthenticationToken} from '../../utils/authentication';
 
 const LoginView = React.createClass({
 
-  propTypes: {
-    dispatch: PropTypes.func.isRequired
+
+    _userLogin() {
+      fetch('http://localhost:3000/teams/authenticate', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: this.state.username,
+        })
+      })
+      .then((response) => response.json())
+      .then(response => {
+      console.log(response)
+      this.setState({teamid:response.teamID, teamname:response.teamname})
+    })
   },
 
-  welcome(){
-  this.props.dispatch(NavigationState.pushRoute({
-        key: 'Welcome',
-        title: 'Tervetuloa'
-      }));
+  popRoute(){
+  this.props.dispatch(NavigationState.popRoute({
+        key: 'CounterView',
+       }));
     },
+
 
   verifyTeam() {
 console.log('IM IN');
@@ -50,13 +61,21 @@ fetch('/teams/authenticate', {
     });
 
 
+
+  propTypes: {
+    dispatch: PropTypes.func.isRequired
   },
 
   getInitialState: function() {
     return {
+
       teamname: '',
       message: '',
 //      password: '',
+
+      username: '',
+      teamid: '',
+      teamname: '',
       background: `rgba(250,155,145,1)`
     }
   },
@@ -65,7 +84,9 @@ fetch('/teams/authenticate', {
 
 
 
+
     return (
+
 
 
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
@@ -89,10 +110,24 @@ fetch('/teams/authenticate', {
 
           <View style={styles.loginButton}>
           <TouchableOpacity onPress={this.verifyTeam}>
+          <View style={styles.inputs}>
+            <View style={styles.inputContainer}>
+               <Text style={styles.textstyle}>Joukkueen nimi:</Text>
+            <TextInput
+                    style={[styles.input, styles.whiteFont]}
+                    onChangeText={(username) => this.setState({username})}
+                    value={this.state.username}
+                    />
+            </View>
+          </View>
+
+          <View style={styles.signin}>
+          <TouchableOpacity onPress={this._userLogin}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
               </TouchableOpacity>
           </View>
-
+          <Text style={styles.debug}>TeamID: {this.state.teamid}</Text>
+          <Text style={styles.debug}>Team Name: {this.state.teamname}</Text>
       </View>
 
     );

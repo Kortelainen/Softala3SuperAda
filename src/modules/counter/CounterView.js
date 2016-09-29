@@ -10,6 +10,25 @@ import {
 } from 'react-native';
 
 const CounterView = React.createClass({
+
+  componentDidMount() {
+    fetch('http://localhost:3000/', {
+      method: 'GET'
+
+    })
+    .then((response) => response.json())
+    .then(response => {
+      console.log(response)
+      this.setState({hello:response.helloworld})
+    })
+  },
+
+  getInitialState: function() {
+    return {
+      hello: ''
+    }
+  },
+
   propTypes: {
     counter: PropTypes.number.isRequired,
     userName: PropTypes.string,
@@ -157,6 +176,11 @@ const CounterView = React.createClass({
         <TouchableOpacity onPress={this.team} accessible={true}>
             <Text style={styles.linkButton}>
               {'Team'}
+            </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+            <Text style={styles.linkButton}>
+              {this.state.hello}
             </Text>
         </TouchableOpacity>
 

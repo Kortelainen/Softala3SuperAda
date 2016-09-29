@@ -3,7 +3,8 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Image
+  Image,
+  View
 } from 'react-native';
 
 import * as NavigationState from '../modules/navigation/NavigationState';
@@ -18,15 +19,18 @@ export default React.createClass({
   render() {
     return (
 
-      <TouchableOpacity
-        onPress={this.props.action}
-        style={[styles.button, this.props.isSelected && styles.selected]}>
+    <View>
+          <TouchableOpacity
+            onPress={this.props.action}
+            style={[styles.button, this.props.isSelected && styles.selected]}>
 
-        <Image source={require('../../images/pepperoni.png')}/>
+            <Text>{this.props.text}</Text>
 
+            {/* <Image source={require('../../images/pepperoni.png')}/> */}
 
+          </TouchableOpacity>
+    </View>
 
-      </TouchableOpacity>
     );
   }
 });
