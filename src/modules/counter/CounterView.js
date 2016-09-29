@@ -26,7 +26,7 @@ const CounterView = React.createClass({
     login(){
     this.props.dispatch(NavigationState.pushRoute({
           key: 'LoginView',
-          title: 'Näyttäähä :)'
+          title: 'Kirjautuminen'
          }));
       },
       feedback(){

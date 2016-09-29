@@ -6,10 +6,14 @@ import {
   StyleSheet,
   TextInput,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform,
+
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
+import {post} from '../../utils/api';
+import {setAuthenticationToken} from '../../utils/authentication';
 
 const LoginView = React.createClass({
 
@@ -24,10 +28,35 @@ const LoginView = React.createClass({
       }));
     },
 
+  verifyTeam() {
+console.log('IM IN');
+fetch('/teams/authenticate', {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    first: 'firsValue',
+    second: 'secondValue',
+  })
+})
+  .then(function(json) {
+    console.log('hallelujah', json)
+  })
+  .catch(error => {
+      console.log('error ' + error);
+      this.setState({message: 'Virhe sisäänkirjautumisessa, tarkista salasana ja Internetyhteys'});
+    });
+
+
+  },
+
   getInitialState: function() {
     return {
-      username: '',
-      password: '',
+      teamname: '',
+      message: '',
+//      password: '',
       background: `rgba(250,155,145,1)`
     }
   },
@@ -40,20 +69,26 @@ const LoginView = React.createClass({
 
 
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
-      <View style={styles.header}>
+          <View style={styles.header}>
               <Image style={styles.mark} source={require('../../../images/superada_transparent.png')}/>
           </View>
-          <View style={styles.inputs}>
-            <View style={styles.inputContainer}>
-               <Text style={styles.textstyle}>Joukkueen nimi:</Text>
-            <TextInput
-                    style={[styles.input, styles.whiteFont]}
-                    />
-            </View>
-          </View>
 
-          <View style={styles.signin}>
-          <TouchableOpacity onPress={this.welcome}>
+        <View style={styles.textBox}>
+          <Text style={styles.textstyle}>
+            Anna joukkueesi nimi:
+          </Text>
+        </View>
+
+        <View style={{padding: 10}}>
+          <TextInput
+              style={{height: 40}}
+              placeholder="esim. TeamGreatest"
+              onChangeText={(teamname) => this.setState({teamname})}
+              value={this.state.teamname}/>
+        </View>
+
+          <View style={styles.loginButton}>
+          <TouchableOpacity onPress={this.verifyTeam}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
               </TouchableOpacity>
           </View>
@@ -67,80 +102,55 @@ const LoginView = React.createClass({
 });
 
 const styles = StyleSheet.create({
+
   container: {
-    flexDirection: 'column',
+      flexDirection: 'column',
       flex: 1,
       backgroundColor: 'transparent'
   },
-  bg: {
-          position: 'absolute',
-          left: 0,
-          top: 0
-      },
-      header: {
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          flex: 0,
-          backgroundColor: 'transparent'
-      },
-      mark: {
-          width: 150,
-          height: 150
-      },
-      signin: {
-          backgroundColor: '#ff5454',
-          padding: 20,
-          marginLeft: 30,
-          marginRight: 30,
-          marginBottom: 130,
-          alignItems: 'center'
-      },
-      signup: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: .15
-      },
-      inputs: {
-        marginTop: 2,
-        marginBottom: 2,
-          flex: .25
-      },
-      inputPassword: {
-          marginLeft: 15,
-          width: 20,
-          height: 21
-      },
-      inputUsername: {
-        marginLeft: 15,
-        width: 20,
-        height: 20
-      },
-      inputContainer: {
-          padding: 35,
-          borderWidth: 1,
-          borderColor: 'transparent'
-      },
-      input: {
-          position: 'absolute',
-          left: 30,
-          top: 60,
-          right: 30,
-          height: 45,
-          fontSize: 20
-      },
-      forgotContainer: {
-        alignItems: 'flex-end',
-        padding: 8
-      },
-      greyFont: {
-        color: '#D8D8D8'
-      },
-      whiteFont: {
-        color: '#FFF'
-      },
-      textstyle: {
-        color: '#FFF',
-        marginBottom: 15
-      }
+  header: {
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      flex: 0,
+      backgroundColor: 'transparent'
+  },
+  mark: {
+      width: 150,
+      height: 150
+  },
+  textBox: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      padding: 30
+  },
+  inputField: {
+      width: 300,
+      height: 150,
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      padding: 30,
+      backgroundColor: 'gray'
+  },
+  loginButton: {
+      backgroundColor: '#ff5454',
+      padding: 20,
+      marginLeft: 30,
+      marginRight: 30,
+      marginBottom: 30,
+      alignItems: 'center'
+  },
+  inputText: {
+      fontSize: 20
+  },
+  whiteFont: {
+      color: '#FFF'
+  },
+  textstyle: {
+      color: '#FFF',
+      fontSize: 20
+  }
 });
+
 export default LoginView;
