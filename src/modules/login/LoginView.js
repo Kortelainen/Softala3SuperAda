@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'transparent'
   },
+
   header: {
       justifyContent: 'flex-start',
       alignItems: 'center',
@@ -186,6 +187,85 @@ const styles = StyleSheet.create({
       color: '#FFF',
       fontSize: 20
   }
+
+  bg: {
+          position: 'absolute',
+          left: 0,
+          top: 0
+      },
+      header: {
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          flex: 0,
+          backgroundColor: 'transparent'
+      },
+      mark: {
+          width: 150,
+          height: 150
+      },
+      signin: {
+          backgroundColor: '#ff5454',
+          padding: 20,
+          marginLeft: 30,
+          marginRight: 30,
+          marginBottom: 90,
+          alignItems: 'center'
+      },
+      signup: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: .15
+      },
+      inputs: {
+        marginTop: 2,
+        marginBottom: 2,
+          flex: .25
+      },
+      inputPassword: {
+          marginLeft: 15,
+          width: 20,
+          height: 21
+      },
+      inputUsername: {
+        marginLeft: 15,
+        width: 20,
+        height: 20
+      },
+      inputContainer: {
+          padding: 35,
+          borderWidth: 1,
+          borderColor: 'transparent'
+      },
+      input: {
+          position: 'absolute',
+          left: 30,
+          top: 60,
+          right: 30,
+          height: 45,
+          fontSize: 20
+      },
+      forgotContainer: {
+        alignItems: 'flex-end',
+        padding: 8
+      },
+      greyFont: {
+        color: '#D8D8D8'
+      },
+      whiteFont: {
+        color: '#FFF',
+        fontSize: 18
+      },
+      textstyle: {
+        color: '#FFF',
+        marginBottom: 15,
+        fontSize: 20
+      },
+      debug: {
+        color: '#FFF',
+        marginBottom: 15,
+        marginLeft: 20
+      }
+
 });
 
 export default LoginView;
