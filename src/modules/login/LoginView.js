@@ -13,21 +13,36 @@ import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const LoginView = React.createClass({
 
+
+    _userLogin() {
+      fetch('http://localhost:3000/teams/authenticate', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: this.state.username,
+        })
+      })
+      .then((response) => response.json())
+      .then(response => {
+      console.log(response)
+      this.setState({teamid:response.teamID, teamname:response.teamname})
+    })
+  },
+
+  popRoute(){
+  this.props.dispatch(NavigationState.popRoute({
+        key: 'CounterView',
+       }));
+    },
+
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
 
-  welcome(){
-  this.props.dispatch(NavigationState.pushRoute({
-        key: 'Welcome',
-        title: 'Tervetuloa'
-      }));
-    },
-
   getInitialState: function() {
     return {
       username: '',
-      password: '',
+      teamid: '',
+      teamname: '',
       background: `rgba(250,155,145,1)`
     }
   },
@@ -36,7 +51,9 @@ const LoginView = React.createClass({
 
 
 
+
     return (
+
 
 
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
@@ -48,16 +65,19 @@ const LoginView = React.createClass({
                <Text style={styles.textstyle}>Joukkueen nimi:</Text>
             <TextInput
                     style={[styles.input, styles.whiteFont]}
+                    onChangeText={(username) => this.setState({username})}
+                    value={this.state.username}
                     />
             </View>
           </View>
 
           <View style={styles.signin}>
-          <TouchableOpacity onPress={this.welcome}>
+          <TouchableOpacity onPress={this._userLogin}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
               </TouchableOpacity>
           </View>
-
+          <Text style={styles.debug}>TeamID: {this.state.teamid}</Text>
+          <Text style={styles.debug}>Team Name: {this.state.teamname}</Text>
       </View>
 
     );
@@ -92,7 +112,7 @@ const styles = StyleSheet.create({
           padding: 20,
           marginLeft: 30,
           marginRight: 30,
-          marginBottom: 130,
+          marginBottom: 90,
           alignItems: 'center'
       },
       signup: {
@@ -141,6 +161,11 @@ const styles = StyleSheet.create({
       textstyle: {
         color: '#FFF',
         marginBottom: 15
+      },
+      debug: {
+        color: '#FFF',
+        marginBottom: 15,
+        marginLeft: 20
       }
 });
 export default LoginView;
