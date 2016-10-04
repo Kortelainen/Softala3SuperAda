@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
   sceneContainer: {
     flex: 1,
     marginTop: APP_BAR_HEIGHT,
-    marginBottom: TAB_BAR_HEIGHT
+    marginBottom: TAB_BAR_HEIGHT,
+    
   }
 });
 

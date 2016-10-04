@@ -29,7 +29,7 @@ const CheckPointView = React.createClass({
   },
 
   render(){
-    const text = 'Tervetuloa yrityslista sivulle';
+    const text = '';
 
   var companyComponents = [];
 
@@ -44,15 +44,19 @@ const CheckPointView = React.createClass({
 
     return (
       <View style={[styles.container]}>
-      <Text>
+      <Text style={styles.text}>
         {text}
       </Text>
       { companyComponents }
+
       <TouchableOpacity onPress={this.kartta}>
-      <Text style={styles.GoToMapButton}>
+      <View style={styles.GoToMapButton}>
+      <Text style={{margin: 10, color: '#FFF', fontSize: 18,  }}>
         {'NÄYTÄ RASTIT KARTALLA'}
       </Text>
+      </View>
       </TouchableOpacity>
+
     </View>
     );
   }
@@ -62,18 +66,29 @@ const CheckPointView = React.createClass({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    flexDirection: 'column',
+
     alignItems: 'center'
+
   },
   GoToMapButton: {
-    flex:2,
-    fontSize:22,
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 2,
-    padding: 3,
-    backgroundColor:'#e64e24'
+
+    backgroundColor: '#ff5454',
+    padding: 5,
+    marginLeft: 30,
+    marginRight: 30,
+    marginBottom: 30,
+
+
     },
+
+  text: {
+    padding: 5,
+    justifyContent: 'flex-start'
+  },
+
+
+
 });
 
 export default CheckPointView;

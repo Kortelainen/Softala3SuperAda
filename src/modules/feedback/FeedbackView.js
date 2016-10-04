@@ -105,7 +105,7 @@ const FeedbackView = React.createClass({
                 </View>
                 </View>
 
-                <View style={styles.signin}>
+                <View style={styles.send}>
                 <TouchableOpacity onPress={this.goodbyefeedback}>
                     <Text style={styles.whiteFont}>LÄHETÄ</Text>
                     </TouchableOpacity>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'transparent'
   },
   scrollView: {
-    backgroundColor: 'rgba(250,155,145,1)',
+    backgroundColor: 'rgba(245,245,245,1)',
 
     flex: 1
   },
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
       borderColor: 'transparent',
       height: 45
   },
-  signin: {
+  send: {
       backgroundColor: '#ff5454',
       padding: 20,
       marginTop: 40,

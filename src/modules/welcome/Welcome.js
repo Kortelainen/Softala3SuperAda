@@ -43,26 +43,26 @@ const Welcome = React.createClass({
       <View style={styles.header}>
               <Image style={styles.mark} source={require('../../../images/tervetuloa.png')}/>
           </View>
-          <View style={styles.inputs}>
-            <View style={styles.inputContainer}>
+          <View style={styles.textContainer}>
+            <View style={styles.textField}>
                <Text style={styles.textstyle}>Kahdeksan rastia odottavat sinua!
                       Jokaisella rastilla suoritetaan tehtävä.
                       Rasteja pitävät yritykset ja oppilaitokset
                         kirjaavat rastisuoritukset puolestanne</Text>
 
             </View>
-            <View style={styles.inputContainer}>
+            <View style={styles.textField}>
                <Text style={styles.textstyle}>Kannattaa pelata läpi myös Super-Ada Quiz.
                Tasapistetilanteessa hyvin suoritettu Quiz ratkaisee voiton.</Text>
 
             </View>
-            <View style={styles.inputContainer}>
+            <View style={styles.textField}>
                <Text style={styles.boldText}>ONNEA MATKAAN!</Text>
 
             </View>
           </View>
 
-          <View style={styles.signin}>
+          <View style={styles.button}>
           <TouchableOpacity onPress={this.team}>
               <Text style={styles.whiteFont}>Tiimisivulle</Text>
               </TouchableOpacity>
@@ -82,11 +82,7 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'transparent'
   },
-  bg: {
-          position: 'absolute',
-          left: 0,
-          top: 0
-      },
+
       header: {
           justifyContent: 'flex-start',
           alignItems: 'center',
@@ -97,7 +93,7 @@ const styles = StyleSheet.create({
           width: 250,
           height: 200
       },
-      signin: {
+      button: {
           backgroundColor: '#ff5454',
           padding: 20,
           marginLeft: 30,
@@ -106,13 +102,13 @@ const styles = StyleSheet.create({
           alignItems: 'center'
       },
 
-      inputs: {
+      textContainer: {
         marginTop: 2,
         marginBottom: 2,
           flex: .25
       },
 
-      inputContainer: {
+      textField: {
           marginLeft: 15,
           borderWidth: 1,
           borderColor: 'transparent'

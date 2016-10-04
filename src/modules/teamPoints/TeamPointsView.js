@@ -48,28 +48,28 @@ const TeamPointsView = React.createClass({
             onScroll={() => { console.log('onScroll!'); }}
             scrollEventThrottle={200}
             style={styles.scrollView}>
-            <Text style={styles.baseText}>JOTAIN TEKSTIÄ</Text>
+            <Text style={styles.headerText}>Tiimisi pisteet</Text>
             <View style={styles.header}>
               <Image style={styles.mark} source={require('../../../images/pisteet.png')}/>
               </View>
 
 
-              <Text style={styles.boldText}>Haluatko antaa palautetta?</Text>
+              <Text style={styles.baseText}>Haluatko antaa järjestäjille palautetta?</Text>
 
-              <Text style={styles.boldText}>Palaute auttaa meitä kehittämään tapahtumaa!</Text>
+              <Text style={styles.baseText}>Palaute auttaa meitä kehittämään tapahtumaa!</Text>
 
-
-                <View style={styles.signin}>
+              <View style ={styles.buttons}>
+                <View style={styles.button}>
                 <TouchableOpacity onPress={this.feedback}>
                     <Text style={styles.whiteFont}>KYLLÄ</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.signin}>
+                <View style={styles.button}>
                 <TouchableOpacity onPress={this.goodbye}>
                     <Text style={styles.whiteFont}>EI</Text>
                     </TouchableOpacity>
                 </View>
-
+                </View>
 
           </ScrollView>
           </View>
@@ -88,44 +88,48 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
       flex: 1,
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+
   },
   scrollView: {
     backgroundColor: 'rgba(250,155,145,1)',
+    flex: 1,
 
-    flex: 1
+  },
+  mark: {
+    alignItems: 'center'
   },
 
-  baseText: {
+  headerText: {
     marginLeft: 10,
     marginTop: 10,
     marginRight: 10,
-    fontSize: 16,
+    fontSize: 25,
     marginBottom: 20,
-    color: 'black'
+    color: '#FFF',
+    textAlign: 'center',
+    fontFamily: 'monospace',
+    fontWeight: 'bold'
 
   },
-  boldText: {
-    marginLeft: 10,
+  baseText: {
     marginTop: 10,
-    marginRight: 10,
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black'
+    fontSize: 18,
+    color: '#FFF',
+    textAlign: 'center'
 
   },
 
-
-  signin: {
+  button: {
       backgroundColor: '#ff5454',
-      padding: 20,
+      padding: 15,
       marginTop: 40,
-      marginLeft: 30,
-      marginRight: 30,
+      marginRight: 10,
+      marginLeft: 20,
       marginBottom: 30,
       alignItems: 'center',
       width: 100,
-      
+
 
   },
   whiteFont: {
@@ -136,6 +140,12 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
       alignItems: 'center',
       flex: 0,
+  },
+
+  buttons: {
+      flexDirection: 'row',
+      justifyContent: 'center'
+
 
   }
 

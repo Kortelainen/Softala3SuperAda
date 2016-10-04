@@ -92,10 +92,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'transparent'
   },
-  bg: {
-          position: 'absolute',
-          left: 0,
-          top: 0
       },
       header: {
           justifyContent: 'flex-start',
@@ -115,25 +111,12 @@ const styles = StyleSheet.create({
           marginBottom: 90,
           alignItems: 'center'
       },
-      signup: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: .15
       },
       inputs: {
         marginTop: 2,
         marginBottom: 2,
           flex: .25
       },
-      inputPassword: {
-          marginLeft: 15,
-          width: 20,
-          height: 21
-      },
-      inputUsername: {
-        marginLeft: 15,
-        width: 20,
-        height: 20
       },
       inputContainer: {
           padding: 35,
@@ -148,19 +131,13 @@ const styles = StyleSheet.create({
           height: 45,
           fontSize: 20
       },
-      forgotContainer: {
-        alignItems: 'flex-end',
-        padding: 8
-      },
-      greyFont: {
-        color: '#D8D8D8'
-      },
+
       whiteFont: {
-        color: '#FFF'
+
       },
       textstyle: {
         color: '#FFF',
-        marginBottom: 15
+
       },
       debug: {
         color: '#FFF',
