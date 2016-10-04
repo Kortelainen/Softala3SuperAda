@@ -6,22 +6,11 @@ import {
   TouchableOpacity,
   Image,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 const CounterView = React.createClass({
-
-  componentDidMount() {
-    fetch('http://localhost:3000/', {
-      method: 'GET'
-
-    })
-    .then((response) => response.json())
-    .then(response => {
-      console.log(response)
-      this.setState({hello:response.helloworld})
-    })
-  },
 
   getInitialState: function() {
     return {
@@ -126,12 +115,22 @@ const CounterView = React.createClass({
     );
   },
   render() {
+
+    var _scrollView: ScrollView;
+
     const loadingStyle = this.props.loading
       ? {backgroundColor: '#eee'}
       : null;
 
     return (
       <View style={styles.container}>
+
+      <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}
+        automaticallyAdjustContentInsets={false}
+        onScroll={() => { console.log('onScroll!'); }}
+        scrollEventThrottle={200}
+        style={styles.scrollView}>
+
 
         {this.renderUserInfo()}
 
@@ -178,11 +177,6 @@ const CounterView = React.createClass({
               {'Team'}
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-            <Text style={styles.linkButton}>
-              {this.state.hello}
-            </Text>
-        </TouchableOpacity>
 
         <TouchableOpacity onPress={this.goodbye} accessible={true}>
             <Text style={styles.linkButton}>
@@ -207,6 +201,8 @@ const CounterView = React.createClass({
              {'Yrityslista'}
            </Text>
        </TouchableOpacity>
+
+       </ScrollView>
 
       </View>
     );
@@ -265,6 +261,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     width: 250,
   },
+  scrollView: {
+    backgroundColor: 'rgba(250,155,145,1)',
+
+    flex: 1
+  },
+
 });
 
 export default CounterView;
