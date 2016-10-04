@@ -9,6 +9,10 @@ import{
   TouchableOpacity,
 }from 'react-native';
 
+var Platform = require('react-native').Platform;
+var ImagePicker = require('react-native-image-picker');
+var options = require('./image-picker-options');
+
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const TeamView = React.createClass({
@@ -27,22 +31,54 @@ const TeamView = React.createClass({
     };
   },
 
+openImageGallery(){
+  ImagePicker.showImagePicker(options, (response) => {
+  console.log('Response = ', response);
+
+  if (response.didCancel) {
+    console.log('User cancelled image picker');
+  }
+  else if (response.error) {
+    console.log('ImagePicker Error: ', response.error);
+  }
+  else if (response.customButton) {
+    console.log('User tapped custom button: ', response.customButton);
+  }
+  else {
+    // You can display the image using either data...
+    const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
+
+    // or a reference to the platform specific asset location
+    if (Platform.OS === 'ios') {
+      const source = {uri: response.uri.replace('file://', ''), isStatic: true};
+    } else {
+      const source = {uri: response.uri, isStatic: true};
+    }
+
+    this.setState({
+      avatarSource: source
+    });
+  }
+});
+},
+
   render(){
         return (
 
           <View style={styles.TeamContainer}>
               <Text style={styles.whiteFont}>Joukkueen nimi:</Text>
               <TextInput
-                      style={[styles.TeamInput, styles.whiteFont]}
-                      />
+                  style={[styles.TeamInput, styles.whiteFont]}
+              />
 
               <TouchableOpacity
+                onPress={this.openImageGallery}
                 style={[styles.cameraButton]}>
-                <Text style={styles.camera}>
-                  <Image style={styles.cameraImage} source={require('../../../images/kamera.png')}/>
-                </Text>
-              </TouchableOpacity>
 
+                  <Image style={styles.cameraImage} source={require('../../../images/kamera.png')}/>
+                  <Image source={this.state.avatarSource} style={styles.teamImage} />
+
+              </TouchableOpacity>
 
 
               <Text style={styles.whiteFont}>Slogan:</Text>
@@ -85,24 +121,26 @@ const styles = StyleSheet.create({
 
   },
 
-
-  camera: {
-      color: 'red',
-      fontSize: 20,
-      textAlign: 'center'
-    },
-
   cameraButton: {
       ...circle,
       backgroundColor: '#FFF',
-      alignItems: 'center',
-      justifyContent: 'center',
       margin: 20
   },
 
   cameraImage: {
     width:100,
     height:100,
+    position:'absolute',
+    alignItems: 'center',
+    margin: 25
+  },
+
+  teamImage: {
+    width:150,
+    height:150,
+    position:'absolute',
+    alignItems: 'center',
+    borderRadius: 75,
   },
 
   saveButton: {
@@ -121,6 +159,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
 
   },
+
+
 
 });
 export default TeamView;
