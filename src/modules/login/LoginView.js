@@ -87,11 +87,11 @@ const LoginView = React.createClass({
 });
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
+    container: {
+      flexDirection: 'column',
       flex: 1,
       backgroundColor: 'transparent'
-  },
+
       },
       header: {
           justifyContent: 'flex-start',
@@ -111,13 +111,12 @@ const styles = StyleSheet.create({
           marginBottom: 90,
           alignItems: 'center'
       },
-      },
       inputs: {
         marginTop: 2,
         marginBottom: 2,
-          flex: .25
+        flex: .25
       },
-      },
+
       inputContainer: {
           padding: 35,
           borderWidth: 1,
@@ -143,6 +142,6 @@ const styles = StyleSheet.create({
         color: '#FFF',
         marginBottom: 15,
         marginLeft: 20
-      }
+      },
 });
 export default LoginView;

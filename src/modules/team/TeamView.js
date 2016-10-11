@@ -19,6 +19,14 @@ const TeamView = React.createClass({
   PropTypes: {
     dispatch: PropTypes.func.isRequired
   },
+
+  yrityslista(){
+  this.props.dispatch(NavigationState.pushRoute({
+    key: 'CheckPoints',
+    title: 'TALLENNA'
+  }));
+  },
+
   popRoute(){
     this.props.dispatch(NavigationState.popRoute({
       key:'CounterView',
@@ -86,12 +94,10 @@ openImageGallery(){
                       style={[styles.TeamInput, styles.whiteFont]}
                       />
 
-              <TouchableOpacity style={styles.saveButton}>
-                  <Text style={styles.whiteFont}>TALLENNA</Text>
+              <TouchableOpacity onPress={this.yrityslista} accessible={true} style={styles.saveButton}>
+                  <Text style={styles.whiteFont}>{'TALLENNA'}</Text>
               </TouchableOpacity>
           </View>
-
-
 
         );
       }

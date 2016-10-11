@@ -35,28 +35,28 @@ const initialState = fromJS({
     routes: [
       {key: 'HomeTab', title: 'HOME'},
       {key: 'ProfileTab', title: 'PROFILE'},
-      {key: 'FeedbackTab', title: 'FEEDBACK'},
-      {key: 'MapTab', title: 'MAP'}
+      {key: 'MapTab', title: 'MAP'},
+      {key: 'LinkTab', title: 'LINKIT'},
     ]
   },
   // Scenes for the `HomeTab` tab.
   HomeTab: {
     index: 0,
-    routes: [{key: 'Counter', title: 'Counter Screen'}]
+    routes: [{key: 'Welcome', title: 'Welcome'}]
   },
   // Scenes for the `ProfileTab` tab.
   ProfileTab: {
     index: 0,
-    routes: [{key: 'Color', title: 'Color Screen'}]
-  },
-  FeedbackTab: {
-    index: 0,
-    routes: [{key: 'FeedbackView', title: 'Feedback screen'}]
+    routes: [{key: 'TeamView', title: 'Joukkue'}]
   },
   MapTab: {
     index: 0,
     routes: [{key: 'MapView', title: 'Map screen'}]
-  }
+  },
+  LinkTab: {
+    index: 0,
+    routes: [{key: 'Counter', title: 'Linkit'}]
+  },
 });
 
 export default function NavigationReducer(state = initialState, action) {
