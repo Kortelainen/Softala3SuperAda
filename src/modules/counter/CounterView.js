@@ -43,12 +43,7 @@ const CounterView = React.createClass({
             title: 'Anna palautetta'
            }));
         },
-      register(){
-      this.props.dispatch(NavigationState.pushRoute({
-            key: 'RegisterView',
-            title: 'RegisterView'
-           }));
-        },
+
 
       kartta(){
       this.props.dispatch(NavigationState.pushRoute({
@@ -78,12 +73,7 @@ const CounterView = React.createClass({
       }));
       },
 
-      goodbyefeedback(){
-        this.props.dispatch(NavigationState.pushRoute({
-          key: 'GoodbyeFB',
-          title: 'Kiitos palautteestasi'
-        }));
-      },
+
 
       teampoints(){
       this.props.dispatch(NavigationState.pushRoute({
@@ -148,11 +138,7 @@ const CounterView = React.createClass({
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.register} accessible={true}>
-          <Text style={styles.linkButton}>
-            {'Register'}
-          </Text>
-        </TouchableOpacity>
+
 
         <TouchableOpacity onPress={this.login} accessible={true}>
             <Text style={styles.linkButton}>
@@ -166,27 +152,11 @@ const CounterView = React.createClass({
             </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.register} accessible={true}>
-            <Text style={styles.linkButton}>
-              {'Register view'}
-            </Text>
-        </TouchableOpacity>
+
 
         <TouchableOpacity onPress={this.team} accessible={true}>
             <Text style={styles.linkButton}>
               {'Team'}
-            </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.goodbye} accessible={true}>
-            <Text style={styles.linkButton}>
-              {'Goodbye'}
-            </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.goodbyefeedback} accessible={true}>
-            <Text style={styles.linkButton}>
-              {'GoodbyeFB'}
             </Text>
         </TouchableOpacity>
 

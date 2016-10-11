@@ -59,17 +59,18 @@ const TeamPointsView = React.createClass({
               <Text style={styles.baseText}>Palaute auttaa meitä kehittämään tapahtumaa!</Text>
 
               <View style ={styles.buttons}>
-                <View style={styles.button}>
                 <TouchableOpacity onPress={this.feedback}>
+                  <View style={styles.button}>
                     <Text style={styles.whiteFont}>KYLLÄ</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.button}>
+                  </View>
+                </TouchableOpacity>
+
                 <TouchableOpacity onPress={this.goodbye}>
+                  <View style={styles.button}>
                     <Text style={styles.whiteFont}>EI</Text>
-                    </TouchableOpacity>
-                </View>
-                </View>
+                  </View>
+                </TouchableOpacity>
+              </View>
 
           </ScrollView>
           </View>

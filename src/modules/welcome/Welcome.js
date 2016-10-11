@@ -17,10 +17,10 @@ const Welcome = React.createClass({
     dispatch: PropTypes.func.isRequired
   },
 
-  team(){
+  login(){
   this.props.dispatch(NavigationState.pushRoute({
-    key: 'TeamView',
-    title: 'Team'
+    key: 'LoginView',
+    title: 'Login'
   }));
   },
 
@@ -61,13 +61,13 @@ const Welcome = React.createClass({
 
             </View>
           </View>
-
+        <TouchableOpacity onPress={this.login}>
           <View style={styles.button}>
-          <TouchableOpacity onPress={this.team}>
-              <Text style={styles.whiteFont}>Tiimisivulle</Text>
-              </TouchableOpacity>
-          </View>
 
+              <Text style={styles.whiteFont}>Kirjaudu</Text>
+
+          </View>
+        </TouchableOpacity>
       </View>
 
     );

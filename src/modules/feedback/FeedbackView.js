@@ -104,13 +104,12 @@ const FeedbackView = React.createClass({
 
                 </View>
                 </View>
-
+                
+              <TouchableOpacity onPress={this.goodbyefeedback}>
                 <View style={styles.send}>
-                <TouchableOpacity onPress={this.goodbyefeedback}>
                     <Text style={styles.whiteFont}>LÄHETÄ</Text>
-                    </TouchableOpacity>
                 </View>
-
+              </TouchableOpacity>
 
           </ScrollView>
           </View>

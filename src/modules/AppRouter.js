@@ -6,12 +6,11 @@ import ColorViewContainer from './colors/ColorViewContainer';
 import ExampleViewContainer from './exampleView/ExampleViewContainer';
 import LoginViewContainer from './login/LoginViewContainer';
 import FeedbackViewContainer from './feedback/FeedbackViewContainer';
-import RegisterViewContainer from './register/RegisterViewContainer';
 import MapViewContainer from './map/MapViewContainer';
 import TeamViewContainer from './team/TeamViewContainer';
 import WelcomeViewContainer from './welcome/WelcomeViewContainer';
 import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
-import GoodbyeViewContainer from './goodbye/GoodbyeViewContainer';
+import GoodbyeViewContainer from './Goodbye/GoodbyeViewContainer';
 import GoodbyeFeedbackViewContainer from './goodbyeFeedback/GoodbyeFeedbackViewContainer';
 import TeamPointsViewContainer from './teamPoints/TeamPointsViewContainer';
 
@@ -33,11 +32,11 @@ export default function AppRouter(props) {
       />
     );
   }
-  if (key === 'ExampleView') {
-     return <ExampleViewContainer />;
-   }
+    if (key === 'ExampleView') {
+      return <ExampleViewContainer />;
+    }
 
-   if (key === 'LoginView') {
+    if (key === 'LoginView') {
       return <LoginViewContainer />;
     }
 
@@ -45,36 +44,32 @@ export default function AppRouter(props) {
        return <FeedbackViewContainer />;
      }
 
-   if (key === 'RegisterView') {
-      return <RegisterViewContainer />;
-    }
-
     if (key === 'Welcome') {
       return <WelcomeViewContainer />;
     }
 
-  if (key === 'MapView') {
-    return <MapViewContainer />;
-  }
-  if (key === 'CheckPoints') {
-  return <CheckPointViewContainer />;
-  }
+    if (key === 'MapView') {
+      return <MapViewContainer />;
+    }
+    if (key === 'CheckPoints') {
+      return <CheckPointViewContainer />;
+    }
 
-  if (key === 'TeamView') {
-    return <TeamViewContainer />;
-  }
+    if (key === 'TeamView') {
+      return <TeamViewContainer />;
+    }
 
-  if (key === 'Goodbye') {
-    return <GoodbyeViewContainer />;
-  }
+    if (key === 'Goodbye') {
+      return <GoodbyeViewContainer />;
+    }
 
-  if (key === 'GoodbyeFB') {
-    return <GoodbyeFeedbackViewContainer />;
-  }
+    if (key === 'GoodbyeFB') {
+      return <GoodbyeFeedbackViewContainer />;
+    }
 
-  if (key === 'TeamPointsView') {
-    return <TeamPointsViewContainer />;
-  }
+    if (key === 'TeamPointsView') {
+      return <TeamPointsViewContainer />;
+    }
 
   throw new Error('Unknown navigation key: ' + key);
 }

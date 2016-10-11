@@ -28,10 +28,11 @@ const LoginView = React.createClass({
     })
   },*/
 
-  popRoute(){
-  this.props.dispatch(NavigationState.popRoute({
-        key: 'CounterView',
-       }));
+  team(){
+  this.props.dispatch(NavigationState.pushRoute({
+    key: 'TeamView',
+    title: 'Team'
+  }));
     },
 
   propTypes: {
@@ -70,12 +71,12 @@ const LoginView = React.createClass({
                     />
             </View>
           </View>
-
-          <View style={styles.signin}>
-          <TouchableOpacity onPress={this._userLogin}>
+          <TouchableOpacity onPress={this.team}>
+            <View style={styles.signin}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
-              </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
+
           {/*<Text style={styles.debug}>TeamID: {this.state.teamid}</Text>
           <Text style={styles.debug}>Team Name: {this.state.teamname}</Text>*/}
       </View>
@@ -92,56 +93,60 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'transparent'
 
-      },
-      header: {
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          flex: 0,
-          backgroundColor: 'transparent'
-      },
-      mark: {
-          width: 150,
-          height: 150
-      },
-      signin: {
-          backgroundColor: '#ff5454',
-          padding: 20,
-          marginLeft: 30,
-          marginRight: 30,
-          marginBottom: 90,
-          alignItems: 'center'
-      },
-      inputs: {
+},
+    header: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flex: 0,
+        backgroundColor: 'transparent'
+  },
+    mark: {
+        width: 150,
+        height: 150
+  },
+    signin: {
+        backgroundColor: '#ff5454',
+        padding: 20,
+        marginLeft: 30,
+        marginRight: 30,
+        marginBottom: 90,
+        alignItems: 'center'
+  },
+
+    inputs: {
         marginTop: 2,
         marginBottom: 2,
         flex: .25
-      },
+  },
 
-      inputContainer: {
-          padding: 35,
-          borderWidth: 1,
-          borderColor: 'transparent'
-      },
-      input: {
-          position: 'absolute',
-          left: 30,
-          top: 60,
-          right: 30,
-          height: 45,
-          fontSize: 20
-      },
+    inputContainer: {
+        padding: 35,
+        borderWidth: 1,
+        borderColor: 'transparent'
+  },
+    input: {
+        position: 'absolute',
+        left: 30,
+        top: 60,
+        right: 30,
+        height: 45,
+        fontSize: 20
+  },
 
-      whiteFont: {
+    whiteFont: {
+      fontSize: 18,
+      color: '#FFF'
+  },
 
-      },
-      textstyle: {
-        color: '#FFF',
+    textstyle: {
+      color: '#FFF',
+      fontSize: 20
 
-      },
-      debug: {
-        color: '#FFF',
-        marginBottom: 15,
-        marginLeft: 20
-      },
+  },
+    debug: {
+      color: '#FFF',
+      marginBottom: 15,
+      marginLeft: 20
+  }
 });
 export default LoginView;
