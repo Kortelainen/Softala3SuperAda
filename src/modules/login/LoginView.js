@@ -6,34 +6,55 @@ import {
   StyleSheet,
   TextInput,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const LoginView = React.createClass({
 
-    /*
+
     _userLogin() {
       fetch('http://localhost:3000/teams/authenticate', {
         method: 'POST',
         body: JSON.stringify({
-          name: this.state.username,
+          name: this.state.teamname,
         })
       })
       .then((response) => response.json())
       .then(response => {
-      console.log(response.success)
-      this.setState({teamid:response.success})
-    })
-  },*/
+      if (response.success==true) {
+        this.setState({teamfound:response.success, token:response.token})
+        this.validate()
+      } else {
+        Alert.alert(
+          'Tiimiä ei löytynyt',
+          'Tarkista tiimin nimi ja internet yhteys',
+          [
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ]
+        )
+      }
+      })
 
-  team(){
-  this.props.dispatch(NavigationState.pushRoute({
-    key: 'TeamView',
-    title: 'Team'
-  }));
-    },
+  },
+  validate(){
+    if (this.state.teamfound==true) {
+      console.log(this.state.teamfound)
+      this.props.dispatch(NavigationState.pushRoute({
+        key: 'TeamView',
+        title: 'Team'
+      }));
+      }
+  },
+
+  popRoute(){
+  this.props.dispatch(NavigationState.popRoute({
+        key: 'CounterView',
+       }));
+     },
+
 
   propTypes: {
     dispatch: PropTypes.func.isRequired
@@ -43,6 +64,8 @@ const LoginView = React.createClass({
     return {
       username: '',
       teamid: '',
+      teamfound: 'false',
+      token:'',
       teamname: '',
       background: `rgba(250,155,145,1)`
     }
@@ -66,12 +89,12 @@ const LoginView = React.createClass({
                <Text style={styles.textstyle}>Joukkueen nimi:</Text>
             <TextInput
                     style={[styles.input, styles.whiteFont]}
-                    onChangeText={(username) => this.setState({username})}
-                    value={this.state.username}
+                    onChangeText={(teamname) => this.setState({teamname})}
+                    value={this.state.teamname}
                     />
             </View>
           </View>
-          <TouchableOpacity onPress={this.team}>
+          <TouchableOpacity onPress={this._userLogin}>
             <View style={styles.signin}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
             </View>
@@ -93,45 +116,45 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'transparent'
 
-},
-    header: {
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        flex: 0,
-        backgroundColor: 'transparent'
   },
-    mark: {
-        width: 150,
-        height: 150
-  },
-    signin: {
-        backgroundColor: '#ff5454',
-        padding: 20,
-        marginLeft: 30,
-        marginRight: 30,
-        marginBottom: 90,
-        alignItems: 'center'
-  },
+
+      header: {
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          flex: 0,
+          backgroundColor: 'transparent'
+      },
+      mark: {
+          width: 150,
+          height: 150
+      },
+      signin: {
+          backgroundColor: '#ff5454',
+          padding: 20,
+          marginLeft: 30,
+          marginRight: 30,
+          marginBottom: 90,
+          alignItems: 'center'
+      },
 
     inputs: {
         marginTop: 2,
         marginBottom: 2,
-        flex: .25
-  },
-
-    inputContainer: {
-        padding: 35,
-        borderWidth: 1,
-        borderColor: 'transparent'
-  },
-    input: {
-        position: 'absolute',
-        left: 30,
-        top: 60,
-        right: 30,
-        height: 45,
-        fontSize: 20
-  },
+          flex: .25
+      },
+      inputContainer: {
+          padding: 35,
+          borderWidth: 1,
+          borderColor: 'transparent'
+      },
+      input: {
+          position: 'absolute',
+          left: 30,
+          top: 60,
+          right: 30,
+          height: 45,
+          fontSize: 20
+      },
 
     whiteFont: {
       fontSize: 18,
