@@ -6,33 +6,55 @@ import {
   StyleSheet,
   TextInput,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const LoginView = React.createClass({
 
-    /*
+
     _userLogin() {
       fetch('http://localhost:3000/teams/authenticate', {
         method: 'POST',
         body: JSON.stringify({
-          name: this.state.username,
+          name: this.state.teamname,
         })
       })
       .then((response) => response.json())
       .then(response => {
-      console.log(response.success)
-      this.setState({teamid:response.success})
-    })
-  },*/
+      if (response.success==true) {
+        this.setState({teamfound:response.success, token:response.token})
+        this.validate()
+      } else {
+        Alert.alert(
+          'Tiimiä ei löytynyt',
+          'Tarkista tiimin nimi ja internet yhteys',
+          [
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ]
+        )
+      }
+      })
+
+  },
+  validate(){
+    if (this.state.teamfound==true) {
+      console.log(this.state.teamfound)
+      this.props.dispatch(NavigationState.pushRoute({
+        key: 'TeamView',
+        title: 'Team'
+      }));
+      }
+  },
 
   popRoute(){
   this.props.dispatch(NavigationState.popRoute({
         key: 'CounterView',
        }));
-    },
+     },
+
 
   propTypes: {
     dispatch: PropTypes.func.isRequired
@@ -42,6 +64,8 @@ const LoginView = React.createClass({
     return {
       username: '',
       teamid: '',
+      teamfound: 'false',
+      token:'',
       teamname: '',
       background: `rgba(250,155,145,1)`
     }
@@ -65,17 +89,17 @@ const LoginView = React.createClass({
                <Text style={styles.textstyle}>Joukkueen nimi:</Text>
             <TextInput
                     style={[styles.input, styles.whiteFont]}
-                    onChangeText={(username) => this.setState({username})}
-                    value={this.state.username}
+                    onChangeText={(teamname) => this.setState({teamname})}
+                    value={this.state.teamname}
                     />
             </View>
           </View>
-
-          <View style={styles.signin}>
           <TouchableOpacity onPress={this._userLogin}>
+            <View style={styles.signin}>
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
-              </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
+
           {/*<Text style={styles.debug}>TeamID: {this.state.teamid}</Text>
           <Text style={styles.debug}>Team Name: {this.state.teamname}</Text>*/}
       </View>
@@ -87,12 +111,13 @@ const LoginView = React.createClass({
 });
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
+    container: {
+      flexDirection: 'column',
       flex: 1,
       backgroundColor: 'transparent'
+
   },
-      },
+
       header: {
           justifyContent: 'flex-start',
           alignItems: 'center',
@@ -111,12 +136,11 @@ const styles = StyleSheet.create({
           marginBottom: 90,
           alignItems: 'center'
       },
-      },
-      inputs: {
+
+    inputs: {
         marginTop: 2,
         marginBottom: 2,
           flex: .25
-      },
       },
       inputContainer: {
           padding: 35,
@@ -132,17 +156,20 @@ const styles = StyleSheet.create({
           fontSize: 20
       },
 
-      whiteFont: {
+    whiteFont: {
+      fontSize: 18,
+      color: '#FFF'
+  },
 
-      },
-      textstyle: {
-        color: '#FFF',
+    textstyle: {
+      color: '#FFF',
+      fontSize: 20
 
-      },
-      debug: {
-        color: '#FFF',
-        marginBottom: 15,
-        marginLeft: 20
-      }
+  },
+    debug: {
+      color: '#FFF',
+      marginBottom: 15,
+      marginLeft: 20
+  }
 });
 export default LoginView;

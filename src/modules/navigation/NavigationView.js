@@ -26,7 +26,6 @@ const NavigationView = React.createClass({
       tabs: NavigationPropTypes.navigationState.isRequired,
       HomeTab: NavigationPropTypes.navigationState.isRequired,
       ProfileTab: NavigationPropTypes.navigationState.isRequired,
-      FeedbackTab: NavigationPropTypes.navigationState.isRequired,
       MapTab: NavigationPropTypes.navigationState.isRequired
     }),
     switchTab: PropTypes.func.isRequired,
@@ -90,7 +89,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: APP_BAR_HEIGHT,
     marginBottom: TAB_BAR_HEIGHT,
-    
+
   }
 });
 
