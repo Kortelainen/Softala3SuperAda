@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Dimensions} from 'react';
+
 
 import{
   Image,
@@ -8,6 +9,9 @@ import{
 }from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
+
+
+
 
 const MapView = React.createClass({
   PropTypes: {
@@ -29,10 +33,10 @@ const MapView = React.createClass({
     const text = 'kartta';
 
     return(
-      <View style={[styles.MapContainer]}>
+      <View style={styles.MapContainer}>
 
       <Image
-        style={[styles.MapImage]}
+        style={styles.MapImage}
         source={require('../../../images/HHkartta.png')}
       />
 
@@ -44,10 +48,26 @@ const MapView = React.createClass({
 const styles = StyleSheet.create({
 
   MapContainer: {
+    flex: 1,
+     justifyContent: 'center',
+     backgroundColor: '#F5FCFF',
+     position: 'relative',
+     height: undefined,
+     width: undefined,
+
+
 
   },
 
   MapImage: {
+    height: 290,
+    width: undefined,
+
+
+
+
+
+
 
 
   },
