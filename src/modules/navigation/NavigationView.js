@@ -48,11 +48,22 @@ const NavigationView = React.createClass({
       />
     );
   },
+  tabBarVisible(tabKey) {
+    return tabKey === 'ProfileTab' ||
+           tabKey === 'LinkTab' ||
+           tabKey === 'MapTab';
+  },
   renderScene(sceneProps) {
     // render scene and apply padding to cover
     // for app bar and navigation bar
+    const {tabs} = this.props.navigationState;
+    const tabKey = tabs.routes[tabs.index].key;
+
+    const style = this.tabBarVisible(tabKey) ? styles.sceneContainer :
+      styles.sceneContainerWithoutBar;
+
     return (
-      <View style={styles.sceneContainer}>
+      <View style={style}>
         {AppRouter(sceneProps)}
       </View>
     );
@@ -60,22 +71,39 @@ const NavigationView = React.createClass({
   render() {
     const {tabs} = this.props.navigationState;
     const tabKey = tabs.routes[tabs.index].key;
+
+    console.log('current tab: ' + tabKey);
+
     const scenes = this.props.navigationState[tabKey];
-    return (
-      <View style={styles.container}>
-        <NavigationCardStack
-          key={'stack_' + tabKey}
-          onNavigateBack={this.props.onNavigateBack}
-          navigationState={scenes}
-          renderOverlay={this.renderHeader}
-          renderScene={this.renderScene}
-        />
+
+    let components = [];
+
+    components.push(
+      <NavigationCardStack
+        key="CardStack"
+        key={'stack_' + tabKey}
+        onNavigateBack={this.props.onNavigateBack}
+        navigationState={scenes}
+        renderOverlay={this.renderHeader}
+        renderScene={this.renderScene}
+      />
+    );
+
+    if (this.tabBarVisible(tabKey)) {
+      components.push(
         <TabBar
+          key="TabBar"
           height={TAB_BAR_HEIGHT}
           tabs={tabs}
           currentTabIndex={tabs.index}
           switchTab={this.props.switchTab}
         />
+      );
+    }
+
+    return (
+      <View style={styles.container}>
+        { components }
       </View>
     );
   }
@@ -89,7 +117,10 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: APP_BAR_HEIGHT,
     marginBottom: TAB_BAR_HEIGHT,
-
+  },
+  sceneContainerWithoutBar: {
+    flex: 1,
+    marginTop: APP_BAR_HEIGHT,
   }
 });
 

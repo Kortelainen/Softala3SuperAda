@@ -16,6 +16,8 @@ const LoginView = React.createClass({
 
 
     _userLogin() {
+      this.props.dispatch(NavigationState.switchTab(1));
+      /*
       fetch('http://localhost:3000/teams/authenticate', {
         method: 'POST',
         body: JSON.stringify({
@@ -38,6 +40,7 @@ const LoginView = React.createClass({
       }
       })
 
+*/
   },
   validate(){
     if (this.state.teamfound==true) {
