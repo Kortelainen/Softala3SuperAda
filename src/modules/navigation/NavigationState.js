@@ -33,17 +33,25 @@ const initialState = fromJS({
   tabs: {
     index: 0,
     routes: [
+      {key: 'LoginTab'},
       {key: 'HomeTab', title: 'HOME'},
       {key: 'ProfileTab', title: 'PROFILE'},
       {key: 'MapTab', title: 'MAP'},
       {key: 'LinkTab', title: 'LINKIT'},
     ]
   },
+
+  LoginTab: {
+    index: 0,
+    routes: [{key: 'Welcome', title: 'Kirjaudu'}]
+  },
+
   // Scenes for the `HomeTab` tab.
   HomeTab: {
     index: 0,
-    routes: [{key: 'Welcome', title: 'Welcome'}]
+    routes: [{key: 'CheckPoints', title: 'Etusivu'}]
   },
+
   // Scenes for the `ProfileTab` tab.
   ProfileTab: {
     index: 0,
@@ -51,7 +59,7 @@ const initialState = fromJS({
   },
   MapTab: {
     index: 0,
-    routes: [{key: 'MapView', title: 'Map screen'}]
+    routes: [{key: 'MapView', title: 'Kartta'}]
   },
   LinkTab: {
     index: 0,

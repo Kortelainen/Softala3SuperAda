@@ -51,7 +51,8 @@ const NavigationView = React.createClass({
   tabBarVisible(tabKey) {
     return tabKey === 'ProfileTab' ||
            tabKey === 'LinkTab' ||
-           tabKey === 'MapTab';
+           tabKey === 'MapTab' ||
+           tabKey === 'HomeTab';
   },
   renderScene(sceneProps) {
     // render scene and apply padding to cover
@@ -71,8 +72,6 @@ const NavigationView = React.createClass({
   render() {
     const {tabs} = this.props.navigationState;
     const tabKey = tabs.routes[tabs.index].key;
-
-    console.log('current tab: ' + tabKey);
 
     const scenes = this.props.navigationState[tabKey];
 
@@ -97,7 +96,8 @@ const NavigationView = React.createClass({
           tabs={tabs}
           currentTabIndex={tabs.index}
           switchTab={this.props.switchTab}
-        />
+        />,
+
       );
     }
 

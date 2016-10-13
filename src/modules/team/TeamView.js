@@ -21,10 +21,7 @@ const TeamView = React.createClass({
   },
 
   yrityslista(){
-  this.props.dispatch(NavigationState.pushRoute({
-    key: 'CheckPoints',
-    title: 'TALLENNA'
-  }));
+  this.props.dispatch(NavigationState.switchTab(1));
   },
 
   popRoute(){

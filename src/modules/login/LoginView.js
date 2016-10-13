@@ -13,7 +13,11 @@ import {
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const LoginView = React.createClass({
+
+
     _userLogin() {
+      this.props.dispatch(NavigationState.switchTab(2));
+      /*
       fetch('http://localhost:3000/teams/authenticate', {
         method: 'POST',
         body: JSON.stringify({
@@ -23,33 +27,28 @@ const LoginView = React.createClass({
       .then((response) => response.json())
       .then(response => {
       if (response.success==true) {
-        this.setState({teamfound:response.success, token:response.token.token, expiresIn:response.token.expiresIn})
+        this.setState({teamfound:response.success, token:response.token})
         this.validate()
       } else {
         Alert.alert(
-          'Tiimiä ei löytynyt :c',
-          'Tarkista tiimin nimi!',
+          'Tiimiä ei löytynyt',
+          'Tarkista tiimin nimi ja internet yhteys',
           [
             {text: 'OK', onPress: () => console.log('OK Pressed')},
           ]
         )
       }
       })
-      .catch((error) => {
-        console.log(error);
-        Alert.alert(
-          'Yhteys kantaan ei ole päällä',
-          'Paina ETEENPÄIN jos haluat silti päästä eteenpäin :D',
-          [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-            {text: 'ETEENPÄIN', onPress: () => this.props.dispatch(NavigationState.switchTab(1))},
-          ]
-        )
-      });
+
+*/
   },
   validate(){
     if (this.state.teamfound==true) {
-      this.props.dispatch(NavigationState.switchTab(1));
+      console.log(this.state.teamfound)
+      this.props.dispatch(NavigationState.pushRoute({
+        key: 'TeamView',
+        title: 'Team'
+      }));
       }
   },
 
@@ -70,14 +69,20 @@ const LoginView = React.createClass({
       teamid: '',
       teamfound: 'false',
       token:'',
-      expiresIn:'',
       teamname: '',
       background: `rgba(250,155,145,1)`
     }
   },
 
   render: function() {
+
+
+
+
     return (
+
+
+
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
       <View style={styles.header}>
               <Image style={styles.mark} source={require('../../../images/superada_transparent.png')}/>

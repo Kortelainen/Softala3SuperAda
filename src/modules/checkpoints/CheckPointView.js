@@ -22,10 +22,7 @@ const CheckPointView = React.createClass({
     dispatch: PropTypes.func.isRequired
   },
   kartta(){
-  this.props.dispatch(NavigationState.pushRoute({
-      key: 'MapView',
-      title: 'Kartta'
-    }));
+  this.props.dispatch(NavigationState.switchTab(3));
   },
 
   render(){
