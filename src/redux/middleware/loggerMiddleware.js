@@ -5,7 +5,7 @@ export default createLogger({
   collapsed: true,
 
   // only log in development mode
-  predicate: () => __DEV__,
+  predicate: () => false,
 
   // transform immutable state to plain objects
   stateTransformer: state => state.toJS(),
