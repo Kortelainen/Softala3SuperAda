@@ -7,6 +7,7 @@ import{
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  AsyncStorage
 }from 'react-native';
 
 var Platform = require('react-native').Platform;
@@ -20,8 +21,26 @@ const TeamView = React.createClass({
     dispatch: PropTypes.func.isRequired
   },
 
-  yrityslista(){
-  this.props.dispatch(NavigationState.switchTab(1));
+  async yrityslista(){
+      try {
+        const teamtoken = await AsyncStorage.getItem('token');
+        const teamname = await AsyncStorage.getItem('teamname');
+        if (teamtoken !== null) {
+          fetch('http://localhost:3000/teams', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + teamtoken,
+            },
+            body: JSON.stringify({
+              name: teamname,
+            })
+          })
+          this.props.dispatch(NavigationState.switchTab(1));
+        }
+      } catch (error) {
+        console.log('AsyncStorage error: ' + error.message);
+      }
   },
 
   popRoute(){
@@ -69,7 +88,6 @@ openImageGallery(){
 
   render(){
         return (
-
           <View style={styles.TeamContainer}>
               <Text style={styles.whiteFont}>Joukkueen nimi:</Text>
               <TextInput

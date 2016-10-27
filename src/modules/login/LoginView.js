@@ -7,7 +7,8 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  Alert
+  Alert,
+  AsyncStorage
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
@@ -23,12 +24,12 @@ const LoginView = React.createClass({
       .then((response) => response.json())
       .then(response => {
       if (response.success==true) {
-        this.setState({teamfound:response.success, token:response.token.token, expiresIn:response.token.expiresIn})
+        this.setState({token:response.token.token})
         this.validate()
       } else {
         Alert.alert(
           'Tiimiä ei löytynyt',
-          'Tarkista tiimin nimi ja internet yhteys',
+          'Tarkista tiimin nimi',
           [
             {text: 'OK', onPress: () => console.log('OK Pressed')},
           ]
@@ -39,27 +40,24 @@ const LoginView = React.createClass({
               console.log(error);
               Alert.alert(
                 'Yhteys kantaan ei ole päällä',
-                'Paina ETEENPÄIN jos haluat silti päästä eteenpäin :D',
+                'Paina ETEENPÄIN jos haluat silti päästä eteenpäin',
                 [
                   {text: 'OK', onPress: () => console.log('OK Pressed')},
                   {text: 'ETEENPÄIN', onPress: () => this.props.dispatch(NavigationState.switchTab(2))},
                 ]
               )
             });
+          },
 
-  },
-  validate(){
-    if (this.state.teamfound==true) {
-      this.props.dispatch(NavigationState.switchTab(2));
+  async validate(){
+      try {
+        await AsyncStorage.setItem('token', this.state.token);
+        await AsyncStorage.setItem('teamname', this.state.teamname);
+        this.props.dispatch(NavigationState.switchTab(2));
+      } catch (error) {
+        console.log('AsyncStorage error: ' + error.message);
       }
   },
-
-  popRoute(){
-  this.props.dispatch(NavigationState.popRoute({
-        key: 'CounterView',
-       }));
-     },
-
 
   propTypes: {
     dispatch: PropTypes.func.isRequired
@@ -69,7 +67,6 @@ const LoginView = React.createClass({
     return {
       username: '',
       teamid: '',
-      teamfound: 'false',
       token:'',
       teamname: '',
       background: `rgba(250,155,145,1)`
@@ -77,14 +74,7 @@ const LoginView = React.createClass({
   },
 
   render: function() {
-
-
-
-
     return (
-
-
-
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
       <View style={styles.header}>
               <Image style={styles.mark} source={require('../../../images/superada_transparent.png')}/>
@@ -104,9 +94,6 @@ const LoginView = React.createClass({
               <Text style={styles.whiteFont}>KIRJAUDU SISÄÄN</Text>
             </View>
           </TouchableOpacity>
-
-          {/*<Text style={styles.debug}>TeamID: {this.state.teamid}</Text>
-          <Text style={styles.debug}>Team Name: {this.state.teamname}</Text>*/}
       </View>
 
     );
