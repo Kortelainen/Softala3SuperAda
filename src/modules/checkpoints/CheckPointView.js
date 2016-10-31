@@ -3,6 +3,7 @@ import {
 Text,
 View,
 StyleSheet,
+Alert,
 ListView,
 TouchableOpacity
 } from 'react-native';
@@ -11,12 +12,41 @@ import * as NavigationState from '../../modules/navigation/NavigationState';
 //import companies from './CompanyList.json';
 //console.log(companies);
 
-const companies = [
-  {name: "Company1", place: "room1001"},
-  {name: "Company2", place: "room1002"},
-  {name: "Company3", place: "room1003"}
-]
+
+
+
+
+
+
 const CheckPointView = React.createClass({
+
+
+  //const companies = [
+    //{name: "Company1", place: "room1001"},
+    //{name: "Company2", place: "room1002"},
+    //{name: "Company3", place: "room1003"}
+  //]
+
+  _companyList() {
+    fetch('http://localhost:3000/companies', {
+      method: 'GET'
+    })
+    .then((response) => response.json())
+    .then(response => {
+      Alert.alert(JSON.stringify(response.err) +'')
+      Alert.alert(JSON.stringify(response.result, ['companyName']) +'')
+    })
+    .catch((error) => {
+            console.log(error);
+            Alert.alert(
+              'Ei yhteyttä kantaan',
+              [
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+
+              ]
+            )
+          });
+  },
 
   propTypes: {
     dispatch: PropTypes.func.isRequired
@@ -28,7 +58,7 @@ const CheckPointView = React.createClass({
   render(){
     const text = '';
 
-  var companyComponents = [];
+/*  var companyComponents = [];
 
     for (var i = 0; i < companies.length; i++) {
       let company = companies[i];
@@ -37,16 +67,17 @@ const CheckPointView = React.createClass({
         <Text key={i}>Company name: { company.name }
         Room: { company.place }</Text>
       );
-}
+
+}*/
 
     return (
       <View style={[styles.container]}>
       <Text style={styles.text}>
         {text}
       </Text>
-      { companyComponents }
 
-      <TouchableOpacity onPress={this.kartta}>
+
+      <TouchableOpacity onPress={this._companyList}>
       <View style={styles.GoToMapButton}>
       <Text style={{margin: 10, color: '#FFF', fontSize: 18,  }}>
         {'NÄYTÄ RASTIT KARTALLA'}
