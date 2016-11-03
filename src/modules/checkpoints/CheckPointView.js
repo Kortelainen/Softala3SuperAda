@@ -5,17 +5,13 @@ View,
 StyleSheet,
 Alert,
 ListView,
-TouchableOpacity
+TouchableOpacity,
+AsyncStorage
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 //import companies from './CompanyList.json';
 //console.log(companies);
-
-
-
-
-
 
 
 const CheckPointView = React.createClass({
@@ -27,9 +23,14 @@ const CheckPointView = React.createClass({
     //{name: "Company3", place: "room1003"}
   //]
 
-  _companyList() {
+  async _companyList() {
+    const teamtoken = await AsyncStorage.getItem('token');
     fetch('http://localhost:3000/companies', {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + teamtoken,
+      },
     })
     .then((response) => response.json())
     .then(response => {
@@ -76,8 +77,16 @@ const CheckPointView = React.createClass({
         {text}
       </Text>
 
-
       <TouchableOpacity onPress={this._companyList}>
+      <View style={styles.GoToMapButton}>
+      <Text style={{margin: 10, color: '#FFF', fontSize: 18,  }}>
+        {'YRITYSLISTA'}
+      </Text>
+      </View>
+      </TouchableOpacity>
+
+
+      <TouchableOpacity onPress={this.kartta}>
       <View style={styles.GoToMapButton}>
       <Text style={{margin: 10, color: '#FFF', fontSize: 18,  }}>
         {'NÄYTÄ RASTIT KARTALLA'}

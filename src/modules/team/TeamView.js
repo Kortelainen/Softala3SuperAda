@@ -22,7 +22,8 @@ const TeamView = React.createClass({
   },
 
   async yrityslista(){
-      try {
+    this.props.dispatch(NavigationState.switchTab(1));
+      /*try {
         const teamtoken = await AsyncStorage.getItem('token');
         const teamname = await AsyncStorage.getItem('teamname');
         if (teamtoken !== null) {
@@ -40,7 +41,7 @@ const TeamView = React.createClass({
         }
       } catch (error) {
         console.log('AsyncStorage error: ' + error.message);
-      }
+      }*/
   },
 
   popRoute(){
