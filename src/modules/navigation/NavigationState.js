@@ -34,8 +34,8 @@ const initialState = fromJS({
     index: 0,
     routes: [
       {key: 'LoginTab'},
-      {key: 'HomeTab', title: 'HOME'},
-      {key: 'ProfileTab', title: 'PROFILE'},
+      {key: 'HomeTab', title: 'RASTIT'},
+      {key: 'ProfileTab', title: 'TIIMI'},
       {key: 'MapTab', title: 'MAP'},
       {key: 'LinkTab', title: 'LINKIT'},
     ]

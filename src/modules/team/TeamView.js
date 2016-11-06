@@ -52,7 +52,8 @@ const TeamView = React.createClass({
 
   getInitialState(){
     return{
-      background: `rgba(250,155,145, 1)`
+      background: `rgba(250,155,145, 1)`,
+      teamDescription: ''
     };
   },
 
@@ -90,11 +91,12 @@ openImageGallery(){
   render(){
         return (
           <View style={styles.TeamContainer}>
+          <View style={styles.teamName}>
               <Text style={styles.whiteFont}>Joukkueen nimi:</Text>
-              <TextInput
-                  style={[styles.TeamInput, styles.whiteFont]}
-              />
-
+              <Text>
+              {/*tähän haetaan kirjautuneen tiimin nimi (not editable)*/}
+              </Text>
+          </View>
               <TouchableOpacity
                 onPress={this.openImageGallery}
                 style={[styles.cameraButton]}>
@@ -104,17 +106,20 @@ openImageGallery(){
 
               </TouchableOpacity>
 
-
-              <Text style={styles.whiteFont}>Slogan:</Text>
+              <Text style={styles.whiteFont}>Kuvaus:</Text>
+            <View style={styles.description}>
               <TextInput
                       style={[styles.TeamInput, styles.whiteFont]}
+                      onChangeText={(teamDescription) => this.setState({teamDescription})}
+                      value={this.state.teamDescription}
                       />
-
+            </View>
+            <View style={styles.submitButton}>
               <TouchableOpacity onPress={this.yrityslista} accessible={true} style={styles.saveButton}>
                   <Text style={styles.whiteFont}>{'TALLENNA'}</Text>
               </TouchableOpacity>
+            </View>
           </View>
-
         );
       }
   });
@@ -129,13 +134,31 @@ openImageGallery(){
 const styles = StyleSheet.create({
 
   TeamContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: `rgba(250,155,145, 1)`,
   },
-
+  teamName:{
+    marginTop: 50,
+  },
+  description: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 20,
+  },
   TeamInput: {
     width: 300,
+    ...Platform.select({
+      ios: {
+        height: 70,
+        borderColor: "gray",
+        borderWidth: 1,
+        padding: 20
+      },
+    }),
   },
 
   TeamImage: {
@@ -156,7 +179,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 25
   },
-
   teamImage: {
     width:150,
     height:150,
@@ -164,8 +186,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 75,
   },
+  submitButton: {
+    backgroundColor: '#ff5454',
+    alignItems: "center",
+    justifyContent: "center",
+    width: 300,
+    height: 70,
+    marginBottom: 100,
+    marginTop: 30
 
-  saveButton: {
+  },
+/*  saveButton: {
       backgroundColor: '#ff5454',
       padding: 20,
       marginLeft: 30,
@@ -174,15 +205,12 @@ const styles = StyleSheet.create({
       marginBottom: 130,
       alignItems: 'center',
       width:350,
-
   },
+  */
   whiteFont: {
     color: '#FFF',
     fontSize: 18,
 
   },
-
-
-
 });
 export default TeamView;
