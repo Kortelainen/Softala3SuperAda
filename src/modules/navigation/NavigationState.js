@@ -36,8 +36,8 @@ const initialState = fromJS({
       {key: 'LoginTab'},
       {key: 'HomeTab', title: 'RASTIT'},
       {key: 'ProfileTab', title: 'TIIMI'},
-      {key: 'MapTab', title: 'MAP'},
-      {key: 'LinkTab', title: 'LINKIT'},
+      {key: 'MapTab', title: 'KARTTA'},
+      {key: 'LinkTab', title: 'LINKIT'}
     ]
   },
 
@@ -64,7 +64,7 @@ const initialState = fromJS({
   LinkTab: {
     index: 0,
     routes: [{key: 'Counter', title: 'Linkit'}]
-  },
+  }
 });
 
 export default function NavigationReducer(state = initialState, action) {
