@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react';
-
 import{
   Image,
   Text,
@@ -7,210 +6,169 @@ import{
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  AsyncStorage
-}from 'react-native';
-
-var Platform = require('react-native').Platform;
-var ImagePicker = require('react-native-image-picker');
-var options = require('./image-picker-options');
+  Platform
+} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
+import {options} from './image-picker-options';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const TeamView = React.createClass({
-  PropTypes: {
+  propTypes: {
     dispatch: PropTypes.func.isRequired
   },
 
-  async yrityslista(){
-    this.props.dispatch(NavigationState.switchTab(1));
-      /*try {
-        const teamtoken = await AsyncStorage.getItem('token');
-        const teamname = await AsyncStorage.getItem('teamname');
-        if (teamtoken !== null) {
-          fetch('http://localhost:3000/teams', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + teamtoken,
-            },
-            body: JSON.stringify({
-              name: teamname,
-            })
-          })
-          this.props.dispatch(NavigationState.switchTab(1));
-        }
-      } catch (error) {
-        console.log('AsyncStorage error: ' + error.message);
-      }*/
-  },
-
-  popRoute(){
-    this.props.dispatch(NavigationState.popRoute({
-      key:'CounterView',
-    }));
-  },
-
-  getInitialState(){
-    return{
-      background: `rgba(250,155,145, 1)`,
+  getInitialState() {
+    return {
+      background: 'rgb(255,255,255)',
       teamDescription: ''
     };
   },
 
-openImageGallery(){
-  ImagePicker.showImagePicker(options, (response) => {
-  console.log('Response = ', response);
+  popRoute() {
+    this.props.dispatch(NavigationState.popRoute({
+      key: 'CounterView'
+    }));
+  },
 
-  if (response.didCancel) {
-    console.log('User cancelled image picker');
-  }
-  else if (response.error) {
-    console.log('ImagePicker Error: ', response.error);
-  }
-  else if (response.customButton) {
-    console.log('User tapped custom button: ', response.customButton);
-  }
-  else {
+  openImageGallery() {
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
     // You can display the image using either data...
-    const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
+        const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
 
     // or a reference to the platform specific asset location
-    if (Platform.OS === 'ios') {
-      const source = {uri: response.uri.replace('file://', ''), isStatic: true};
-    } else {
-      const source = {uri: response.uri, isStatic: true};
-    }
+        if (Platform.OS === 'ios') {
+          const source = {uri: response.uri.replace('file://', ''), isStatic: true};
+        } else {
+          const source = {uri: response.uri, isStatic: true};
+        }
 
-    this.setState({
-      avatarSource: source
+        this.setState({
+          avatarSource: source
+        });
+      }
     });
-  }
-});
-},
+  },
 
-  render(){
-        return (
-          <View style={styles.TeamContainer}>
-          <View style={styles.teamName}>
-              <Text style={styles.whiteFont}>Joukkueen nimi:</Text>
+  render() {
+    return (
+      <View style={[styles.teamContainer, {backgroundColor: this.state.background}]}>
+        <View style={styles.teamName}>
+          <Text style={styles.teamTitle}> Minun tiimini </Text>
               <Text>
               {/*tähän haetaan kirjautuneen tiimin nimi (not editable)*/}
               </Text>
-          </View>
-              <TouchableOpacity
-                onPress={this.openImageGallery}
-                style={[styles.cameraButton]}>
-
-                  <Image style={styles.cameraImage} source={require('../../../images/kamera.png')}/>
-                  <Image source={this.state.avatarSource} style={styles.teamImage} />
-
-              </TouchableOpacity>
-
-              <Text style={styles.whiteFont}>Kuvaus:</Text>
+        </View>
+          <TouchableOpacity
+            onPress={this.openImageGallery}
+            style={[styles.cameraButton]}>
+            <Image style={styles.cameraImage} source={require('../../../images/kamera.png')}/>
+            <Image source={this.state.avatarSource} style={styles.teamImage} />
+          </TouchableOpacity>
+          <Text style={styles.descriptionText}>Slogan:</Text>
             <View style={styles.description}>
               <TextInput
-                      style={[styles.TeamInput, styles.whiteFont]}
-                      onChangeText={(teamDescription) => this.setState({teamDescription})}
-                      value={this.state.teamDescription}
-                      />
+                style={styles.teamInput}
+                onChangeText={(teamDescription) => this.setState({teamDescription})}
+                value={this.state.teamDescription}
+                />
             </View>
-            <View style={styles.submitButton}>
-              <TouchableOpacity onPress={this.yrityslista} accessible={true} style={styles.saveButton}>
-                  <Text style={styles.whiteFont}>{'TALLENNA'}</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.submitButton}>
+            <TouchableOpacity onPress={this.yrityslista} accessible={true} style={styles.saveButton}>
+                <Text style={styles.whiteFont}>{'TALLENNA'}</Text>
+            </TouchableOpacity>
           </View>
-        );
-      }
-  });
+        </View>
+    );
+  }
+});
 
-  const circle = {
-    borderWidth: 0,
-    borderRadius: 75,
-    width: 150,
-    height: 150,
-  };
+const circle = {
+  borderWidth: 0,
+  borderRadius: 75,
+  width: 150,
+  height: 150
+};
 
 const styles = StyleSheet.create({
-
-  TeamContainer: {
+  teamContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: `rgba(250,155,145, 1)`,
+    justifyContent: 'center'
   },
-  teamName:{
-    marginTop: 50,
+  teamName: {
+    marginTop: 100
+  },
+  teamTitle: {
+    color: '#FF0036',
+    fontSize: 30,
+    fontWeight: 'bold'
   },
   description: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 20,
+    margin: 20
   },
-  TeamInput: {
+  descriptionText: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 10
+  },
+  teamInput: {
     width: 300,
+    marginBottom: 30,
+    color: 'black',
     ...Platform.select({
       ios: {
         height: 70,
-        borderColor: "gray",
+        borderColor: 'gray',
         borderWidth: 1,
         padding: 20
-      },
-    }),
+      }
+    })
   },
-
-  TeamImage: {
-
-
-  },
-
   cameraButton: {
-      ...circle,
-      backgroundColor: '#FFF',
-      margin: 20
+    ...circle,
+    backgroundColor: '#EEEEEE',
+    margin: 20
   },
-
   cameraImage: {
-    width:100,
-    height:100,
-    position:'absolute',
+    width: 100,
+    height: 100,
+    position: 'absolute',
     alignItems: 'center',
     margin: 25
   },
   teamImage: {
-    width:150,
-    height:150,
-    position:'absolute',
+    width: 150,
+    height: 150,
+    position: 'absolute',
     alignItems: 'center',
-    borderRadius: 75,
+    borderRadius: 75
   },
   submitButton: {
     backgroundColor: '#ff5454',
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 300,
     height: 70,
     marginBottom: 100,
-    marginTop: 30
-
+    marginTop: 20
   },
-/*  saveButton: {
-      backgroundColor: '#ff5454',
-      padding: 20,
-      marginLeft: 30,
-      marginRight: 30,
-      marginTop:45,
-      marginBottom: 130,
-      alignItems: 'center',
-      width:350,
-  },
-  */
   whiteFont: {
     color: '#FFF',
-    fontSize: 18,
-
-  },
+    fontSize: 18
+  }
 });
 export default TeamView;
