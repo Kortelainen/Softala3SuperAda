@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-
 import {
   Text,
   View,
@@ -9,78 +8,73 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm, {
+  RadioButton,
+  RadioButtonInput,
+  RadioButtonLabel
+} from 'react-native-simple-radio-button';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const TeamPointsView = React.createClass({
-
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
 
   getInitialState() {
     return {
-        value: 0,
+      value: 0,
+      background: 'rgba(255,0,54,1)'
     }
   },
 
   feedback(){
-  this.props.dispatch(NavigationState.pushRoute({
-        key: 'FeedbackView',
-        title: 'Anna palautetta'
-       }));
-    },
-    goodbye(){
     this.props.dispatch(NavigationState.pushRoute({
-      key: 'Goodbye',
-      title: 'Kiitos osallistumisesta!'
-    }));
-    },
+      key: 'FeedbackView',
+      title: 'Anna palautetta'
+     }));
+  },
 
-  render: function() {
-      var _scrollView: ScrollView;
-       return (
-         <View style= {styles.container}>
-          <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}
-            automaticallyAdjustContentInsets={false}
-            onScroll={() => { console.log('onScroll!'); }}
-            scrollEventThrottle={200}
-            style={styles.scrollView}>
-            <Text style={styles.headerText}>Tiimisi pisteet</Text>
-            <View style={styles.header}>
-              <Image style={styles.mark} source={require('../../../images/pisteet.png')}/>
-              </View>
+  goodbye(){
+      this.props.dispatch(NavigationState.pushRoute({
+        key: 'Goodbye',
+        title: 'Kiitos osallistumisesta!'
+      }));
+  },
 
-
-              <Text style={styles.baseText}>Haluatko antaa järjestäjille palautetta?</Text>
-
-              <Text style={styles.baseText}>Palaute auttaa meitä kehittämään tapahtumaa!</Text>
-
-              <View style ={styles.buttons}>
-                <TouchableOpacity onPress={this.feedback}>
-                  <View style={styles.button}>
-                    <Text style={styles.whiteFont}>KYLLÄ</Text>
-                  </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={this.goodbye}>
-                  <View style={styles.button}>
-                    <Text style={styles.whiteFont}>EI</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-
-          </ScrollView>
+  render() {
+    var _scrollView: ScrollView;
+      return (
+       <View style= {[styles.container, {backgroundColor: this.state.background}]}>
+        <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}
+          automaticallyAdjustContentInsets={false}
+          onScroll={() => { console.log('onScroll!'); }}
+          scrollEventThrottle={200}
+          style={styles.scrollView}>
+          <Text style={styles.headerText}>Tiimisi pisteet!</Text>
+          <View style={styles.header}>
+            <Image style={styles.mark} source={require('../../../images/pisteet.png')}/>
           </View>
-
-
-
+          <View style={styles.pointBox}>
+            <Text style={styles.points}>?/40</Text>
+          </View>
+            <Text style={styles.baseText}>Haluatko antaa järjestäjille palautetta?</Text>
+          <View style ={styles.buttons}>
+            <TouchableOpacity onPress={this.feedback}>
+              <View style={styles.button}>
+                <Text style={styles.whiteFont}>KYLLÄ</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.goodbye}>
+              <View style={styles.button}>
+                <Text style={styles.whiteFont}>EI</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
     );
-
   }
-
 });
 
 
@@ -88,67 +82,69 @@ const TeamPointsView = React.createClass({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-      flex: 1,
-      backgroundColor: 'transparent',
-
+    flex: 1
   },
   scrollView: {
-    backgroundColor: 'rgba(250,155,145,1)',
+    backgroundColor: 'rgba(255,0,54,1)',
     flex: 1,
-
   },
   mark: {
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 200,
+    width: 150
   },
-
   headerText: {
     marginLeft: 10,
-    marginTop: 10,
+    marginTop: 30,
     marginRight: 10,
-    fontSize: 25,
+    fontSize: 30,
     marginBottom: 20,
     color: '#FFF',
     textAlign: 'center',
-    fontFamily: 'monospace',
+    //fontFamily: 'monospace',
     fontWeight: 'bold'
-
+  },
+  pointBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 30
+  },
+  points: {
+    color: '#FFF',
+    fontSize: 40,
+    fontWeight: 'bold'
   },
   baseText: {
     marginTop: 10,
     fontSize: 18,
     color: '#FFF',
-    textAlign: 'center'
-
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
-
   button: {
-      backgroundColor: '#ff5454',
-      padding: 15,
-      marginTop: 40,
-      marginRight: 10,
-      marginLeft: 20,
-      marginBottom: 30,
-      alignItems: 'center',
-      width: 100,
-
-
+    backgroundColor: '#FF8A8C',
+    padding: 15,
+    marginTop: 40,
+    marginRight: 10,
+    marginBottom: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 150,
+    height: 70,
   },
   whiteFont: {
     color: '#FFF',
-    fontSize: 18
+    fontSize: 18,
+    fontWeight: 'bold'
   },
   header: {
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      flex: 0,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flex: 0,
   },
-
   buttons: {
-      flexDirection: 'row',
-      justifyContent: 'center'
-
-
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
-
 });
 export default TeamPointsView;

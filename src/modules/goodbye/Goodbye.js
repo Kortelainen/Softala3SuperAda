@@ -3,9 +3,7 @@ import {
   Text,
   View,
   StyleSheet,
-  TextInput,
-  Image,
-  TouchableOpacity
+  Image
 } from 'react-native';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
@@ -17,7 +15,7 @@ const Goodbye = React.createClass({
   getInitialState() {
     return {
       background: 'rgba(255,0,54,1)'
-    }
+    };
   },
 
   render() {
@@ -38,9 +36,7 @@ const Goodbye = React.createClass({
         </View>
       </View>
     );
-
   }
-
 });
 
 const styles = StyleSheet.create({
