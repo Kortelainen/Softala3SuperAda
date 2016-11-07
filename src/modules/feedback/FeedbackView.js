@@ -29,7 +29,7 @@ const FeedbackView = React.createClass({
 
   getInitialState() {
     return {
-        value: 0,
+      value: 0
     }
   },
 
@@ -41,7 +41,6 @@ const FeedbackView = React.createClass({
   },
 
   render() {
-    var _scrollView: ScrollView;
     return (
      <View style = {styles.container}>
       <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}
