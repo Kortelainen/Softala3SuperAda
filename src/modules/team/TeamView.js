@@ -1,5 +1,5 @@
-import React, {PropTypes, Component} from 'react';
-import{
+import React, {PropTypes} from 'react';
+import {
   Image,
   Text,
   View,
@@ -87,7 +87,7 @@ const TeamView = React.createClass({
             </View>
           <View style={styles.submitButton}>
             <TouchableOpacity onPress={this.yrityslista} accessible={true} style={styles.saveButton}>
-                <Text style={styles.whiteFont}>{'TALLENNA'}</Text>
+                <Text style={[styles.whiteFont, {fontWeight: 'bold'}]}>{'TALLENNA'}</Text>
             </TouchableOpacity>
           </View>
         </View>

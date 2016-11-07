@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-
 import {
   Text,
   View,
@@ -8,44 +7,36 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
-
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const Goodbye = React.createClass({
-
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
 
-  getInitialState: function() {
+  getInitialState() {
     return {
-
-      background: `rgba(250,155,145,1)`
+      background: 'rgba(255,0,54,1)'
     }
   },
 
-  render: function() {
-
-
-
+  render() {
     return (
-
-
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
-      <View style={styles.header}>
-              <Image style={styles.mark} source={require('../../../images/kiitos.png')}/>
-          </View>
-
-            <View style={styles.inputContainer}>
-               <Text style={styles.textstyle}>Kiitos osallistumisesta!</Text>
-
-            </View>
-
-
-
-
+        <View style={styles.header}>
+          <Text style={styles.titleText}>
+            Kiitos!
+          </Text>
+          <Image style={styles.mark} source={require('../../../images/kiitos.png')}/>
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.textBody}>Kiitos osallistumisestasi!</Text>
+          <Text style={styles.textBody}>Tervetuloa ensi vuonna uudestaan!</Text>
+        </View>
+        <View style={styles.regardsContainer}>
+            <Text style={styles.bottomText}>t- Super-Ada tiimi</Text>
+        </View>
       </View>
-
     );
 
   }
@@ -55,31 +46,40 @@ const Goodbye = React.createClass({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-      flex: 1,
-      backgroundColor: 'transparent'
+    flex: 1,
+    backgroundColor: 'transparent'
   },
-
-      header: {
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          flex: 0,
-          backgroundColor: 'transparent'
-      },
-      mark: {
-          width: 200,
-          height: 250
-      },
-
-      inputContainer: {
-          padding: 35,
-          borderWidth: 1,
-          borderColor: 'transparent'
-      },
-
-      textstyle: {
-        color: '#FFF',
-        marginBottom: 15,
-        fontSize: 20
-      }
+  header: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 20
+  },
+  titleText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#FFF'
+  },
+  mark: {
+    width: 200,
+    height: 250
+  },
+  textContainer: {
+    padding: 35,
+    alignItems: 'center'
+  },
+  textBody: {
+    color: '#FFF',
+    marginBottom: 15,
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  regardsContainer: {
+    alignItems: 'center'
+  },
+  bottomText: {
+    fontSize: 18,
+    color: '#FFF',
+    fontWeight: 'bold'
+  }
 });
 export default Goodbye;

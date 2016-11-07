@@ -3,7 +3,6 @@ import {
   Text,
   View,
   StyleSheet,
-  TextInput,
   Image,
   TouchableOpacity
 } from 'react-native';
@@ -78,7 +77,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 0,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    marginTop: 20
   },
   titleText: {
     fontSize: 30,
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     color: '#FFF'
   },
   mark: {
-    width: 250,
-    height: 200
+    width: 200,
+    height: 150
   },
   button: {
     backgroundColor: '#FF8A8C',
@@ -103,9 +103,6 @@ const styles = StyleSheet.create({
     flex: .25
   },
   textField: {
-    marginLeft: 15,
-    borderWidth: 1,
-    borderColor: 'transparent'
   },
   whiteFont: {
     color: '#FFF',
