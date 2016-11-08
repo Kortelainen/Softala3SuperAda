@@ -59,7 +59,7 @@ const Welcome = React.createClass({
         </View>
         <TouchableOpacity onPress={this.login}>
           <View style={styles.button}>
-              <Text style={styles.whiteFont}>MUOKKAA TIIMIÄ</Text>
+              <Text style={styles.whiteFont}>KIRJAUDU</Text>
           </View>
         </TouchableOpacity>
       </View>
