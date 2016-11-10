@@ -6,8 +6,10 @@ StyleSheet,
 Alert,
 ListView,
 TouchableOpacity,
-AsyncStorage
+AsyncStorage,
+Image
 } from 'react-native';
+import THUMBS from '../../..//images/superda.png';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
@@ -50,10 +52,11 @@ const CheckPointView = React.createClass({
   },
 
   renderCompany(company) {
-    console.log(company)
+    const imgSource = THUMBS;
     return (
       <TouchableOpacity>
         <View style={styles.companyRow}>
+          <Image style={styles.thumb} source={imgSource} />
           <Text>{company.companyName}</Text>
         </View>
       </TouchableOpacity>
@@ -107,6 +110,15 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   companyRow: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ff5454',
+    margin: 10,
+    width: 300
+  },
+  thumb: {
 
   },
   text: {
