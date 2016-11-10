@@ -105,9 +105,7 @@ const styles = StyleSheet.create({
   GoToMapButton: {
     backgroundColor: '#ff5454',
     padding: 5,
-    marginLeft: 30,
-    marginRight: 30,
-    marginBottom: 30
+    margin: 30
   },
   companyRow: {
     flex: 1,
