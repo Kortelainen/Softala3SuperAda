@@ -10,66 +10,62 @@ AsyncStorage
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
-//import companies from './CompanyList.json';
-//console.log(companies);
-
 
 const CheckPointView = React.createClass({
-
-
-  //const companies = [
-    //{name: "Company1", place: "room1001"},
-    //{name: "Company2", place: "room1002"},
-    //{name: "Company3", place: "room1003"}
-  //]
-
-  async _companyList() {
-    const teamtoken = await AsyncStorage.getItem('token');
-    fetch('http://localhost:3000/companies', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + teamtoken,
-      },
-    })
-    .then((response) => response.json())
-    .then(response => {
-      Alert.alert(JSON.stringify(response.err) +'')
-      Alert.alert(JSON.stringify(response.result, ['companyName']) +'')
-    })
-    .catch((error) => {
-            console.log(error);
-            Alert.alert(
-              'Ei yhteyttä kantaan',
-              [
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
-
-              ]
-            )
-          });
-  },
 
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
-  kartta(){
-  this.props.dispatch(NavigationState.switchTab(3));
+
+  getInitialState() {
+    return {
+      teamtoken: '',
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2
+      })
+    };
   },
 
-  render(){
+  componentDidMount() {
+    this.fetchData();
+  },
+
+  async fetchData() {
+    const teamtoken = await AsyncStorage.getItem('token');
+    console.log(teamtoken);
+    fetch('http://localhost:3000/companies', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + teamtoken
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData);
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(responseData.result)
+      });
+    });
+  },
+
+  renderCompany(company) {
+    console.log(company)
+    return (
+      <TouchableOpacity>
+        <View style={styles.companyRow}>
+          <Text>{company.companyName}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  },
+
+  kartta() {
+    this.props.dispatch(NavigationState.switchTab(3));
+  },
+
+  render() {
     const text = '';
-
-/*  var companyComponents = [];
-
-    for (var i = 0; i < companies.length; i++) {
-      let company = companies[i];
-
-      companyComponents.push(
-        <Text key={i}>Company name: { company.name }
-        Room: { company.place }</Text>
-      );
-
-}*/
 
     return (
       <View style={[styles.container]}>
@@ -77,18 +73,15 @@ const CheckPointView = React.createClass({
         {text}
       </Text>
 
-      <TouchableOpacity onPress={this._companyList}>
-      <View style={styles.GoToMapButton}>
-      <Text style={{margin: 10, color: '#FFF', fontSize: 18,  }}>
-        {'YRITYSLISTA'}
-      </Text>
-      </View>
-      </TouchableOpacity>
-
+      <ListView
+      style={styles.companyList}
+      dataSource={this.state.dataSource}
+      renderRow={this.renderCompany}
+      />
 
       <TouchableOpacity onPress={this.kartta}>
       <View style={styles.GoToMapButton}>
-      <Text style={{margin: 10, color: '#FFF', fontSize: 18,  }}>
+      <Text style={{margin: 10, color: '#FFF', fontSize: 18}}>
         {'NÄYTÄ RASTIT KARTALLA'}
       </Text>
       </View>
@@ -104,28 +97,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-
     alignItems: 'center'
-
   },
   GoToMapButton: {
-
     backgroundColor: '#ff5454',
     padding: 5,
     marginLeft: 30,
     marginRight: 30,
-    marginBottom: 30,
+    marginBottom: 30
+  },
+  companyRow: {
 
-
-    },
-
+  },
   text: {
     padding: 5,
     justifyContent: 'flex-start'
-  },
-
-
-
+  }
 });
 
 export default CheckPointView;
