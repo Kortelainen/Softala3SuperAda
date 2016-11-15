@@ -5,12 +5,14 @@ import AppViewContainer from './src/modules/AppViewContainer';
 import React from 'react';
 import {AppRegistry, BackAndroid} from 'react-native';
 import * as NavigationStateActions from './src/modules/navigation/NavigationState';
+import SplashScreen from 'react-native-smart-splash-screen';
 
 const Softala3SuperAda = React.createClass({
 
   componentWillMount() {
     BackAndroid.addEventListener('hardwareBackPress', this.navigateBack);
   },
+
 
   navigateBack() {
     const navigationState = store.getState().get('navigationState');
@@ -33,6 +35,10 @@ const Softala3SuperAda = React.createClass({
 
     store.dispatch(NavigationStateActions.popRoute());
     return true;
+  },
+
+  componentDidMount () {
+    SplashScreen.close(SplashScreen.animationType.scale, 800, 500)
   },
 
   render() {
