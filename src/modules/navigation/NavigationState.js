@@ -34,22 +34,22 @@ const initialState = fromJS({
     index: 0,
     routes: [
       {key: 'LoginTab'},
-      {key: 'HomeTab', title: 'RASTIT'},
+      {key: 'HomeTab', title: 'HOME'},
       {key: 'ProfileTab', title: 'TIIMI'},
-      {key: 'MapTab', title: 'KARTTA'},
+      {key: 'CheckPointsTab', title: 'RASTIT'},
       {key: 'LinkTab', title: 'LINKIT'}
     ]
   },
 
   LoginTab: {
     index: 0,
-    routes: [{key: 'Welcome', title: 'Kirjaudu'}]
+    routes: [{key: 'LoginView', title: 'Kirjaudu'}]
   },
 
   // Scenes for the `HomeTab` tab.
   HomeTab: {
     index: 0,
-    routes: [{key: 'CheckPoints', title: 'Etusivu'}]
+    routes: [{key: 'Welcome', title: 'Etusivu'}]
   },
 
   // Scenes for the `ProfileTab` tab.
@@ -57,9 +57,9 @@ const initialState = fromJS({
     index: 0,
     routes: [{key: 'TeamView', title: 'Joukkue'}]
   },
-  MapTab: {
+  CheckPointsTab: {
     index: 0,
-    routes: [{key: 'MapView', title: 'Kartta'}]
+    routes: [{key: 'CheckPoints', title: 'Rastit'}]
   },
   LinkTab: {
     index: 0,

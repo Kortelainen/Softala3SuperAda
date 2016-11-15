@@ -26,7 +26,7 @@ const NavigationView = React.createClass({
       tabs: NavigationPropTypes.navigationState.isRequired,
       HomeTab: NavigationPropTypes.navigationState.isRequired,
       ProfileTab: NavigationPropTypes.navigationState.isRequired,
-      MapTab: NavigationPropTypes.navigationState.isRequired
+      CheckPointsTab: NavigationPropTypes.navigationState.isRequired
     }),
     switchTab: PropTypes.func.isRequired,
     pushRoute: PropTypes.func.isRequired
@@ -51,7 +51,7 @@ const NavigationView = React.createClass({
   tabBarVisible(tabKey) {
     return tabKey === 'ProfileTab' ||
            tabKey === 'LinkTab' ||
-           tabKey === 'MapTab' ||
+           tabKey === 'CheckPointsTab' ||
            tabKey === 'HomeTab';
   },
   renderScene(sceneProps) {

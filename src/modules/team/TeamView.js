@@ -25,10 +25,8 @@ const TeamView = React.createClass({
     };
   },
 
-  popRoute() {
-    this.props.dispatch(NavigationState.popRoute({
-      key: 'CounterView'
-    }));
+  yrityslista() {
+    this.props.dispatch(NavigationState.switchTab(1));
   },
 
   openImageGallery() {

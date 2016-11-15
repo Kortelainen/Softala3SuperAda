@@ -22,11 +22,8 @@ const Welcome = React.createClass({
     };
   },
 
-  login() {
-    this.props.dispatch(NavigationState.pushRoute({
-      key: 'LoginView',
-      title: 'Login'
-    }));
+  profile() {
+    this.props.dispatch(NavigationState.switchTab(2));
   },
 
   render() {
@@ -57,9 +54,9 @@ const Welcome = React.createClass({
              <Text style={styles.boldText}>ONNEA MATKAAN!</Text>
           </View>
         </View>
-        <TouchableOpacity onPress={this.login}>
+        <TouchableOpacity onPress={this.profile}>
           <View style={styles.button}>
-              <Text style={styles.whiteFont}>KIRJAUDU</Text>
+              <Text style={styles.whiteFont}>MUOKKAA TIIMIÄ</Text>
           </View>
         </TouchableOpacity>
       </View>

@@ -55,7 +55,10 @@ const LoginView = React.createClass({
         'Paina ETEENPÄIN jos haluat silti päästä eteenpäin',
         [
           {text: 'OK', onPress: () => console.log('OK Pressed')},
-          {text: 'ETEENPÄIN', onPress: () => this.props.dispatch(NavigationState.switchTab(2))}
+          {text: 'ETEENPÄIN', onPress: () =>   this.props.dispatch(NavigationState.pushRoute({
+              key: 'Welcome',
+              title: 'Tervetuloa'
+            }))}
         ]
       );
     });
