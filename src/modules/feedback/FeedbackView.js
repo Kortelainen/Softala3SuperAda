@@ -22,6 +22,14 @@ var radio_props = [
   {label: ' Ei  ', value: 1}
 ];
 
+var radio_props2 = [
+  {label: '   1   ', value: 1 },
+  {label: '   2   ', value: 2 },
+  {label: '   3   ', value: 3 },
+  {label: '   4   ', value: 4 },
+  {label: '   5  ', value: 5 }
+];
+
 const FeedbackView = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired
@@ -49,14 +57,17 @@ const FeedbackView = React.createClass({
         scrollEventThrottle={200}
         style={styles.scrollView}>
         <Text style={styles.baseText}>Super-Adan järjestäjät ovat kiinnostuneita kokemuksistanne tapahtumassa. Vastaamalla autat meitä tekemään tapahtumasta paremman!</Text>
-        <Text style={styles.boldText}>Anna kouluarvosana tapahtumalle (4-10):</Text>
-        <View style={styles.inputs}>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={[styles.input]}
-              />
-          </View>
-        </View>
+        <Text style={styles.boldText}>Anna kouluarvosana tapahtumalle (1-5):</Text>
+
+          <RadioForm
+            style={styles.button}
+            radio_props={radio_props2}
+            initial={null}
+            onPress={(value) => {this.setState({value:value})}}
+            formHorizontal={true}
+            buttonColor={'#ff5454'}
+          />
+
         <Text style={styles.boldText}>Mistä sait tiedon tapahtumasta?</Text>
           <View style={styles.inputs}>
             <View style={styles.inputContainer}>
@@ -72,7 +83,7 @@ const FeedbackView = React.createClass({
               initial={null}
               onPress={(value) => {this.setState({value:value})}}
               formHorizontal={true}
-              buttonColor={'#000000'}
+              buttonColor={'#ff5454'}
               />
             <Text style={styles.boldText}>Muuttuiko käsityksesi IT-alasta?</Text>
               <RadioForm
@@ -81,7 +92,7 @@ const FeedbackView = React.createClass({
                 initial={null}
                 onPress={(value) => {this.setState({value:value})}}
                 formHorizontal={true}
-                buttonColor={'#000000'}
+                buttonColor={'#ff5454'}
                 />
             <Text style={styles.boldText}>Voisitko kuvitella meneväsi IT-alalle töihin?</Text>
               <RadioForm
@@ -90,7 +101,7 @@ const FeedbackView = React.createClass({
                 initial={null}
                 onPress={(value) => {this.setState({value:value})}}
                 formHorizontal={true}
-                buttonColor={'#000000'}
+                buttonColor={'#ff5454'}
                 />
             <Text style={styles.boldText}>Kehitysehdotuksia seuraavan Super-Ada -tapahtuman järjestäjille?</Text>
             <View style={styles.inputs}>
