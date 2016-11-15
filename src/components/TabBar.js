@@ -19,14 +19,20 @@ const TabBar = React.createClass({
   },
 
   render() {
+    this.props.tabs.routes.forEach((route, index) => {
+      route.index = index;
+    });
+
+    const tabRoutes = this.props.tabs.routes.filter(route => (!!route.title));
+
     return (
       <View style={[styles.navigationBar, {height: this.props.height}]}>
-        {this.props.tabs.routes.map((route, index) => (
+        {tabRoutes.map(route => (
           <TabBarButton
             key={'tab-bar-button-' + route.key}
             text={route.title}
-            action={() => this.props.switchTab(index)}
-            isSelected={index === this.props.currentTabIndex}
+            action={() => this.props.switchTab(route.index)}
+            isSelected={route.index === this.props.currentTabIndex}
           />
         ))}
       </View>

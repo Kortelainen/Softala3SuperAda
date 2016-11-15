@@ -10,7 +10,7 @@ import MapViewContainer from './map/MapViewContainer';
 import TeamViewContainer from './team/TeamViewContainer';
 import WelcomeViewContainer from './welcome/WelcomeViewContainer';
 import CheckPointViewContainer from './checkpoints/CheckPointViewContainer';
-import GoodbyeViewContainer from './Goodbye/GoodbyeViewContainer';
+import GoodbyeViewContainer from './goodbye/GoodbyeViewContainer';
 import GoodbyeFeedbackViewContainer from './goodbyeFeedback/GoodbyeFeedbackViewContainer';
 import TeamPointsViewContainer from './teamPoints/TeamPointsViewContainer';
 

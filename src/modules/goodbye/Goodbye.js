@@ -5,10 +5,9 @@ import {
   StyleSheet,
   Image
 } from 'react-native';
-
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
-const GoodbyeFeedbackView = React.createClass({
+const Goodbye = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
@@ -28,12 +27,12 @@ const GoodbyeFeedbackView = React.createClass({
           </Text>
           <Image style={styles.mark} source={require('../../../images/kiitos.png')}/>
         </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.textstyle}>Kiitos palautteestasi!</Text>
-          <Text style={styles.textstyle}>Tervetuloa ensi vuonna uudestaan!</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.textBody}>Kiitos osallistumisestasi!</Text>
+          <Text style={styles.textBody}>Tervetuloa ensi vuonna uudestaan!</Text>
         </View>
-        <View style={styles.regardContainer}>
-          <Text style={styles.bottomText}>t- Super-Ada tiimi</Text>
+        <View style={styles.regardsContainer}>
+            <Text style={styles.bottomText}>t- Super-Ada tiimi</Text>
         </View>
       </View>
     );
@@ -60,19 +59,23 @@ const styles = StyleSheet.create({
     width: 200,
     height: 250
   },
-  textstyle: {
+  textContainer: {
+    padding: 35,
+    alignItems: 'center'
+  },
+  textBody: {
     color: '#FFF',
     marginBottom: 15,
     fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center'
+    fontWeight: 'bold'
+  },
+  regardsContainer: {
+    alignItems: 'center'
   },
   bottomText: {
+    fontSize: 18,
     color: '#FFF',
-    fontSize: 20,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    marginTop: 50
+    fontWeight: 'bold'
   }
 });
-export default GoodbyeFeedbackView;
+export default Goodbye;
