@@ -11,6 +11,7 @@ Image
 } from 'react-native';
 import THUMBS from '../../..//images/superda.png';
 import GridView from 'react-native-grid-view';
+import {get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 var COMPANIES_PER_ROW = 3;
@@ -35,21 +36,9 @@ const CheckPointView = React.createClass({
   },
 
   async fetchData() {
-    const teamtoken = await AsyncStorage.getItem('token');
-    console.log(teamtoken);
-    fetch('http://localhost:3000/companies', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + teamtoken
-      }
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log(responseData);
-      this.setState({
-        dataSource: responseData.result
-      });
+    const responseData = await get('/companies');
+    this.setState({
+      dataSource: responseData.result
     });
   },
 

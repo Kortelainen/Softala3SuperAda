@@ -1,12 +1,15 @@
 import React, {PropTypes} from 'react';
 import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import NavigationViewContainer from './navigation/NavigationViewContainer';
+import LoginViewContainer from './login/LoginViewContainer';
 import * as auth0 from '../services/auth0';
 import * as snapshotUtil from '../utils/snapshot';
 import * as SessionStateActions from '../modules/session/SessionState';
 import store from '../redux/store';
 import DeveloperMenu from '../components/DeveloperMenu';
+import {setConfiguration} from '../utils/configuration';
 
+const apiRoot = 'http://localhost:3000'
 const AppView = React.createClass({
   propTypes: {
     isReady: PropTypes.bool.isRequired,
@@ -14,6 +17,7 @@ const AppView = React.createClass({
     dispatch: PropTypes.func.isRequired
   },
   componentDidMount() {
+    setConfiguration('API_ROOT', apiRoot);
     snapshotUtil.resetSnapshot()
       .then(snapshot => {
         const {dispatch} = this.props;
@@ -45,6 +49,12 @@ const AppView = React.createClass({
           <ActivityIndicator style={styles.centered}/>
         </View>
       );
+    } else if (!this.props.isLoggedIn) {
+      return (
+        <View style={{flex: 1}}>
+          <LoginViewContainer/>
+        </View>
+      )
     }
 
     return (
