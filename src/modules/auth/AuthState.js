@@ -13,19 +13,23 @@ const USER_LOGIN_ERROR = 'AppState/USER_LOGIN_ERROR';
 
 export function onUserLoginSuccess(profile, token) {
   return {
-    type: USER_LOGIN_SUCCESS,
+    type: USER_LOGIN_SUCCESS
+    /*
     payload: {
       profile: fromJS(profile),
       token: fromJS(token)
     }
+    */
   };
 }
 
 export function onUserLoginError(error) {
   return {
-    type: USER_LOGIN_ERROR,
+    type: USER_LOGIN_ERROR
+    /*,
     payload: error,
     error: true
+    */
   };
 }
 
@@ -34,9 +38,9 @@ export default function AuthStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case USER_LOGIN_SUCCESS:
       return state
-        .set('isLoggedIn', true)
-        .set('currentUser', action.payload.profile)
-        .set('authenticationToken', action.payload.token);
+        .set('isLoggedIn', true);
+        //.set('currentUser', action.payload.profile)
+        //.set('authenticationToken', action.payload.token);
     case USER_LOGIN_ERROR:
       return initialState;
     default:

@@ -36,6 +36,7 @@ const LoginView = React.createClass({
 
     if (response.success === true) {
       await setAuthenticationToken(response.token.token);
+
       this.validate();
     } else {
       Alert.alert(
