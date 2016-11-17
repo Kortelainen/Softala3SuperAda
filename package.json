@@ -38,6 +38,7 @@
     "react-dom": "~15.2.0",
     "react-native": "^0.29.0",
     "react-native-checkbox": "^1.0.15",
+    "react-native-grid-view": "^0.4.1",
     "react-native-image-picker": "^0.21.4",
     "react-native-lock": "futurice/react-native-lock#feature/customizedTheme",
     "react-native-simple-radio-button": "^2.4.0",

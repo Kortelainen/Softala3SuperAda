@@ -10,9 +10,10 @@ AsyncStorage,
 Image
 } from 'react-native';
 import THUMBS from '../../..//images/superda.png';
-
+import GridView from 'react-native-grid-view';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
+var COMPANIES_PER_ROW = 3;
 const CheckPointView = React.createClass({
 
   propTypes: {
@@ -22,9 +23,10 @@ const CheckPointView = React.createClass({
   getInitialState() {
     return {
       teamtoken: '',
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2
-      })
+      dataSource: []
+      // new ListView.DataSource({
+      //   rowHasChanged: (row1, row2) => row1 !== row2
+      // })
     };
   },
 
@@ -46,7 +48,7 @@ const CheckPointView = React.createClass({
     .then((responseData) => {
       console.log(responseData);
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(responseData.result)
+        dataSource: responseData.result
       });
     });
   },
@@ -57,31 +59,30 @@ const CheckPointView = React.createClass({
       <TouchableOpacity>
         <View style={styles.companyRow}>
           <Image style={styles.thumb} source={imgSource} />
-          <Text>{company.companyName}</Text>
+          <Text style={styles.companyText}>{company.companyName}</Text>
         </View>
       </TouchableOpacity>
     );
   },
 
   kartta() {
-    this.props.dispatch(NavigationState.switchTab(3));
+    this.props.dispatch(NavigationState.pushRoute({
+      key: 'MapView',
+      title: 'Kartta'
+    }));
   },
 
   render() {
-    const text = '';
+    console.log(this.state.dataSource);
 
     return (
       <View style={[styles.container]}>
-      <Text style={styles.text}>
-        {text}
-      </Text>
-
-      <ListView
-      style={styles.companyList}
-      dataSource={this.state.dataSource}
-      renderRow={this.renderCompany}
-      />
-
+      <GridView
+        items={this.state.dataSource}
+        itemsPerRow={COMPANIES_PER_ROW}
+        renderItem={this.renderCompany}
+        style={styles.companyList}
+        />
       <TouchableOpacity onPress={this.kartta}>
       <View style={styles.GoToMapButton}>
       <Text style={{margin: 10, color: '#FFF', fontSize: 18}}>
@@ -100,7 +101,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#FFF'
   },
   GoToMapButton: {
     backgroundColor: '#ff5454',
@@ -112,14 +114,21 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ff5454',
     margin: 10,
-    width: 300
+    width: 100
   },
-  thumb: {
+  companyList: {
 
   },
+  companyText: {
+    fontSize: 20
+  },
+  thumb: {
+    width: 100,
+    height: 100
+  },
   text: {
+    fontSize: 24,
     padding: 5,
     justifyContent: 'flex-start'
   }
