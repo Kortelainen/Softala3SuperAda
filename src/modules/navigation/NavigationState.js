@@ -9,10 +9,10 @@ const PUSH_ROUTE = 'NavigationState/PUSH_ROUTE';
 const POP_ROUTE = 'NavigationState/POP_ROUTE';
 const SWITCH_TAB = 'NavigationState/SWITCH_TAB';
 
-export function switchTab(index) {
+export function switchTab(key) {
   return {
     type: SWITCH_TAB,
-    payload: index
+    payload: key
   };
 }
 
@@ -33,17 +33,11 @@ const initialState = fromJS({
   tabs: {
     index: 0,
     routes: [
-      {key: 'LoginTab'},
       {key: 'HomeTab', title: 'HOME'},
       {key: 'ProfileTab', title: 'TIIMI'},
       {key: 'CheckPointsTab', title: 'RASTIT'},
       {key: 'LinkTab', title: 'LINKIT'}
     ]
-  },
-
-  LoginTab: {
-    index: 0,
-    routes: [{key: 'LoginView', title: 'Kirjaudu'}]
   },
 
   // Scenes for the `HomeTab` tab.
@@ -104,7 +98,7 @@ export default function NavigationReducer(state = initialState, action) {
 
     case SWITCH_TAB: {
       // Switches the tab.
-      const tabs = NavigationStateUtils.jumpToIndex(state.get('tabs').toJS(), action.payload);
+      const tabs = NavigationStateUtils.jumpTo(state.get('tabs').toJS(), action.payload);
       if (tabs !== state.get('tabs')) {
         return state.set('tabs', fromJS(tabs));
       }
