@@ -6,10 +6,30 @@ StyleSheet,
 TouchableOpacity,
 Image
 } from 'react-native';
-import THUMBS from '../../..//images/superda.png';
 import GridView from 'react-native-grid-view';
 import {get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
+
+const images = {
+  Laalaa: require('../../../images/companyImages/Laalaa.png'),
+  Futurice: require('../../../images/companyImages/Futurice.png'),
+  Oracle: require('../../../images/companyImages/Oracle.png'),
+  Reaktor: require('../../../images/companyImages/Reaktor.png'),
+  Rovio: require('../../../images/companyImages/Rovio.png'),
+  Sigmatic: require('../../../images/companyImages/Sigmatic.png'),
+  Supercell: require('../../../images/companyImages/Supercell.png'),
+  Appelsiini: require('../../../images/companyImages/Appelsiini.png'),
+  Zalando: require('../../../images/companyImages/Zalando.png'),
+  Laalaa_visited: require('../../../images/companyImages/Laalaa_visited.png'),
+  Futurice_visited: require('../../../images/companyImages/Futurice_visited.png'),
+  Oracle_visited: require('../../../images/companyImages/Oracle_visited.png'),
+  Reaktor_visited: require('../../../images/companyImages/Reaktor_visited.png'),
+  Rovio_visited: require('../../../images/companyImages/Rovio_visited.png'),
+  Sigmatic_visited: require('../../../images/companyImages/Sigmatic_visited.png'),
+  Supercell_visited: require('../../../images/companyImages/Supercell_visited.png'),
+  Appelsiini_visited: require('../../../images/companyImages/Appelsiini_visited.png'),
+  Zalando_visited: require('../../../images/companyImages/Zalando_visited.png')
+};
 
 var COMPANIES_PER_ROW = 3;
 
@@ -41,11 +61,16 @@ const CheckPointView = React.createClass({
   },
 
   renderCompany(company) {
-    const imgSource = THUMBS;
+    console.log(company);
+    const visited = company.visited ? '_visited' : '';
+    const image = images[`${company.companyName}${visited}`];
+
+    if (!image)
+      return null;
     return (
       <TouchableOpacity>
         <View style={styles.companyRow}>
-          <Image style={styles.thumb} source={imgSource} />
+          <Image style={styles.thumb} source={image} />
           <Text style={styles.companyText}>{company.companyName}</Text>
         </View>
       </TouchableOpacity>
