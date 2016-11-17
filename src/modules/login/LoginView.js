@@ -9,6 +9,8 @@ import {
   Alert,
   AsyncStorage
 } from 'react-native';
+import {post} from '../../utils/api';
+import {setAuthenticationToken} from '../../utils/authentication'
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const LoginView = React.createClass({
@@ -26,28 +28,25 @@ const LoginView = React.createClass({
     }
   },
 
-  _userLogin() {
-    fetch('http://localhost:3000/teams/authenticate', {
-      method: 'POST',
-      body: JSON.stringify({
+  async _userLogin() {
+
+    const response = await post('/teams/authenticate', {
         name: this.state.teamname
-      })
-    })
-    .then((response) => response.json())
-    .then(response => {
-      if (response.success === true) {
-        this.setState({token: response.token.token});
-        this.validate();
-      } else {
-        Alert.alert(
-          'Tiimiä ei löytynyt',
-          'Tarkista tiimin nimi',
-          [
-            {text: 'OK', onPress: () => console.log('OK Pressed')}
-          ]
-        );
-      }
-    })
+    });
+
+    if (response.success === true) {
+      await setAuthenticationToken(response.token.token);
+      this.validate();
+    } else {
+      Alert.alert(
+        'Tiimiä ei löytynyt',
+        'Tarkista tiimin nimi',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')}
+        ]
+      );
+    }
+    /*
     .catch((error) => {
       console.log(error);
       Alert.alert(
@@ -61,12 +60,13 @@ const LoginView = React.createClass({
             }))}
         ]
       );
-    });
+    });*/
   },
 
   async validate() {
     try {
-      await AsyncStorage.setItem('token', this.state.token);
+      //taken elsewhere
+      //await AsyncStorage.setItem('token', this.state.token);
       await AsyncStorage.setItem('teamname', this.state.teamname);
       this.props.dispatch(NavigationState.switchTab(2));
     } catch (error) {

@@ -10,7 +10,7 @@ AsyncStorage,
 Image
 } from 'react-native';
 import THUMBS from '../../..//images/superda.png';
-
+import {get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const CheckPointView = React.createClass({
@@ -33,22 +33,10 @@ const CheckPointView = React.createClass({
   },
 
   async fetchData() {
-    const teamtoken = await AsyncStorage.getItem('token');
-    console.log(teamtoken);
-    fetch('http://localhost:3000/companies', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + teamtoken
-      }
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log(responseData);
+    const responseData = await get('/companies')
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(responseData.result)
       });
-    });
   },
 
   renderCompany(company) {

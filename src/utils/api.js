@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import HttpError from 'standard-http-error';
 import {getConfiguration} from '../utils/configuration';
-import {getAuthenticationToken} from '../utils/authentication';
+import {getAuthenticationToken, clearAuthenticationToken} from '../utils/authentication';
 
 const EventEmitter = require('event-emitter');
 
@@ -64,6 +64,11 @@ export async function del(path, suppressRedBox) {
 export async function request(method, path, body, suppressRedBox) {
   try {
     const response = await sendRequest(method, path, body, suppressRedBox);
+
+    if(response.status === 401){
+        return clearAuthenticationToken();
+    }
+
     return handleResponse(
       path,
       response
@@ -144,7 +149,7 @@ function getRequestHeaders(body, token) {
     : {'Accept': 'application/json'};
 
   if (token) {
-    return {...headers, Authorization: token};
+    return {...headers, Authorization: 'Bearer '+token};
   }
 
   return headers;

@@ -6,7 +6,9 @@ import * as snapshotUtil from '../utils/snapshot';
 import * as SessionStateActions from '../modules/session/SessionState';
 import store from '../redux/store';
 import DeveloperMenu from '../components/DeveloperMenu';
+import {setConfiguration} from '../utils/configuration';
 
+const apiRoot = 'http://localhost:3000'
 const AppView = React.createClass({
   propTypes: {
     isReady: PropTypes.bool.isRequired,
@@ -14,6 +16,7 @@ const AppView = React.createClass({
     dispatch: PropTypes.func.isRequired
   },
   componentDidMount() {
+    setConfiguration('API_ROOT', apiRoot);
     snapshotUtil.resetSnapshot()
       .then(snapshot => {
         const {dispatch} = this.props;
