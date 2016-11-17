@@ -3,10 +3,7 @@ import {
 Text,
 View,
 StyleSheet,
-Alert,
-ListView,
 TouchableOpacity,
-AsyncStorage,
 Image
 } from 'react-native';
 import THUMBS from '../../..//images/superda.png';
@@ -15,6 +12,7 @@ import {get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 var COMPANIES_PER_ROW = 3;
+
 const CheckPointView = React.createClass({
 
   propTypes: {
@@ -72,12 +70,10 @@ const CheckPointView = React.createClass({
         renderItem={this.renderCompany}
         style={styles.companyList}
         />
-      <TouchableOpacity onPress={this.kartta}>
-      <View style={styles.GoToMapButton}>
-      <Text style={{margin: 10, color: '#FFF', fontSize: 18}}>
-        {'NÄYTÄ RASTIT KARTALLA'}
-      </Text>
-      </View>
+      <TouchableOpacity onPress={this.kartta} style={styles.GoToMapButton}>
+          <Text style={styles.buttonText}>
+            {'NÄYTÄ RASTIT KARTALLA'}
+          </Text>
       </TouchableOpacity>
 
     </View>
@@ -96,7 +92,10 @@ const styles = StyleSheet.create({
   GoToMapButton: {
     backgroundColor: '#ff5454',
     padding: 5,
-    margin: 30
+    margin: 30,
+    width: 350,
+    height: 70,
+    justifyContent: 'center'
   },
   companyRow: {
     flex: 1,
@@ -120,6 +119,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     padding: 5,
     justifyContent: 'flex-start'
+  },
+  buttonText: {
+    margin: 10,
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center'
   }
 });
 
