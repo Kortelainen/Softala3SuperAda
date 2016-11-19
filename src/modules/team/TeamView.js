@@ -26,7 +26,7 @@ const TeamView = React.createClass({
   },
 
   yrityslista() {
-    this.props.dispatch(NavigationState.switchTab(1));
+    
   },
 
   openImageGallery() {

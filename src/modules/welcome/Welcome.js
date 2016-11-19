@@ -23,7 +23,7 @@ const Welcome = React.createClass({
   },
 
   profile() {
-    this.props.dispatch(NavigationState.switchTab(2));
+    this.props.dispatch(NavigationState.switchTab('ProfileTab'));
   },
 
   render() {

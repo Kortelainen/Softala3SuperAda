@@ -69,7 +69,7 @@ const LoginView = React.createClass({
       //taken elsewhere
       //await AsyncStorage.setItem('token', this.state.token);
       await AsyncStorage.setItem('teamname', this.state.teamname);
-      this.props.dispatch(NavigationState.switchTab(2));
+      this.props.dispatch(NavigationState.switchTab('HomeTab'));
     } catch (error) {
       console.log('AsyncStorage error: ' + error.message);
     }
