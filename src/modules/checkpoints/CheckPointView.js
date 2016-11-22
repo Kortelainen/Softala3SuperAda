@@ -69,6 +69,7 @@ const CheckPointView = React.createClass({
         itemsPerRow={COMPANIES_PER_ROW}
         renderItem={this.renderCompany}
         style={styles.companyList}
+        enableEmptySections={true}
         />
       <TouchableOpacity onPress={this.kartta} style={styles.GoToMapButton}>
           <Text style={styles.buttonText}>
