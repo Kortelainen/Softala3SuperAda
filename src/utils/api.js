@@ -1,5 +1,5 @@
 import Promise from 'bluebird';
-import HttpError from 'standard-http-error';
+//import HttpError from 'standard-http-error';
 import {getConfiguration} from '../utils/configuration';
 import {getAuthenticationToken, clearAuthenticationToken} from '../utils/authentication';
 
@@ -122,13 +122,14 @@ async function handleResponse(path, response) {
     // promise flow control to interpret error responses as failures
     if (status >= 400) {
       const message = await getErrorMessageSafely(response);
-      const error = new HttpError(status, message);
-
+      //const error = new HttpError(status, message);
+      const error = {status, message};
       // emit events on error channel, one for status-specific errors and other for all errors
       errors.emit(status.toString(), {path, message: error.message});
       errors.emit('*', {path, message: error.message}, status);
 
-      throw error;
+      //throw error;
+      throw new exception(error);
     }
 
     // parse response text
