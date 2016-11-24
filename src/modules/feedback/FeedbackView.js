@@ -14,12 +14,12 @@ import RadioForm, {
   RadioButtonInput,
   RadioButtonLabel
 } from 'react-native-simple-radio-button';
-
+import {post} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 var radio_props = [
-  {label: ' Kyllä  ', value: 0},
-  {label: ' Ei  ', value: 1}
+  {label: ' Kyllä  ', value: 'Kyllä'},
+  {label: ' Ei  ', value: 'Ei'}
 ];
 
 var radio_props2 = [
@@ -41,7 +41,23 @@ const FeedbackView = React.createClass({
     }
   },
 
+  async _saveFeedback() {
+
+    console.log(this.state.question_1 + " " + this.state.question_2  + " " + this.state.question_3 + " " + this.state.question_4 + " " + this.state.question_5 + " " + this.state.question_6)
+
+    const response = await post('/feedback', {
+        schoolGrade: this.state.question_1,
+        answer1: this.state.question_2,
+        answer2: this.state.question_3,
+        answer3: this.state.question_4,
+        answer4: this.state.question_5,
+        answer5: this.state.question_6,
+    });
+
+  },
+
   goodbyefeedback(){
+    this._saveFeedback();
     this.props.dispatch(NavigationState.pushRoute({
       key: 'GoodbyeFB',
       title: 'Kiitos palautteestasi'
@@ -63,7 +79,7 @@ const FeedbackView = React.createClass({
             style={styles.button}
             radio_props={radio_props2}
             initial={null}
-            onPress={(value) => {this.setState({value:value})}}
+            onPress={(value) => {this.setState({'question_1':value})}}
             formHorizontal={true}
             buttonColor={'#ff5454'}
           />
@@ -73,6 +89,8 @@ const FeedbackView = React.createClass({
             <View style={styles.inputContainer}>
               <TextInput
                 style={[styles.input]}
+                onChangeText={(value) => this.setState({'question_2':value})}
+                value={this.state.answerText_1}
                 />
             </View>
           </View>
@@ -81,7 +99,7 @@ const FeedbackView = React.createClass({
               style={styles.button}
               radio_props={radio_props}
               initial={null}
-              onPress={(value) => {this.setState({value:value})}}
+              onPress={(value) => {this.setState({'question_3':value})}}
               formHorizontal={true}
               buttonColor={'#ff5454'}
               />
@@ -90,7 +108,7 @@ const FeedbackView = React.createClass({
                 style={styles.button}
                 radio_props={radio_props}
                 initial={null}
-                onPress={(value) => {this.setState({value:value})}}
+                onPress={(value) => {this.setState({'question_4':value})}}
                 formHorizontal={true}
                 buttonColor={'#ff5454'}
                 />
@@ -99,7 +117,7 @@ const FeedbackView = React.createClass({
                 style={styles.button}
                 radio_props={radio_props}
                 initial={null}
-                onPress={(value) => {this.setState({value:value})}}
+                onPress={(value) => {this.setState({'question_5':value})}}
                 formHorizontal={true}
                 buttonColor={'#ff5454'}
                 />
@@ -108,6 +126,8 @@ const FeedbackView = React.createClass({
               <View style={styles.inputContainer}>
                 <TextInput
                   style={[styles.input]}
+                  onChangeText={(value) => this.setState({'question_6':value})}
+                  value={this.state.answerText_6}
                   />
               </View>
             </View>
