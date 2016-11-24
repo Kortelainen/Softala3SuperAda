@@ -6,7 +6,8 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from 'react-native';
 import RadioForm, {
   RadioButton,
@@ -15,6 +16,7 @@ import RadioForm, {
 } from 'react-native-simple-radio-button';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
+import {get} from '../../utils/api';
 
 const TeamPointsView = React.createClass({
   propTypes: {
@@ -42,7 +44,17 @@ const TeamPointsView = React.createClass({
       }));
   },
 
+  async componentDidMount() {
+    const responseData = await get('/companypoints');
+    this.setState({
+      value: responseData.result[0].sum
+    });
+},
+
   render() {
+
+
+
     var _scrollView: ScrollView;
       return (
        <View style= {[styles.container, {backgroundColor: this.state.background}]}>
@@ -56,7 +68,7 @@ const TeamPointsView = React.createClass({
             <Image style={styles.mark} source={require('../../../images/pisteet.png')}/>
           </View>
           <View style={styles.pointBox}>
-            <Text style={styles.points}>?/40</Text>
+            <Text style={styles.points}>{this.state.value}/40</Text>
           </View>
             <Text style={styles.baseText}>Haluatko antaa järjestäjille palautetta?</Text>
           <View style ={styles.buttons}>

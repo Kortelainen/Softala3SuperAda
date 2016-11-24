@@ -4,7 +4,8 @@ Text,
 View,
 StyleSheet,
 TouchableOpacity,
-Image
+Image,
+AsyncStorage
 } from 'react-native';
 import THUMBS from '../../..//images/superda.png';
 import GridView from 'react-native-grid-view';
