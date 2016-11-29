@@ -4,15 +4,14 @@ Text,
 View,
 StyleSheet,
 TouchableOpacity,
-Image,
-AsyncStorage
+Image
 } from 'react-native';
 import GridView from 'react-native-grid-view';
 import {get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const images = {
-  Laalaa: require('../../../images/companyImages/Laalaa.png'),
+  Koulu: require('../../../images/companyImages/Laalaa.png'),
   Futurice: require('../../../images/companyImages/Futurice.png'),
   Oracle: require('../../../images/companyImages/Oracle.png'),
   Reaktor: require('../../../images/companyImages/Reaktor.png'),
@@ -21,7 +20,7 @@ const images = {
   Supercell: require('../../../images/companyImages/Supercell.png'),
   Appelsiini: require('../../../images/companyImages/Appelsiini.png'),
   Zalando: require('../../../images/companyImages/Zalando.png'),
-  Laalaa_visited: require('../../../images/companyImages/Laalaa_visited.png'),
+  Koulu_visited: require('../../../images/companyImages/Laalaa_visited.png'),
   Futurice_visited: require('../../../images/companyImages/Futurice_visited.png'),
   Oracle_visited: require('../../../images/companyImages/Oracle_visited.png'),
   Reaktor_visited: require('../../../images/companyImages/Reaktor_visited.png'),
@@ -53,9 +52,6 @@ const CheckPointView = React.createClass({
 
   async fetchData() {
     const responseData = await get('/companies');
-    for (var i = 0; i < responseData.result.length; i++) {
-      console.log(responseData.result[i])
-    }
     this.setState({
       dataSource: responseData.result
     });
@@ -70,8 +66,8 @@ const CheckPointView = React.createClass({
       return null;
     }
     return (
-      <TouchableOpacity
-      key={company.companyId}>
+      <TouchableOpacity>
+        key={company.companyId}>
         <View style={styles.companyRow}>
           <Image style={styles.thumb} source={image} />
           <Text style={styles.companyText}>{company.companyName}</Text>
