@@ -43,9 +43,6 @@ const CheckPointView = React.createClass({
     return {
       teamtoken: '',
       dataSource: []
-      // new ListView.DataSource({
-      //   rowHasChanged: (row1, row2) => row1 !== row2
-      // })
     };
   },
 
@@ -65,8 +62,9 @@ const CheckPointView = React.createClass({
     const visited = company.visited ? '_visited' : '';
     const image = images[`${company.companyName}${visited}`];
 
-    if (!image)
+    if (!image) {
       return null;
+    }
     return (
       <TouchableOpacity>
         <View style={styles.companyRow}>
