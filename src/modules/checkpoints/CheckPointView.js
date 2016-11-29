@@ -36,6 +36,9 @@ const CheckPointView = React.createClass({
 
   async fetchData() {
     const responseData = await get('/companies');
+    for (var i = 0; i < responseData.result.length; i++) {
+      console.log(responseData.result[i])
+    }
     this.setState({
       dataSource: responseData.result
     });
@@ -44,7 +47,8 @@ const CheckPointView = React.createClass({
   renderCompany(company) {
     const imgSource = THUMBS;
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
+      key={company.companyId}>
         <View style={styles.companyRow}>
           <Image style={styles.thumb} source={imgSource} />
           <Text style={styles.companyText}>{company.companyName}</Text>
@@ -61,8 +65,6 @@ const CheckPointView = React.createClass({
   },
 
   render() {
-    console.log(this.state.dataSource);
-
     return (
       <View style={[styles.container]}>
       <GridView
