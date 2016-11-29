@@ -4,7 +4,8 @@ Text,
 View,
 StyleSheet,
 TouchableOpacity,
-Image
+Image,
+AsyncStorage
 } from 'react-native';
 import GridView from 'react-native-grid-view';
 import {get} from '../../utils/api';
@@ -52,6 +53,9 @@ const CheckPointView = React.createClass({
 
   async fetchData() {
     const responseData = await get('/companies');
+    for (var i = 0; i < responseData.result.length; i++) {
+      console.log(responseData.result[i])
+    }
     this.setState({
       dataSource: responseData.result
     });
@@ -66,7 +70,8 @@ const CheckPointView = React.createClass({
       return null;
     }
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
+      key={company.companyId}>
         <View style={styles.companyRow}>
           <Image style={styles.thumb} source={image} />
           <Text style={styles.companyText}>{company.companyName}</Text>
@@ -83,8 +88,6 @@ const CheckPointView = React.createClass({
   },
 
   render() {
-    console.log(this.state.dataSource);
-
     return (
       <View style={[styles.container]}>
       <GridView
@@ -92,6 +95,7 @@ const CheckPointView = React.createClass({
         itemsPerRow={COMPANIES_PER_ROW}
         renderItem={this.renderCompany}
         style={styles.companyList}
+        enableEmptySections={true}
         />
       <TouchableOpacity onPress={this.kartta} style={styles.GoToMapButton}>
           <Text style={styles.buttonText}>
