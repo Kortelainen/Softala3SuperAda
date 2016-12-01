@@ -32,7 +32,7 @@ const MapView = React.createClass({
 
   getInitialState(){
     return{
-      background: '#FFFFFF'
+      background: 'rgba(255,0,54,1)'
     };
   },
 
@@ -42,7 +42,7 @@ const MapView = React.createClass({
     return(
       <ScrollView
       zoomEnabled={true}
-      maximumZoomScale={3}
+      maximumZoomScale={2}
       minimumZoomScale={1}
       >
 
@@ -54,7 +54,7 @@ const MapView = React.createClass({
 <TouchableOpacity onPress={this._onPressButton}>
       <Image
         style={styles.MapImage}
-        source={require('../../../images/kartta.png')}
+        source={require('../../../images/map.png')}
 
 
       ></Image>
@@ -69,12 +69,14 @@ const MapView = React.createClass({
 const styles = StyleSheet.create({
 
   MapContainer: {
-    flex: 0,
-     justifyContent: 'center',
-     backgroundColor: '#ffffff',
-     position: 'relative',
-     height: undefined,
-     width: undefined,
+    flex: -1,
+
+     backgroundColor: 'rgba(255,0,54,1)',
+
+     height: null,
+     width: null,
+     alignItems: 'stretch',
+
 
 
 
@@ -82,7 +84,8 @@ const styles = StyleSheet.create({
   },
 
   MapImage: {
-    height: 400,
+    flex: 1,
+    height: 550,
     width: undefined,
 
 
