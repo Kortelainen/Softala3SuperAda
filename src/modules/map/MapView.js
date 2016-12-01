@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 550,
     width: undefined,
+    backgroundColor: 'rgba(255,0,54,1)',
 
 
 
