@@ -11,7 +11,7 @@ import {get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const images = {
-  Koulu: require('../../../images/companyImages/Laalaa.png'),
+  Koulu: require('../../../images/companyImages/Koulu.png'),
   Futurice: require('../../../images/companyImages/Futurice.png'),
   Oracle: require('../../../images/companyImages/Oracle.png'),
   Reaktor: require('../../../images/companyImages/Reaktor.png'),
@@ -20,7 +20,7 @@ const images = {
   Supercell: require('../../../images/companyImages/Supercell.png'),
   Appelsiini: require('../../../images/companyImages/Appelsiini.png'),
   Zalando: require('../../../images/companyImages/Zalando.png'),
-  Koulu_visited: require('../../../images/companyImages/Laalaa_visited.png'),
+  Koulu_visited: require('../../../images/companyImages/Koulu_visited.png'),
   Futurice_visited: require('../../../images/companyImages/Futurice_visited.png'),
   Oracle_visited: require('../../../images/companyImages/Oracle_visited.png'),
   Reaktor_visited: require('../../../images/companyImages/Reaktor_visited.png'),
