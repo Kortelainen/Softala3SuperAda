@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import {options} from './image-picker-options';
-
+import {post, get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const TeamView = React.createClass({
@@ -19,19 +19,55 @@ const TeamView = React.createClass({
   },
 
   getInitialState() {
+    this.getTeamDetails();
+
     return {
       background: 'rgb(255,255,255)',
-      teamDescription: ''
+      teamDescription: '',
+      avatarSource: null
     };
   },
 
-  yrityslista() {
-    
+  saveTeamDetails() {
+    //save picture and Slogan
+
+    var pictureChanged = true; // todo get from state
+
+    if(pictureChanged){
+      this.savePicture();
+    }
+
+    //this.saveSlogan();
+  },
+
+  async savePicture(){
+    // this.state.avatarData
+    console.log(this.state.avatarData.length);
+    const response = await post('/savePicture', {
+        data: this.state.avatarData
+    });
+
+  },
+
+  async getTeamDetails(){
+    // get picture and slogan from db
+
+    const response = await get('/teamDetails');
+
+    var teamPicture = response.result.file;
+
+    if(teamPicture != null){
+      this.setState({
+        avatarSource: {
+          uri: 'data:image/png;base64,' + teamPicture
+        }
+      });
+    }
+
   },
 
   openImageGallery() {
     ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
 
       if (response.didCancel) {
         console.log('User cancelled image picker');
@@ -44,17 +80,20 @@ const TeamView = React.createClass({
       }
       else {
     // You can display the image using either data...
-        const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
+        const source = {uri: 'data:image/png;base64,' + response.data, isStatic: true};
 
     // or a reference to the platform specific asset location
-        if (Platform.OS === 'ios') {
+        /*if (Platform.OS === 'ios') {
           const source = {uri: response.uri.replace('file://', ''), isStatic: true};
         } else {
           const source = {uri: response.uri, isStatic: true};
-        }
+        }*/
+
+        console.log(response.data.length);
 
         this.setState({
-          avatarSource: source
+          avatarSource: source, //source,
+          avatarData: response.data
         });
       }
     });
@@ -84,7 +123,7 @@ const TeamView = React.createClass({
                 />
             </View>
           <View style={styles.submitButton}>
-            <TouchableOpacity onPress={this.yrityslista} accessible={true} style={styles.saveButton}>
+            <TouchableOpacity onPress={this.saveTeamDetails} accessible={true} style={styles.saveButton}>
                 <Text style={[styles.whiteFont, {fontWeight: 'bold'}]}>{'TALLENNA'}</Text>
             </TouchableOpacity>
           </View>
