@@ -58,7 +58,6 @@ const CheckPointView = React.createClass({
   },
 
   renderCompany(company) {
-    console.log(company);
     const visited = company.visited ? '_visited' : '';
     const image = images[`${company.companyName}${visited}`];
 
@@ -66,7 +65,7 @@ const CheckPointView = React.createClass({
       return null;
     }
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
         key={company.companyId}>
         <View style={styles.companyRow}>
           <Image style={styles.thumb} source={image} />
@@ -126,17 +125,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
-    width: 100
+    width: 100,
+    height: 100
   },
   companyList: {
-
+    marginTop: 20,
   },
   companyText: {
     fontSize: 20
   },
   thumb: {
-    width: 100,
-    height: 100
+    width: 90,
+    height: 90
   },
   text: {
     fontSize: 24,
