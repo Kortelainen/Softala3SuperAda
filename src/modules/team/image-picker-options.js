@@ -6,6 +6,8 @@ var options = {
   storageOptions: {
     skipBackup: true,
     path: 'images'
-  }
-
+  },
+  maxWidth: 320,
+  maxHeight: 320,
+  allowsEditing: true
 };

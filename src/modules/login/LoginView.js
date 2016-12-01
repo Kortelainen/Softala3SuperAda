@@ -47,21 +47,6 @@ const LoginView = React.createClass({
         ]
       );
     }
-    /*
-    .catch((error) => {
-      console.log(error);
-      Alert.alert(
-        'Yhteys kantaan ei ole päällä',
-        'Paina ETEENPÄIN jos haluat silti päästä eteenpäin',
-        [
-          {text: 'OK', onPress: () => console.log('OK Pressed')},
-          {text: 'ETEENPÄIN', onPress: () =>   this.props.dispatch(NavigationState.pushRoute({
-              key: 'Welcome',
-              title: 'Tervetuloa'
-            }))}
-        ]
-      );
-    });*/
   },
 
   async validate() {
