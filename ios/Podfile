@@ -1,6 +1,7 @@
-target 'Softala3SuperAda' do
-	pod 'Lock', '~> 1.24'
-	pod 'Lock/TouchID'
-	pod 'Lock/SMS'
-	pod 'Lock/Email'
-end
+
+# Auth0 Lock
+
+pod 'Lock', '~> 1.26'
+pod 'Lock/TouchID'
+pod 'Lock/SMS'
+pod 'Lock/Email'
