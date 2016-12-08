@@ -4,7 +4,8 @@ import {
   View,
   StyleSheet,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
@@ -28,7 +29,13 @@ const Welcome = React.createClass({
 
   render() {
     return (
+
       <View style={[styles.container, {backgroundColor: this.state.background}]}>
+      <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}
+        automaticallyAdjustContentInsets={false}
+        onScroll={() => { console.log('onScroll!'); }}
+        scrollEventThrottle={200}
+        style={styles.scrollView}>
         <View style={styles.header}>
           <Text style={styles.titleText}>
               Tervetuloa!
@@ -56,7 +63,9 @@ const Welcome = React.createClass({
               <Text style={styles.whiteFont}>MUOKKAA TIIMIÄ</Text>
           </View>
         </TouchableOpacity>
+        </ScrollView>
       </View>
+
     );
   }
 });
@@ -66,6 +75,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     backgroundColor: 'transparent'
+  },
+  scrollView: {
+    backgroundColor: 'rgba(255,0,54,1)',
+    flex: 1
   },
   header: {
     justifyContent: 'flex-start',
