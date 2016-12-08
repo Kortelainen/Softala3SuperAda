@@ -1,5 +1,6 @@
 import React, {PropTypes, Dimensions, Component} from 'react';
 
+import PhotoView from 'react-native-photo-view';
 
 import{
   Image,
@@ -16,8 +17,6 @@ import{
 }from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
-
-
 
 
 const MapView = React.createClass({
@@ -40,28 +39,17 @@ const MapView = React.createClass({
     const text = 'kartta';
 
     return(
-      <ScrollView
-      zoomEnabled={true}
-      maximumZoomScale={2}
-      minimumZoomScale={1}
-      >
-
-
-
-
       <View style={styles.MapContainer}>
 
-<TouchableOpacity onPress={this._onPressButton}>
-      <Image
-        style={styles.MapImage}
+      <PhotoView
+        minimumZoomScale={1}
+        maximumZoomScale={3}
+        androidScaleType="fitCenter"
         source={require('../../../images/map.png')}
-
-
-      ></Image>
-      </TouchableOpacity>
+        style={styles.MapImage}
+      />
 
       </View>
-      </ScrollView>
     );
   }
 });
@@ -69,33 +57,16 @@ const MapView = React.createClass({
 const styles = StyleSheet.create({
 
   MapContainer: {
-    flex: -1,
-
-     backgroundColor: 'rgba(255,0,54,1)',
-
-     height: null,
-     width: null,
-     alignItems: 'stretch',
-
-
-
-
-
+    flex: 1,
+    backgroundColor: 'rgba(255,0,54,1)',
+    //alignItems: 'stretch',
   },
 
   MapImage: {
     flex: 1,
-    height: 550,
-    width: undefined,
+    height: 300,
+    width: null,
     backgroundColor: 'rgba(255,0,54,1)',
-
-
-
-
-
-
-
-
   },
 
 });
