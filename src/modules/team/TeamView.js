@@ -32,7 +32,6 @@ const TeamView = React.createClass({
     //save picture and Slogan
 
     var pictureChanged = true; // todo get from state
-
     if(pictureChanged){
       this.savePicture();
     }
@@ -42,15 +41,19 @@ const TeamView = React.createClass({
 
   async savePicture(){
     // this.state.avatarData
-    console.log(this.state.avatarData.length);
+
+    //TODO here enable loading icon
+
     const response = await post('/savePicture', {
         data: this.state.avatarData
     });
 
+    //TODO here disable loading icon 
+
   },
 
   async getTeamDetails(){
-    // get picture and slogan from db
+    // get name, picture and slogan from db
 
     const response = await get('/teamDetails');
 
@@ -79,17 +82,7 @@ const TeamView = React.createClass({
         console.log('User tapped custom button: ', response.customButton);
       }
       else {
-    // You can display the image using either data...
         const source = {uri: 'data:image/png;base64,' + response.data, isStatic: true};
-
-    // or a reference to the platform specific asset location
-        /*if (Platform.OS === 'ios') {
-          const source = {uri: response.uri.replace('file://', ''), isStatic: true};
-        } else {
-          const source = {uri: response.uri, isStatic: true};
-        }*/
-
-        console.log(response.data.length);
 
         this.setState({
           avatarSource: source, //source,
