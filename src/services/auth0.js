@@ -1,4 +1,4 @@
-import * as env from '../../env';
+//import * as env from '../../env';
 import Auth0Lock from 'react-native-lock';
 import * as AuthStateActions from '../modules/auth/AuthState';
 import store from '../redux/store';
