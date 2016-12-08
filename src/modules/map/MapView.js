@@ -13,6 +13,7 @@ import{
   zoomEnabled,
   maximumZoomScale,
   minimumZoomScale,
+  Platform,
 
 }from 'react-native';
 
@@ -40,7 +41,6 @@ const MapView = React.createClass({
 
     return(
       <View style={styles.MapContainer}>
-
       <PhotoView
         minimumZoomScale={1}
         maximumZoomScale={3}
@@ -54,20 +54,41 @@ const MapView = React.createClass({
   }
 });
 
-const styles = StyleSheet.create({
+let styles = {};
 
-  MapContainer: {
-    flex: 1,
-    backgroundColor: 'rgba(255,0,54,1)',
-    //alignItems: 'stretch',
-  },
+if (Platform.OS === 'ios') {
+  styles = StyleSheet.create({
+  
+    MapContainer: {
+      flex: 1,
+      backgroundColor: 'rgba(255,0,54,1)',
+      //alignItems: 'stretch',
+    },
 
-  MapImage: {
-    flex: 1,
-    height: 300,
-    width: null,
-    backgroundColor: 'rgba(255,0,54,1)',
-  },
+    MapImage: {
+      flex: 1,
+      height: 300,
+      width: 300,
+      backgroundColor: 'rgba(255,0,54,1)',
+    },
+  
+  });
+} else {
+  styles = StyleSheet.create({
+  
+    MapContainer: {
+      flex: 1,
+      backgroundColor: 'rgba(255,0,54,1)',
+      //alignItems: 'stretch',
+    },
 
-});
+    MapImage: {
+      flex: 1,
+      height: 300,
+      backgroundColor: 'rgba(255,0,54,1)',
+    },
+  
+  });
+}
+
 export default MapView;
