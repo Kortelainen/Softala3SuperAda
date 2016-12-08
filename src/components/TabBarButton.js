@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   selected: {
-    backgroundColor: 'lightpink'
+    backgroundColor: 'lightpink',
+    borderRadius: 25
   },
   buttonImage: {
     height: 55,
