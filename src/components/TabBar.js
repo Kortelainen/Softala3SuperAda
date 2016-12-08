@@ -4,7 +4,8 @@ import TabBarButton from '../components/TabBarButton';
 import {
   NavigationExperimental,
   StyleSheet,
-  View
+  View,
+  Image
 } from 'react-native';
 
 const {PropTypes: NavigationPropTypes} = NavigationExperimental;
@@ -30,7 +31,7 @@ const TabBar = React.createClass({
         {tabRoutes.map(route => (
           <TabBarButton
             key={'tab-bar-button-' + route.key}
-            text={route.title}
+            text={route.title}            
             action={() => this.props.switchTab(route.key)}
             isSelected={route.index === this.props.currentTabIndex}
           />

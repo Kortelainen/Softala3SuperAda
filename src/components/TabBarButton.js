@@ -4,10 +4,16 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  View
+  View,
+
 } from 'react-native';
 
 import * as NavigationState from '../modules/navigation/NavigationState';
+
+const icons = {HOME: require('../../images/homeiso_transparent.png'),
+              TIIMI: require('../../images/ryhmaiso_transparent.png'),
+              RASTIT: require('../../images/karttaiso_transparent.png'),
+              LINKIT: require('../../images/muutiso_transparent.png')};
 
 export default React.createClass({
   displayName: 'TabBarButton',
@@ -16,18 +22,18 @@ export default React.createClass({
     action: PropTypes.func.isRequired,
     isSelected: PropTypes.bool.isRequired
   },
+
+//<Image source={this.props.icon} />
+
+
+
   render() {
     return (
-
     <View>
           <TouchableOpacity
             onPress={this.props.action}
             style={[styles.button, this.props.isSelected && styles.selected]}>
-
-            <Text>{this.props.text}</Text>
-
-            {/* <Image source={require('../../images/pepperoni.png')}/> */}
-
+            <Image source={icons[this.props.text]} style={styles.buttonImage} />
           </TouchableOpacity>
     </View>
 
@@ -39,9 +45,14 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   selected: {
     backgroundColor: 'lightpink'
-  }
+  },
+  buttonImage: {
+    height: 55,
+    width: 55
+  },
+
 });

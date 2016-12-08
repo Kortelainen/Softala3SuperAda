@@ -3,7 +3,8 @@ import {
   NavigationExperimental,
   View,
   Platform,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
 const {
   CardStack: NavigationCardStack,

@@ -9,6 +9,7 @@ Image
 import GridView from 'react-native-grid-view';
 import {get} from '../../utils/api';
 import * as NavigationState from '../../modules/navigation/NavigationState';
+import TeamPointsView from '../../modules/teamPoints/TeamPointsViewContainer';
 
 const images = {
   Koulu: require('../../../images/companyImages/Koulu.png'),
@@ -58,6 +59,7 @@ const CheckPointView = React.createClass({
   },
 
   renderCompany(company) {
+    console.log(company);
     const visited = company.visited ? '_visited' : '';
     const image = images[`${company.companyName}${visited}`];
 
@@ -82,24 +84,46 @@ const CheckPointView = React.createClass({
     }));
   },
 
-  render() {
-    return (
-      <View style={[styles.container]}>
-      <GridView
-        items={this.state.dataSource}
-        itemsPerRow={COMPANIES_PER_ROW}
-        renderItem={this.renderCompany}
-        style={styles.companyList}
-        enableEmptySections={true}
-        />
-      <TouchableOpacity onPress={this.kartta} style={styles.GoToMapButton}>
-          <Text style={styles.buttonText}>
-            {'NÄYTÄ RASTIT KARTALLA'}
-          </Text>
-      </TouchableOpacity>
 
-    </View>
-    );
+
+  render() {
+    let visitedCompanies = 0;
+
+    this.state.dataSource.forEach((company) => {
+      if (company.visited) {
+        visitedCompanies += 1;
+      }
+    });
+
+    if(visitedCompanies >= this.state.dataSource.length && this.state.dataSource.length != 0){
+      return (
+        <TeamPointsView />
+      );
+    } else {
+      return (
+        <View style={[styles.container]}>
+        <GridView
+          items={this.state.dataSource}
+          itemsPerRow={COMPANIES_PER_ROW}
+          renderItem={this.renderCompany}
+          style={styles.companyList}
+          enableEmptySections={true}
+          />
+        <TouchableOpacity onPress={this.fetchData} style={styles.GoToMapButton}>
+            <Text style={styles.buttonText}>
+              {'PÄIVITÄ'}
+            </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={this.kartta} style={styles.GoToMapButton}>
+            <Text style={styles.buttonText}>
+              {'KARTTA'}
+            </Text>
+        </TouchableOpacity>
+
+      </View>
+      );
+    }
   }
 }
 );
@@ -114,7 +138,7 @@ const styles = StyleSheet.create({
   GoToMapButton: {
     backgroundColor: '#ff5454',
     padding: 5,
-    margin: 30,
+    margin: 10,
     width: 350,
     height: 70,
     justifyContent: 'center'
@@ -125,18 +149,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
-    width: 100,
-    height: 100
+    width: 100
   },
   companyList: {
-    marginTop: 20,
+
   },
   companyText: {
     fontSize: 20
   },
   thumb: {
-    width: 90,
-    height: 90
+    width: 100,
+    height: 100
   },
   text: {
     fontSize: 24,

@@ -1,3 +1,4 @@
+
 import {fromJS} from 'immutable';
 
 import {NavigationExperimental} from 'react-native';
@@ -28,6 +29,9 @@ export function popRoute() {
   return {type: POP_ROUTE};
 }
 
+//var derp1 = 'testi';
+
+//('../../images/pepperoni.png');
 // reducers for tabs and scenes are separate
 const initialState = fromJS({
   tabs: {
