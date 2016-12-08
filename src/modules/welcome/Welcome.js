@@ -50,9 +50,6 @@ const Welcome = React.createClass({
               Tasapistetilanteessa hyvin suoritettu Quiz ratkaisee voiton.
             </Text>
           </View>
-          <View style={styles.textField}>
-             <Text style={styles.boldText}>ONNEA MATKAAN!</Text>
-          </View>
         </View>
         <TouchableOpacity onPress={this.profile}>
           <View style={styles.button}>
