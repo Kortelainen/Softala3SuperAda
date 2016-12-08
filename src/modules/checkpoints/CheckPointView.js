@@ -59,7 +59,6 @@ const CheckPointView = React.createClass({
   },
 
   renderCompany(company) {
-    console.log(company);
     const visited = company.visited ? '_visited' : '';
     const image = images[`${company.companyName}${visited}`];
 

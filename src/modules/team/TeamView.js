@@ -24,7 +24,8 @@ const TeamView = React.createClass({
     return {
       background: 'rgb(255,255,255)',
       teamDescription: '',
-      avatarSource: null
+      avatarSource: null,
+      teamName: '',
     };
   },
 
@@ -36,7 +37,14 @@ const TeamView = React.createClass({
       this.savePicture();
     }
 
-    //this.saveSlogan();
+    this.saveSlogan();
+  },
+
+  async saveSlogan(){
+    const response = await post('/saveDescription', {
+      teamDescription: this.state.teamDescription
+    });
+
   },
 
   async savePicture(){
@@ -48,7 +56,7 @@ const TeamView = React.createClass({
         data: this.state.avatarData
     });
 
-    //TODO here disable loading icon 
+    //TODO here disable loading icon
 
   },
 
@@ -57,8 +65,12 @@ const TeamView = React.createClass({
 
     const response = await get('/teamDetails');
 
-    var teamPicture = response.result.file;
+    var teamName = response.result.name;
+    this.setState({
+      teamName: response.result.name
+    });
 
+    var teamPicture = response.result.file;
     if(teamPicture != null){
       this.setState({
         avatarSource: {
@@ -66,6 +78,11 @@ const TeamView = React.createClass({
         }
       });
     }
+
+    var teamDescription = response.result.description;
+    this.setState({
+      teamDescription: response.result.description
+    });
 
   },
 
@@ -96,10 +113,7 @@ const TeamView = React.createClass({
     return (
       <View style={[styles.teamContainer, {backgroundColor: this.state.background}]}>
         <View style={styles.teamName}>
-          <Text style={styles.teamTitle}> Minun tiimini </Text>
-              <Text>
-              {/*tähän haetaan kirjautuneen tiimin nimi (not editable)*/}
-              </Text>
+          <Text style={styles.teamTitle}> {this.state.teamName} </Text>
         </View>
           <TouchableOpacity
             onPress={this.openImageGallery}
@@ -141,6 +155,9 @@ const styles = StyleSheet.create({
   teamName: {
     marginTop: 100
   },
+  teamNameStyle: {
+    alignItems: 'center',
+  },
   teamTitle: {
     color: '#FF0036',
     fontSize: 30,
@@ -153,7 +170,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20,
     fontWeight: 'bold',
-    margin: 10
+    margin: 10,
+    alignItems: 'center',
   },
   teamInput: {
     width: 300,
