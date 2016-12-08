@@ -38,7 +38,7 @@ const Softala3SuperAda = React.createClass({
   },
 
   componentDidMount () {
-    //SplashScreen.close(SplashScreen.animationType.scale, 800, 500)
+    SplashScreen.close(SplashScreen.animationType.scale, 800, 500)
   },
 
   render() {

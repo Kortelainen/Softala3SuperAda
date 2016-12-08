@@ -1,6 +1,9 @@
 package com.softala3superada;
 
 import com.facebook.react.ReactActivity;
+import com.reactnativecomponent.splashscreen.RCTSplashScreen;
+
+import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,5 +14,12 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "Softala3SuperAda";
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        RCTSplashScreen.openSplashScreen(this);   //open splashscreen
+        //RCTSplashScreen.openSplashScreen(this, true);   //open splashscreen fullscreen
+        super.onCreate(savedInstanceState);
     }
 }
