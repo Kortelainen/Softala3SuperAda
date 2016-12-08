@@ -38,6 +38,8 @@ const TeamView = React.createClass({
     }
 
     this.saveSlogan();
+
+    this.props.dispatch(NavigationState.switchTab('CheckPointsTab'));
   },
 
   async saveSlogan(){
