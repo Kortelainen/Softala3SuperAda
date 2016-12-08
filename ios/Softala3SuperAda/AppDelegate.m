@@ -19,16 +19,13 @@
 {
   NSURL *jsCodeLocation;
 
-  [[RCTBundleURLProvider sharedSettings] setDefaults];
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"Softala3SuperAda"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
-  
-  [RCTSplashScreen open:rootView];
-  
+  [RCTSplashScreen open:rootView]; //activate splashscreen
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

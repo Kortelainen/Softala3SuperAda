@@ -1,5 +1,6 @@
 import React, {PropTypes, Dimensions, Component} from 'react';
 
+import PhotoView from 'react-native-photo-view';
 
 import{
   Image,
@@ -12,12 +13,11 @@ import{
   zoomEnabled,
   maximumZoomScale,
   minimumZoomScale,
+  Platform,
 
 }from 'react-native';
 
 import * as NavigationState from '../../modules/navigation/NavigationState';
-
-
 
 
 const MapView = React.createClass({
@@ -40,63 +40,55 @@ const MapView = React.createClass({
     const text = 'kartta';
 
     return(
-      <ScrollView
-      zoomEnabled={true}
-      maximumZoomScale={2}
-      minimumZoomScale={1}
-      >
-
-
-
-
       <View style={styles.MapContainer}>
-
-<TouchableOpacity onPress={this._onPressButton}>
-      <Image
-        style={styles.MapImage}
+      <PhotoView
+        minimumZoomScale={1}
+        maximumZoomScale={3}
+        androidScaleType="fitCenter"
         source={require('../../../images/map.png')}
-
-
-      ></Image>
-      </TouchableOpacity>
+        style={styles.MapImage}
+      />
 
       </View>
-      </ScrollView>
     );
   }
 });
 
-const styles = StyleSheet.create({
+let styles = {};
 
-  MapContainer: {
-    flex: -1,
+if (Platform.OS === 'ios') {
+  styles = StyleSheet.create({
+  
+    MapContainer: {
+      flex: 1,
+      backgroundColor: 'rgba(255,0,54,1)',
+      //alignItems: 'stretch',
+    },
 
-     backgroundColor: 'rgba(255,0,54,1)',
+    MapImage: {
+      flex: 1,
+      height: 300,
+      width: 300,
+      backgroundColor: 'rgba(255,0,54,1)',
+    },
+  
+  });
+} else {
+  styles = StyleSheet.create({
+  
+    MapContainer: {
+      flex: 1,
+      backgroundColor: 'rgba(255,0,54,1)',
+      //alignItems: 'stretch',
+    },
 
-     height: null,
-     width: null,
-     alignItems: 'stretch',
+    MapImage: {
+      flex: 1,
+      height: 300,
+      backgroundColor: 'rgba(255,0,54,1)',
+    },
+  
+  });
+}
 
-
-
-
-
-  },
-
-  MapImage: {
-    flex: 1,
-    height: 550,
-    width: undefined,
-    backgroundColor: 'rgba(255,0,54,1)',
-
-
-
-
-
-
-
-
-  },
-
-});
 export default MapView;
