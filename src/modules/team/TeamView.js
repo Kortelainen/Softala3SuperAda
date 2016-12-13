@@ -11,7 +11,6 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import {options} from './image-picker-options';
 import {post, get} from '../../utils/api';
-import * as NavigationState from '../../modules/navigation/NavigationState';
 
 const TeamView = React.createClass({
   propTypes: {
@@ -33,23 +32,22 @@ const TeamView = React.createClass({
     //save picture and Slogan
 
     var pictureChanged = true; // todo get from state
-    if(pictureChanged){
+    if (pictureChanged) {
       this.savePicture();
     }
 
     this.saveSlogan();
 
-    this.props.dispatch(NavigationState.switchTab('CheckPointsTab'));
   },
 
-  async saveSlogan(){
+  async saveSlogan() {
     const response = await post('/saveDescription', {
       teamDescription: this.state.teamDescription
     });
 
   },
 
-  async savePicture(){
+  async savePicture() {
     // this.state.avatarData
 
     //TODO here enable loading icon
@@ -62,18 +60,17 @@ const TeamView = React.createClass({
 
   },
 
-  async getTeamDetails(){
+  async getTeamDetails() {
     // get name, picture and slogan from db
 
     const response = await get('/teamDetails');
 
-    var teamName = response.result.name;
     this.setState({
       teamName: response.result.name
     });
 
     var teamPicture = response.result.file;
-    if(teamPicture != null){
+    if (teamPicture !== null) {
       this.setState({
         avatarSource: {
           uri: 'data:image/png;base64,' + teamPicture
@@ -81,11 +78,9 @@ const TeamView = React.createClass({
       });
     }
 
-    var teamDescription = response.result.description;
     this.setState({
       teamDescription: response.result.description
     });
-
   },
 
   openImageGallery() {
